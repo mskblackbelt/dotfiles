@@ -24,7 +24,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew brew-cask colored-man colorize compleat github history marked2 osx pip pyenv python rand-quote textmate virtualenv virtualenvwrapper)
+
+plugins=(brew brew-cask colored-man colorize compleat history osx pip python rand-quote textmate pyenv virtualenv virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,8 +33,9 @@ export GNUTERM='X11'
 export EDITOR='mate -w'
 export PAGER='most'
 export TEXEDIT='mate -w -l %d "%s"'
-export HOMEBREW_GITHUB_API_TOKEN='06228c6e770e9e10859a73586d3620eb58549b36'
+export HOMEBREW_GITHUB_API_TOKEN=''
 
+# Move these lines to a .pyconfig file inside the .dotfiles folder
 # Python setup
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
@@ -99,12 +101,13 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Enable sudo with aliases
 alias sudo='sudo '  
-alias fuck='sudo $(history -p \!\!)' #Not working in zsh… need to figure out correct syntax analogs for -p, \!
+# Run previous command with root privileges. 
+alias fuck='sudo $(fc -ln -1)'
 
 # Show history
 alias history='fc -l 1'
 
-alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;open -a Path\ Finder;echo "Open With has been rebuilt, Finder will relaunch"'
+alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user; killall Finder; open -a Path\ Finder; echo "Open With has been rebuilt, Finder will relaunch"'
 
 alias forceeject="hdiutil detach -force"
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
