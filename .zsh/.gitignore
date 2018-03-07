@@ -1,2 +1,7 @@
-.oh-my-zsh
 private.zsh
+.oh-my-zsh
+.zcompdump
+.zcalc_history
+.zhistory
+.zsh-update
+*.zwc
