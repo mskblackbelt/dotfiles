@@ -3,9 +3,6 @@ private.zsh
 .zcompdump
 .zcalc_history
 .zhistory
-<<<<<<< HEAD
 .zsh_history
-=======
->>>>>>> 7cd327d71cf4ef24f061643a0c2c1d0beafc5fae
 .zsh-update
 *.zwc
