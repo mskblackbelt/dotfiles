@@ -23,7 +23,6 @@ fi
   
 # Network related aliases
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'" # Machine IPs
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com" # External IP
 alias flush="dscacheutil -flushcache" # Flush DNS cache
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 
