@@ -19,7 +19,7 @@ function zsh_recompile {
 # TODO create a function to relaunch a launchctl daemon
 if [[ $IS_MAC -eq 1 ]]; then
 	function fix_airplay {
-	  sudo kill `ps -ax | grep 'coreaudiod' | grep 'sbin' |awk '{print $1}'`
+	  sudo kill $(ps -ax | grep 'coreaudiod' | grep 'sbin' |awk '{print $1}')
 	}
 	
 

@@ -5,7 +5,11 @@ alias ohmyzsh="mate $ZSH"
 # Enable sudo with aliases
 alias sudo='sudo '  
 # Run previous command with root privileges 
+<<<<<<< HEAD
 if [[ -x `which thefuck` ]]; then
+=======
+if [[ -x $(which thefuck) ]]; then
+>>>>>>> Switch to private repository, add all files.
   eval "$(thefuck --alias)"
 else
   alias fuck='sudo $(fc -ln -1)'
@@ -29,12 +33,22 @@ alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 # Miscellaneous aliases
 alias more="less"
-if [[ -x `which most` ]]; then
+if [[ -x $(which most) ]]; then
 	alias less="most"
+fi
+if [[ -x $(which bat) ]]; then 
+	alias cat="bat"
+fi
+if [[ -x $(which prettyping) ]]; then 
+	alias ping="prettyping"
 fi
 if [[ -x "/usr/local/bin/r" ]]; then
 	alias rstat="/usr/local/bin/r"
 fi
+if [[ -x $(which tldr) ]]; then 
+	alias help="tldr"
+fi
+
 
 # -------------------------------------------------------------------
 # Folder aliases
@@ -43,6 +57,7 @@ hash -d dl=~/Downloads
 hash -d doc=~/Documents
 hash -d dev=~/Projects
 hash -d dt=~/Desktop
+hash -d icloud=~/iCloud\ Drive
 
 # -------------------------------------------------------------------
 # Mac only
@@ -65,11 +80,12 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 
 # Hub alias created by github Oh-my-zsh plugin
-if [[ -x `which hub 2> /dev/null` ]]; then
+if [[ -x $(which hub) ]]; then
   alias git="hub" 
 fi
 
 # Restart plasma shell
+<<<<<<< HEAD
 if [[ -x `which kbuildsycoca4 2> /dev/null` ]]; then
   alias plasma_restart='kbuildsycoca4 && kquitapp plasma-desktop && kstart plasma-desktop'
 fi
