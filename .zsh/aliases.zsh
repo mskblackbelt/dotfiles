@@ -5,11 +5,7 @@ alias ohmyzsh="mate $ZSH"
 # Enable sudo with aliases
 alias sudo='sudo '  
 # Run previous command with root privileges 
-<<<<<<< HEAD
-if [[ -x `which thefuck` ]]; then
-=======
 if [[ -x $(which thefuck) ]]; then
->>>>>>> Switch to private repository, add all files.
   eval "$(thefuck --alias)"
 else
   alias fuck='sudo $(fc -ln -1)'
