@@ -85,7 +85,6 @@ if [[ -x $(which hub) ]]; then
 fi
 
 # Restart plasma shell
-<<<<<<< HEAD
 if [[ -x `which kbuildsycoca4 2> /dev/null` ]]; then
   alias plasma_restart='kbuildsycoca4 && kquitapp plasma-desktop && kstart plasma-desktop'
 fi
