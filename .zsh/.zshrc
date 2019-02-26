@@ -18,6 +18,7 @@ source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/zsh_hooks.zsh
 source $ZDOTDIR/private.zsh
 source $ZDOTDIR/prompt.zsh
+source $ZDOTDIR/gaussopts.zsh
 
 
 # Enable ZSH syntax highlighting

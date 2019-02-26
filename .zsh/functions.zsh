@@ -15,6 +15,9 @@ function zsh_recompile {
   source ~/.zshrc
 }
 
+# Wrapper for zsh function information
+zinfo() {info --index-search="$*" zsh}
+
 # Misc. functions to extend OS X application control
 # TODO create a function to relaunch a launchctl daemon
 if [[ $IS_MAC -eq 1 ]]; then
