@@ -18,7 +18,11 @@ source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/zsh_hooks.zsh
 source $ZDOTDIR/private.zsh
 source $ZDOTDIR/prompt.zsh
-source $ZDOTDIR/gaussopts.zsh
+
+
+if [[ -x $(which g16) ]]; then
+	source $ZDOTDIR/gaussopts.zsh
+fi
 
 
 # Enable ZSH syntax highlighting
