@@ -35,8 +35,8 @@ fi
 if [[ $IS_MAC -eq 1 && -x `which geany 2> /dev/null` ]]; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
-elif [[ -x `which geany 2> /dev/null` ]]; then
-  export EDITOR='geany -s'
+elif [[ -x `which code 2> /dev/null` ]]; then
+  export EDITOR='code -w'
 elif [[ -x `which kate 2> /dev/null` ]]; then
   export EDITOR='kate -n -l %d'
 else

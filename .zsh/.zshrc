@@ -17,6 +17,7 @@ source $ZDOTDIR/bindkeys.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/zsh_hooks.zsh
 source $ZDOTDIR/private.zsh
+source $ZDOTDIR/local.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/gaussopts.zsh
 
