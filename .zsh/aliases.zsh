@@ -1,6 +1,6 @@
 # Edit ZSH configuration files
-alias zshconfig="mate $ZDOTDIR"
-alias ohmyzsh="mate $ZSH"
+alias zshconfig="$EDITOR $ZDOTDIR"
+alias ohmyzsh="$EDITOR $ZSH"
 
 # Enable sudo with aliases
 alias sudo='sudo '  
