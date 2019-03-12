@@ -31,6 +31,9 @@ export LESS='--ignore-case --raw-control-chars'
 if [[ -x `which most 2> /dev/null` ]]; then 
 	export PAGER='most' 
 fi
+if [[ -x `which bat 2> /dev/null` ]]; then 
+	export BAT_PAGER='less' 
+fi
 
 if [[ $IS_MAC -eq 1 && -x `which geany 2> /dev/null` ]]; then
   export EDITOR='mate -w'
