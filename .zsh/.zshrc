@@ -21,11 +21,6 @@ source $ZDOTDIR/local.zsh
 source $ZDOTDIR/prompt.zsh
 
 
-if [[ -x $(which g16) ]]; then
-	source $ZDOTDIR/gaussopts.zsh
-fi
-
-
 # Enable ZSH syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
