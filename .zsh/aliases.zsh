@@ -33,7 +33,7 @@ if [[ -x $(which most) ]]; then
 	alias less="most"
 fi
 if [[ -x $(which bat) ]]; then 
-	alias cat="bat"
+	alias cat="bat --terminal-width=-1"
 fi
 if [[ -x $(which prettyping) ]]; then 
 	alias ping="prettyping"
