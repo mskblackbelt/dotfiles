@@ -20,7 +20,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 
 if [[ $IS_LINUX -eq 1 ]]; then
-	plugins=($plugins)
+	plugins=($plugins extract)
 fi
 
 if [[ $HAS_APT -eq 1 ]]; then
