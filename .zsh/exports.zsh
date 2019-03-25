@@ -35,7 +35,7 @@ if [[ -x `which bat 2> /dev/null` ]]; then
 	export BAT_PAGER='less' 
 fi
 
-if [[ $IS_MAC -eq 1 && -x `which geany 2> /dev/null` ]]; then
+if [[ $IS_MAC -eq 1 ]]; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
 elif [[ -x `which code 2> /dev/null` ]]; then
