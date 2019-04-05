@@ -41,26 +41,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 	        open -a $app
 	    done
 	}
-	# Wrap Macports command (any executables installed by Macports).
-	run_port () {
-		local command
-		command=${1:-}
-		
-		if [ "$#" -le 1 ]; then
-			echo "Usage: $0 command [arg1, arg2, ...]" >&2
-			exit 1
-		fi
-
-		if [[ -z $MACPORTS_PREFIX ]]; then
-			MACPORTS_PREFIX='/opt/local'
-		fi
-
-		export PATH="$MACPORTS_PREFIX/bin:$MACPORTS_PREFIX/sbin:$PATH"
-		export CPATH="$MACPORTS_PREFIX/include:$CPATH"
-
-		shift
-
-		$command $*}
 fi
 
 
