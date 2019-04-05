@@ -4,7 +4,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 	unset PATH
 	eval `/usr/libexec/path_helper -s`
 fi
-export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin"
+export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
 
 if [[ -d /usr/local/opt/ccache/libexec ]]; then
 	export PATH="/usr/local/opt/ccache/libexec:$PATH"
