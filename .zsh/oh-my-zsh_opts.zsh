@@ -16,7 +16,7 @@ plugins=(battery colored-man-pages virtualenv)
 if [[ $IS_MAC -eq 1 ]]; then
     plugins=($plugins osx textmate)
 	# The following plugins may slow down shell startup
-	plugins=($plugins brew brew-cask)
+	plugins=($plugins brew)
 fi
 
 if [[ $IS_LINUX -eq 1 ]]; then
