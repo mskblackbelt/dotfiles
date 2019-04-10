@@ -26,7 +26,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 
 # Export pagers and editors
-export GNUTERM='X11' # Terminal used for gnuplot, matplotlib
+export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
 export LESS='--ignore-case --raw-control-chars'
 if [[ -x `which most 2> /dev/null` ]]; then 
 	export PAGER='most' 
