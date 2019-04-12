@@ -6,9 +6,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
 
-if [[ -d /usr/local/opt/ccache/libexec ]]; then
-	export PATH="/usr/local/opt/ccache/libexec:$PATH"
-fi
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
@@ -26,13 +23,13 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 
 # Export pagers and editors
-export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
 export LESS='--ignore-case --raw-control-chars'
 if [[ -x `which most 2> /dev/null` ]]; then 
-	export PAGER='most' 
+	export PAGER='most'
+	export MANPAGER='/usr/bin/less -X'
 fi
 if [[ -x `which bat 2> /dev/null` ]]; then 
-	export BAT_PAGER='less' 
+	export BAT_PAGER='/usr/bin/less' 
 fi
 
 if [[ $IS_MAC -eq 1 ]]; then
@@ -46,6 +43,8 @@ else
   export EDITOR='vi'
 fi
 
+export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
+
 
 # Set up history file location and size 
 # The following two lines are set by Oh-my-ZSH
@@ -54,4 +53,17 @@ fi
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export ZSH_COMPDUMP="${HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
+# -------------------------------------------------------------------
+# Collection of exports from matias bynens dotfiles
+# -------------------------------------------------------------------
+
+# Exclude some commands from history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
+
+# Prefer US English and use UTF-8
+export LANG="en_US.UTF-8";
+export LC_ALL="en_US.UTF-8";
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="${yellow}";
 

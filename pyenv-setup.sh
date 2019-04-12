@@ -34,9 +34,6 @@ if [ $? -eq 1 ]; then
     xcode-select --install
 fi
 
-# Add science tap
-brew tap homebrew/science
-
 # Python virtualenv/pyenv setup
 /usr/local/bin/pip install -U nose
 /usr/local/bin/pip install -U six
@@ -50,15 +47,6 @@ brew tap homebrew/science
 # Pyenv installation
 brew install pyenv
 brew install pyenv-virtualenv
-brew install pyenv-virtualenvwrapper
-brew install pyenv-pip-rehash
+brew install pyenv-pip-migrate
+brew install pyenv-which-ext
 
-# Scientific Python utilities
-brew install postgresql
-brew install sphinx
-brew install zeromq
-brew install openblas
-brew install numpy
-brew install scipy
-ln -s /usr/local/include/freetype2/freetype/ /usr/local/include/freetype
-brew install matplotlib

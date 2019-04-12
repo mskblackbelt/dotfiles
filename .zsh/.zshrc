@@ -4,21 +4,29 @@ export ZDOTDIR="$HOME/Projects/dotfiles/.zsh"
 ## If slowdown issues occur, add this line to $ZSH/oh-my-zsh.sh where plugins are sourced (line 85?)
 # echo $plugin && { time (source $ZSH/plugins/$plugin/$plugin.plugin.zsh) }
 
-source $ZDOTDIR/checks.zsh
-source $ZDOTDIR/colors.zsh
-source $ZDOTDIR/exports.zsh
-source $ZDOTDIR/oh-my-zsh_opts.zsh
-source $ZDOTDIR/setopt.zsh
-source $ZDOTDIR/pyopts.zsh
-source $ZDOTDIR/perlopts.zsh
-source $ZDOTDIR/completion.zsh
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/bindkeys.zsh
-source $ZDOTDIR/functions.zsh
-source $ZDOTDIR/zsh_hooks.zsh
-source $ZDOTDIR/private.zsh
-source $ZDOTDIR/local.zsh
-source $ZDOTDIR/prompt.zsh
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in $ZDOTDIR/{\
+checks,\
+colors,\
+exports,\
+oh-my-zsh_opts,\
+setopt,\
+pyopts,\
+perlopts,\
+completion,\
+aliases,\
+bindkeys,\
+functions,\
+zsh_hooks,\
+private,\
+local,\
+prompt\
+}.zsh; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
 
 
 # Enable ZSH syntax highlighting

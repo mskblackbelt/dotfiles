@@ -15,5 +15,5 @@ cd "${HOME}/dotfiles"
 # Run script to configure misc. OS X and application settings
 ./.osx
 
-# Add Bash 4 and Zsh 5 (from Homebrew) to `/etc/shells`
+# Add Homebrew versions of Bash and Zsh to `/etc/shells`
 sudo sh -c 'echo "/usr/local/bin/bash\n/usr/local/bin/zsh" >> /etc/shells'
