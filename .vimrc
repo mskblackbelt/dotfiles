@@ -1,6 +1,6 @@
 " Use the Solarized Dark theme
-set background=dark
-" colorscheme solarized
+set background=light
+colorscheme solarized
 
 " Make Vim more useful
 set nocompatible
@@ -14,6 +14,10 @@ set esckeys
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
+" Do incremental searching when it's possible to timeout.
+if has('reltime')
+  set incsearch
+endif
 " Add the g flag to search/replace by default
 set gdefault
 " Use UTF-8 without BOM
@@ -77,7 +81,12 @@ set showcmd
 " Use relative line numbers
 if exists("&relativenumber")
 	set relativenumber
-	au BufReadPost * set relativenumber
+	augroup numbertoggle
+		autocmd!
+		autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+		autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+	augroup END
+" au BufReadPost * set relativenumber
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
