@@ -1,5 +1,7 @@
 # Compiled Python files
 *.pyc
+bundle/
+.netrwhist
 
 # Folder view configuration files
 .DS_Store
