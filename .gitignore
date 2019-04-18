@@ -1,6 +1,6 @@
 # Compiled Python files
 *.pyc
-bundle/
+.vim/plugged
 .netrwhist
 
 # Folder view configuration files
