@@ -30,6 +30,7 @@ if [[ -x `which most 2> /dev/null` ]]; then
 fi
 if [[ -x `which bat 2> /dev/null` ]]; then 
 	export BAT_PAGER='/usr/bin/less' 
+	export BAT_THEME="TwoDark"
 fi
 
 if [[ $IS_MAC -eq 1 ]]; then
