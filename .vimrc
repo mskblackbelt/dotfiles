@@ -45,7 +45,7 @@ endif
 set ruler			" Display cursor position
 set wrap			" Wrap lines when they get too long
 set tw=0			" Disable automatic linebreak after col=80
-set colorcolumn=90	" Add a colored column as a line-length reminder
+set colorcolumn=80	" Add a colored column as a line-length reminder
 set tabstop=4		" Set tabs to 4 spaces of width
 set shiftwidth=4	" Set indentation shift to four spaces
 set cursorline		" Highlight the current line
