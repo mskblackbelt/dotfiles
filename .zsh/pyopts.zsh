@@ -1,6 +1,4 @@
 ## Python related exports
-# export PYTHONPATH=/usr/local/lib
-# export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
@@ -19,11 +17,6 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv') -gt 0 ]]; then
   if [[ $(pyenv commands | grep -c "virtualenv-init") -gt 0 ]]; then
     eval "$(pyenv virtualenv-init - zsh)"
   fi
-
-  # # Auto-activate pyenv-virtualenvwrapper
-  # if [[ $(pyenv commands | grep -c "virtualenvwrapper") -gt 0 ]]; then
-  #   eval "$(pyenv virtualenvwrapper)"
-  # fi
 
   function pyenv_prompt_info() {
       echo "$(pyenv version-name)"

@@ -29,19 +29,19 @@ alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/download
 
 # Miscellaneous aliases
 alias more="less"
-if [[ -x $(which most) ]]; then
+if [[ -x $(which most 2> /dev/null) ]]; then
 	alias less="most"
 fi
-if [[ -x $(which bat) ]]; then 
+if [[ -x $(which bat 2> /dev/null) ]]; then 
 	alias cat="bat --terminal-width=-2"
 fi
-if [[ -x $(which prettyping) ]]; then 
+if [[ -x $(which prettyping 2> /dev/null) ]]; then 
 	alias ping="prettyping"
 fi
 if [[ -x "/usr/local/bin/r" ]]; then
 	alias rstat="/usr/local/bin/r"
 fi
-if [[ -x $(which tldr) ]]; then 
+if [[ -x $(which tldr 2> /dev/null) ]]; then 
 	alias help="tldr"
 fi
 
@@ -110,11 +110,6 @@ fi
 # Hub alias created by github Oh-my-zsh plugin
 if [[ -x $(which hub) ]]; then
   alias git="hub" 
-fi
-
-# Restart plasma shell
-if [[ -x `which kbuildsycoca4 2> /dev/null` ]]; then
-  alias plasma_restart='kbuildsycoca4 && kquitapp plasma-desktop && kstart plasma-desktop'
 fi
 
 # Intuitive map function
