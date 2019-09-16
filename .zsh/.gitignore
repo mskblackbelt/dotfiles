@@ -1,6 +1,5 @@
 private.zsh
 local.zsh
-.oh-my-zsh
 .zcompdump
 .zcalc_history
 .zhistory
