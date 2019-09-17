@@ -6,7 +6,7 @@
 function precmd {
 
   local TERMWIDTH
-  (( TERMWIDTH = ${COLUMNS} - 1 ))
+  (( TERMWIDTH = ${COLUMNS} ))
 
   ###
   # Truncate the path if it's too long.
