@@ -123,8 +123,8 @@ if [[ "IS_MAC" -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
 
 elif [[ $(uname) == "Linux" ]] &&  [[ -n /sys/class/power_supply/*(#qN) ]] ; then
 
-  local battery_name = $(upower -e | grep "battery")
-  local adapter_name = $(upower -e | grep "line_power")
+  # local battery_name = $(upower -e | grep "battery")
+  # local adapter_name = $(upower -e | grep "line_power")
   local display_device = $(upower -e | grep "DisplayDevice")
   
   function battery_is_charging() {
