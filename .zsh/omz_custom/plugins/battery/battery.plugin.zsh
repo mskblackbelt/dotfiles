@@ -140,12 +140,12 @@ elif [[ $(uname) == "Linux" ]] && [[ -n /sys/class/power_supply/*(#qN) ]] ; then
   }
 
   function battery_pct() {
-    $(upower -i $display_device | grep " percentage" | grep -o "\S*%" | tr -d "%")
+    $(upower -i $display_device | grep "percentage" | cut -d ":" -f2 | sed -e 's/^\s*//' | tr -d "%")
   }
 
   function battery_pct_remaining() {
     if [ $(battery_is_discharging) ] ; then
-      battery_pct
+      echo $battery_pct
     else
       echo "External Power"
     fi
@@ -153,7 +153,7 @@ elif [[ $(uname) == "Linux" ]] && [[ -n /sys/class/power_supply/*(#qN) ]] ; then
 
   function battery_time_remaining() {
     if [[ $(upower -i $display_device | grep -c "discharging") -gt 0 ]] ; then
-      echo " $(upower -i $display_device | grep "time to empty" | cut -d ":" -f2 | sed -e 's/^\s*//')"
+      echo "$(upower -i $display_device | grep "time to empty" | cut -d ":" -f2 | sed -e 's/^\s*//')"
     fi
   }
 
@@ -176,23 +176,18 @@ elif [[ $(uname) == "Linux" ]] && [[ -n /sys/class/power_supply/*(#qN) ]] ; then
 else
   # Empty functions so we don't cause errors in prompts
   function battery_pct_remaining() {
-    echo "-"
   }
 
   function battery_time_remaining() {
-    echo "-"
   }
 
   function battery_pct_prompt() {
-    echo "-"
   }
   
   function battery_is_charging() {
-    echo "-"
   }
   
   function battery_level_gauge() {
-    echo "-"
   }
 fi
 
