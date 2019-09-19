@@ -140,12 +140,12 @@ elif [[ $(uname) == "Linux" ]] && [[ -n /sys/class/power_supply/*(#qN) ]] ; then
   }
 
   function battery_pct() {
-    $(upower -i $display_device | grep "percentage" | cut -d ":" -f2 | sed -e 's/^\s*//' | tr -d "%")
+    upower -i $display_device | grep "percentage" | cut -d ":" -f2 | sed -e 's/^\s*//' | tr -d "%"
   }
 
   function battery_pct_remaining() {
-    if [ $(battery_is_discharging) ] ; then
-      echo $battery_pct
+    if [ ! $(battery_is_charging) ] ; then
+      battery_pct
     else
       echo "External Power"
     fi
