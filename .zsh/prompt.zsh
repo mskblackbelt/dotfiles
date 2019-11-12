@@ -73,6 +73,18 @@ function setprompt {
   eval PR_GREY='%{$FG[239]%}'
   eval PR_ORANGE='%{$FG[214]%}'
   
+  # Detect if using SSH connection
+  _user_is_ssh() {
+    [[ -n "${SSH_CONNECTION-}${SSH_CLIENT-}${SSH_TTY-}" ]]
+  }
+  
+  # Only display HOSTNAME for SSH or superuser prompts
+    if _user_is_ssh || (( EUID == 0 )); then
+      user_info="@${HOST%%.*}"
+    else
+      user_info=''
+    fi
+    
   ###
   # Finally, the prompt.
   PROMPT='%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} \
@@ -86,7 +98,7 @@ $(battery_level_gauge)$(battery_time_remaining)\
 $(git_prompt_info)$(hg_prompt_info) %{$FG[105]%}%(!.#.»)%{$PR_NO_COLOUR%} '
 
 
-  RPROMPT=' $(virtualenv_prompt_info) %{$PR_GREY%}%n@%m %{$PR_NO_COLOUR%}\
+  RPROMPT=' $(virtualenv_prompt_info) %{$PR_GREY%}$user_info %{$PR_NO_COLOUR%}\
 %{$PR_SHIFT_IN%}$PR_LRCORNER%{$PR_SHIFT_OUT%}'
 
 
