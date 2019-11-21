@@ -6,6 +6,9 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
 
+if [[ -d $HOME/.linuxbrew ]]; then
+   eval $($HOME/.linuxbrew/bin/brew shellenv)
+fi
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
