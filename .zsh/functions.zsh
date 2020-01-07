@@ -18,6 +18,12 @@ function zsh_recompile {
 # Wrapper for zsh function information
 zinfo() {info --index-search="$*" zsh}
 
+# calculator plugin, aliases assigned in `aliases.zsh`
+function __calc_plugin {
+    zcalc -e "$*"
+}
+
+
 # Misc. functions to extend OS X application control
 # TODO create a function to relaunch a launchctl daemon
 if [[ $IS_MAC -eq 1 ]]; then
