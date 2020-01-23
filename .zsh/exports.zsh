@@ -1,24 +1,23 @@
 # path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
-# The function should be run as part of /etc/zshenv
+# The function is run as part of /etc/zshenv by default. 
 if [[ $IS_MAC -eq 1 ]]; then
 	unset PATH
 	eval `/usr/libexec/path_helper -s`
 fi
-export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
+
+typeset -U path # U for Unique, like a set; (N) == only if exists
+path=(
+  ~/.local/bin(N) 
+  ~/bin(N) 
+  ~/.cask/bin(N) 
+  ~/bin/anaconda/bin(N)
+  $path
+)
 
 if [[ -d $HOME/.linuxbrew ]]; then
    eval $($HOME/.linuxbrew/bin/brew shellenv)
 fi
-
-# Setup terminal, and turn on colors
-export TERM=xterm-256color
-# Comment out the following two lines if using colors.zsh
-# export CLICOLOR=1
-# export LSCOLORS=Gxfxcxdxbxegedabagacad
-
-# Enable color in grep
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='3;33'
 
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
 if [[ $IS_MAC -eq 1 ]]; then
@@ -48,7 +47,6 @@ else
 fi
 
 export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
-
 
 # Set up history file location and size 
 # The following two lines are set by Oh-my-ZSH

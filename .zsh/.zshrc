@@ -4,13 +4,24 @@ export ZDOTDIR="$HOME/Projects/dotfiles/.zsh"
 ## If slowdown issues occur, add this line to $ZSH/oh-my-zsh.sh where plugins are sourced (line 85?)
 # echo $plugin && { time (source $ZSH/plugins/$plugin/$plugin.plugin.zsh) }
 
+## Initial checks for OS_TYPE so that PATH variable can be set properly. 
+export OS_TYPE=$(uname -s)
+
+if 
+  [[ $OS_TYPE = 'Linux' ]]; then
+  IS_LINUX=1
+elif 
+  [[ $OS_TYPE = 'Darwin' ]]; then
+  IS_MAC=1
+fi
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in $ZDOTDIR/{\
-checks,\
 colors,\
 exports,\
+checks,\
 oh-my-zsh_opts,\
 setopt,\
 pyopts,\
@@ -47,17 +58,21 @@ autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
 
 # Clean duplicates from $PATH
-if [ -n "$PATH" ]; then
-  old_PATH=$PATH:; PATH=
-  while [ -n "$old_PATH" ]; do
-    x=${old_PATH%%:*}       # the first remaining entry
-    case $PATH: in
-      *:"$x":*) ;;         # already there
-      *) PATH=$PATH:$x;;    # not there yet
-    esac
-    old_PATH=${old_PATH#*:}
-  done
-  PATH=${PATH#:}
-  unset old_PATH x
-fi
+typeset -U path # -U for unique
+path=($path)
+# export $PATH
 
+# if [ -n "$PATH" ]; then
+#   old_PATH=$PATH:; PATH=
+#   while [ -n "$old_PATH" ]; do
+#     x=${old_PATH%%:*}       # the first remaining entry
+#     case $PATH: in
+#       *:"$x":*) ;;         # already there
+#       *) PATH=$PATH:$x;;    # not there yet
+#     esac
+#     old_PATH=${old_PATH#*:}
+#   done
+#   PATH=${PATH#:}
+#   unset old_PATH x
+# fi
+#

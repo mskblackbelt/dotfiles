@@ -1,7 +1,7 @@
 # Enable ZSH completion
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-autoload -U compinit && compinit                                                                                       
+autoload -U compinit && compinit
 zmodload -i zsh/complist
 
 
