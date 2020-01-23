@@ -1,5 +1,8 @@
 autoload colors && colors
 
+# Setup terminal, and turn on colors
+export TERM=xterm-256color
+
 # The variables are wrapped in %{%}. This should be the case for every
 # variable that does not contain space.
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
@@ -23,6 +26,10 @@ else # macOS `ls`
   colorflag="-G"
  export LSCOLORS='gxfxcxdxbxegedabagacad'
 fi
+
+#Enable colors in grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='3;33'
 
 export CLICOLOR=1
   

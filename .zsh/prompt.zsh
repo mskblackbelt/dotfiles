@@ -20,6 +20,13 @@ function precmd {
   local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
   FOOLENGTH=${#${(S%%)TOP_BAR_LENGTH//$~zero/}} 
   PR_FILLBAR="\${(l.($TERMWIDTH - $FOOLENGTH)..${PR_HBAR}.)}"
+  
+  # vcs_info
+  # Put the string "hostname::/full/directory/path" in the title bar:
+  echo -ne "\e]2;$PWD\a"
+
+  # Put the parentdir/currentdir in the tab
+  echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
 }
 
 setopt extended_glob

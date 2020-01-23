@@ -2,10 +2,12 @@
 # cat > /dev/null
 # And press it
 
+## Default bindings
 # bindkey "^U"      kill-whole-line                      # ctrl-u
 # bindkey "^K"      kill-to-end-of-line                  # ctrl-k
 # bindkey "^[W"     kill-to-beginning-of-line            # meta-w
 # bindkey "^R"      history-incremental-search-backward  # ctrl-r
+# bindkey "^S"      history-incremental-search-forward   # ctrl-s
 # bindkey "^A"      beginning-of-line                    # ctrl-a
 # bindkey "^E"      end-of-line                          # ctrl-e
 # bindkey "[B"      history-search-forward               # down arrow
