@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#:  * `bottled` [<options>]:
+#:
+#:  List all bottled formulae which are currently installed.
+#:
+#:          --versions                   Show the version number for bottled 
+#:                                       formulae
+#:      -h, --help                       Show this message.
+#:
+#:  (`brew bottled` requires `jq`. Use `brew install jq` to install.)
+
+if type jq &>/dev/null; then
+  case $1 in
+    --versions)
+      brew info --json=v1 --installed | \
+        jq -r "map(select(.installed[].poured_from_bottle) | .name + \" \" + .installed[].version) | .[]"
+      ;;
+    *)
+      brew info --json=v1 --installed | \
+        jq -r "map(select(.installed[].poured_from_bottle) | .name) | unique | .[]"
+      ;;
+  esac
+  exit $?
+else
+  echo '`brew bottled` requires jq. Use `brew install jq` to install.'
+  exit 1
+fi
