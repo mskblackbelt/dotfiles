@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 from __future__ import division
 from numpy import *
@@ -10,7 +10,7 @@ usage = '''plot [option] 'functions' minx maxx [miny maxy]
 
 Options:
   -h, --help    print this message
-  -p, --pdf     generate PDF plot
+  -f, --pdf     generate PDF plot (default is PNG)
 
 Generate a PNG (default) or PDF plot of the given function(s). The
 independent variable in the function(s) is x. Multiple functions are
@@ -24,7 +24,7 @@ Example:
 
 # Handle the options.
 try:
-  opts, args = getopt.getopt(sys.argv[1:], 'hp', ['help', 'pdf'])
+  opts, args = getopt.getopt(sys.argv[1:], 'hf', ['help', 'pdf'])
 except getopt.GetoptError as err:
   sys.stderr.write(str(err) + '\n\n')
   sys.stderr.write(usage)
@@ -32,7 +32,7 @@ except getopt.GetoptError as err:
 
 fmt = 'png'
 for o, a in opts:
-  if o == '-p' or o == '--pdf':
+  if o == '-f' or o == '--pdf':
     fmt = 'pdf'
   else:
     sys.stderr.write(usage)
@@ -60,11 +60,12 @@ x = linspace(minx, maxx, 100)
 for i, f in enumerate(fcns):
   y = eval(f)
   plt.plot(x, y, "-", linewidth=2)
+
 plt.minorticks_on()
-plt.grid(which='both', color='#aaaaaa')
+plt.grid(which='both', color='#dddddd ')
 
 # Output the plot.
 if fmt == 'pdf':
-  plt.savefig(sys.stdout, format='pdf')
+  plt.savefig(sys.stdout.buffer, format='pdf')
 else:
-  plt.savefig(sys.stdout, format='png')
+  plt.savefig(sys.stdout.buffer, format='png')
