@@ -11,7 +11,7 @@
 #:  (`brew bottled` requires `jq`. Use `brew install jq` to install.)
 
 if type jq &>/dev/null; then
-  case $1 in
+  case "$1" in
     --versions)
       brew info --json=v1 --installed | \
         jq -r "map(select(.installed[].poured_from_bottle) | .name + \" \" + .installed[].version) | .[]"
@@ -21,7 +21,7 @@ if type jq &>/dev/null; then
         jq -r "map(select(.installed[].poured_from_bottle) | .name) | unique | .[]"
       ;;
   esac
-  exit $?
+  exit "$?"
 else
   echo '`brew bottled` requires jq. Use `brew install jq` to install.'
   exit 1
