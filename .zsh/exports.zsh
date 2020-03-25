@@ -38,6 +38,7 @@ fi
 if [[ $IS_MAC -eq 1 ]]; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
+  export GIT_EDITOR="mate --name 'Git Commit Message' -w -l 1"
 elif [[ -x `which code 2> /dev/null` ]]; then
   export EDITOR='code -w'
 elif [[ -x `which kate 2> /dev/null` ]]; then
