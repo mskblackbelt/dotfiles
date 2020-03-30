@@ -121,57 +121,58 @@ if [[ "IS_MAC" -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
 
 
 
-elif [[ $(uname) == "Linux" ]] && [[ -n /sys/class/power_supply/*(#qN) ]] ; then
+elif [[ $(uname) == "Linux" ]] &&[[-x $(which upower)]] && [[$(upower -e | grep -i -c "battery") -ge 1]] ; then
 
-  local battery_name=$(upower -e | grep "battery")
-  local adapter_name=$(upower -e | grep "line_power")
-  local display_device=$(upower -e | grep "DisplayDevice")
+	  local battery_name=$(upower -e | grep "battery")
+	  local adapter_name=$(upower -e | grep "line_power")
+	  local display_device=$(upower -e | grep "DisplayDevice")
   
-  function battery_is_charging() {
-    [[ $(upower -i $display_device | grep -c ' charging') -gt 0 ]]
-  }
+	  function battery_is_charging() {
+	    [[ $(upower -i $display_device | grep -c ' charging') -gt 0 ]]
+	  }
   
-  function battery_is_discharging() {
-    [[ $(upower -i $display_device | grep -c 'discharging') -gt 0 ]]
-  }
+	  function battery_is_discharging() {
+	    [[ $(upower -i $display_device | grep -c 'discharging') -gt 0 ]]
+	  }
   
-   function battery_charged() {
-    [[ $(upower -i $display_device | grep "state" | grep -c "fully-charged") -eq 1 ]]
-  }
+	   function battery_charged() {
+	    [[ $(upower -i $display_device | grep "state" | grep -c "fully-charged") -eq 1 ]]
+	  }
 
-  function battery_pct() {
-    upower -i $display_device | grep "percentage" | cut -d ":" -f2 | sed -e 's/^\s*//' | tr -d "%"
-  }
+	  function battery_pct() {
+	    upower -i $display_device | grep "percentage" | cut -d ":" -f2 | sed -e 's/^\s*//' | tr -d "%"
+	  }
 
-  function battery_pct_remaining() {
-    if [ ! $(battery_is_charging) ] ; then
-      battery_pct
-    else
-      echo "External Power"
-    fi
-  }
+	  function battery_pct_remaining() {
+	    if [ ! $(battery_is_charging) ] ; then
+	      battery_pct
+	    else
+	      echo "External Power"
+	    fi
+	  }
 
-  function battery_time_remaining() {
-    if [[ $(upower -i $display_device | grep -c "discharging") -gt 0 ]] ; then
-      echo "$(upower -i $display_device | grep "time to empty" | cut -d ":" -f2 | sed -e 's/^\s*//')"
-    fi
-  }
+	  function battery_time_remaining() {
+	    if [[ $(upower -i $display_device | grep -c "discharging") -gt 0 ]] ; then
+	      echo "$(upower -i $display_device | grep "time to empty" | cut -d ":" -f2 | sed -e 's/^\s*//')"
+	    fi
+	  }
 
-  function battery_pct_prompt() {
-    b=$(battery_pct_remaining) 
-    if [[ $(battery_is_discharging) ]] ; then
-      if [ $b -gt 50 ] ; then
-        color='green'
-      elif [ $b -gt 20 ] ; then
-        color='yellow'
-      else
-        color='red'
-      fi
-      echo "%{$fg[$color]%}[$(battery_pct_remaining)%%]%{$reset_color%}"
-    else
-      echo "∞"
-    fi
-  }
+	  function battery_pct_prompt() {
+	    b=$(battery_pct_remaining) 
+	    if [[ $(battery_is_discharging) ]] ; then
+	      if [ $b -gt 50 ] ; then
+	        color='green'
+	      elif [ $b -gt 20 ] ; then
+	        color='yellow'
+	      else
+	        color='red'
+	      fi
+	      echo "%{$fg[$color]%}[$(battery_pct_remaining)%%]%{$reset_color%}"
+	    else
+	      echo "∞"
+	    fi
+	  }
+  fi
 
 else
   # Empty functions so we don't cause errors in prompts
