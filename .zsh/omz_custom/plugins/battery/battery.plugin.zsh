@@ -121,7 +121,7 @@ if [[ "IS_MAC" -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
 
 
 
-elif [[ $(uname) == "Linux" ]] &&[[-x $(which upower)]] && [[$(upower -e | grep -i -c "battery") -ge 1]] ; then
+elif [[ $(uname) == "Linux" ]] && [[ -x $(which upower) ]] && [[$(upower -e | grep -i -c "battery") -ge 1]] ; then
 
 	  local battery_name=$(upower -e | grep "battery")
 	  local adapter_name=$(upower -e | grep "line_power")
@@ -172,7 +172,6 @@ elif [[ $(uname) == "Linux" ]] &&[[-x $(which upower)]] && [[$(upower -e | grep 
 	      echo "∞"
 	    fi
 	  }
-  fi
 
 else
   # Empty functions so we don't cause errors in prompts
