@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+#:  `wttr` [<options>]:
+#:
+#:  Show the weather at your current location (default to NYC)
+#:      -v, --v2          Show data-rich output
+#: 
+#:      -h, --help        Show this message.
+#:
+
+  case "$1" in
+  --v2|-v)
+    url="v2.wttr.in"
+    ;;
+  *)
+    url="wttr.in"
+    ;;
+  esac
+  # change NYC to your default location
+  request="$url/${1-NYC}"
+  [ "$(tput cols)" -lt 125 ] && request+='?n'
+  curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
