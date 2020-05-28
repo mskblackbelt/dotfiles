@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#:  * `bottled` [<options>]:
+#:  * `bottle_update` [<options>]:
 #:
-#:  List all bottled formulae which are currently installed.
+#:  Update all outdated Homebrew bottle formulae
 #:
 #:          --dry-run                    Show the bottled formulae that would 
 #:                                       be updated
