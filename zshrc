@@ -1,5 +1,5 @@
 # Set so that all other sourced files can be found.
-export ZDOTDIR="$HOME/Projects/dotfiles/.zsh"
+export ZDOTDIR="$HOME/.zsh"
 
 ## If slowdown issues occur, add this line to $ZSH/oh-my-zsh.sh where plugins are sourced (line 85?)
 # echo $plugin && { time (source $ZSH/plugins/$plugin/$plugin.plugin.zsh) }
