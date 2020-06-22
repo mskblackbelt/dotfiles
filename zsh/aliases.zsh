@@ -25,6 +25,9 @@ fi
   
 
 # Miscellaneous aliases
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias more="less"
 if [[ -x $(which most 2> /dev/null) ]]; then
 	alias less="most"

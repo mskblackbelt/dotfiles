@@ -27,15 +27,5 @@ else # macOS `ls`
  export LSCOLORS='gxfxcxdxbxegedabagacad'
 fi
 
-#Enable colors in grep
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='3;33'
-
 export CLICOLOR=1
-  
-# Main change, you can see directories on a dark background
-# export LSCOLORS=gxfxcxdxbxegedabagacad
-#
-# export CLICOLOR=1
-# export LS_COLORS=exfxcxdxbxegedabagacad
 
