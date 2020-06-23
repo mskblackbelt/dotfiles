@@ -20,7 +20,7 @@ alias calc='noglob __calc_plugin'
 # Run hombrew maintenance functions
 # Similar to 'bubu' alias in oh-my-zsh, but added brew doctor
 if [[ $HAS_BREW -eq 1 ]]; then
-  alias brewmaint='brew update && brew outdated && brew upgrade --all && brew cleanup && brew doctor'
+  alias brewmaint='brew update && brew outdated && brew upgrade && brew doctor'
 fi
   
 
