@@ -53,8 +53,8 @@ export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
 # The following two lines are set by Oh-my-ZSH
 # export HISTSIZE=5000 
 # export SAVEHIST=5000 
-export HISTFILE="$ZDOTDIR/.zsh_history"
-export ZSH_COMPDUMP="${HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+export HISTFILE="$HOME/.local/.zsh_history"
+export ZSH_COMPDUMP="${HOME}/.local/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
 # -------------------------------------------------------------------
 # Collection of exports from matias bynens dotfiles
