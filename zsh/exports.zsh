@@ -8,6 +8,7 @@ fi
 
 typeset -U path # U for Unique, like a set; (N) == only if exists
 path=(
+  ~/.pyenv/bin(N)
   ~/.local/bin(N) 
   ~/bin(N) 
   ~/.cask/bin(N) 
