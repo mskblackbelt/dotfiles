@@ -1,7 +1,7 @@
 Host REDACTED-IP
   # Enable forwarding for rmate installed on server
   RemoteForward 52698 localhost:52698
-  # Start zsh on login to remote server
+  # Start zsh on login to remote server 
   RemoteCommand /usr/bin/zsh
 
 Host candyshop
@@ -9,4 +9,11 @@ Host candyshop
   User REDACTED
   Port 22
   RequestTTY yes
+  
+Host sugarcube
+  HostName REDACTED-IP
+  User REDACTED
+  IdentityFile ~/.ssh/heart_of_gold
+  RemoteForward 52698 localhost:52698
+  # RemoteCommand /usr/bin/zsh
 
