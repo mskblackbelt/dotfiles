@@ -5,7 +5,7 @@ alias ohmyzsh="$EDITOR $ZSH"
 # Enable sudo with aliases
 alias sudo='sudo '  
 # Run previous command with root privileges 
-if [[ -x $(which thefuck) ]]; then
+if [[ -x $(which thefuck 2> /dev/null) ]]; then
   eval "$(thefuck --alias)"
 else
   alias fuck='sudo $(fc -ln -1)'
@@ -81,7 +81,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 fi
 
 # Hub alias created by github Oh-my-zsh plugin
-if [[ -x $(which hub) ]]; then
+if [[ -x $(which hub 2> /dev/null) ]]; then
   alias git="hub" 
 fi
 
