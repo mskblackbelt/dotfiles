@@ -16,3 +16,6 @@ Thumbs.db
 # Vim plugins
 vim/plugged
 
+# Zsh local files
+zsh/cache
+zsh/.zsh_sessions
