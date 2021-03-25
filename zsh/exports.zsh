@@ -4,7 +4,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 	unset PATH
 	eval `/usr/libexec/path_helper -s`
 fi
-# export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin:$HOME/.local/bin"
 
 typeset -U path # U for Unique, like a set; (N) == only if exists
 path=(
@@ -16,8 +15,14 @@ path=(
   $path
 )
 
+# Add homebrew binaries to the path if using Linux
 if [[ -d $HOME/.linuxbrew ]]; then
    eval $($HOME/.linuxbrew/bin/brew shellenv)
+fi
+
+# Add rust binaries to the path
+if [[ -d $HOME/.cargo ]]; then
+  source "$HOME/.cargo/env"
 fi
 
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
@@ -36,14 +41,12 @@ if [[ -x `which bat 2> /dev/null` ]]; then
 	export BAT_THEME="TwoDark"
 fi
 
-if [[ $IS_MAC -eq 1 ]]; then
+if [[ -x $(which mate 2> /dev/null) ]]; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
   export GIT_EDITOR="mate --name 'Git Commit Message' -w -l 1"
 elif [[ -x `which code 2> /dev/null` ]]; then
   export EDITOR='code -w'
-elif [[ -x `which kate 2> /dev/null` ]]; then
-  export EDITOR='kate -n -l %d'
 else
   export EDITOR='vi'
 fi
