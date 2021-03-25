@@ -5,7 +5,7 @@
 set nocompatible
 
 " Specify plugin directory
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vimplugs')
 
 " Shorthand notation; fetches https://github.com/altercation/vim-colors-solarized.git
 Plug 'altercation/vim-colors-solarized'	" Add Solarized color scheme
