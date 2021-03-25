@@ -13,18 +13,15 @@
 if type jq &>/dev/null; then
   case "$1" in
   --versions)
-      for item in $(brew outdated --formula | cut -d ' ' -f1); do
-        brew info --json=v1 "$item" | \
-          jq -r "map(select(.installed[].poured_from_bottle) | .name + \" \" + .installed[].version) | .[]"
-      done
+      brew outdated --formula
       ;;
     *)
       for item in $(brew outdated --formula | cut -d ' ' -f1); do
-        bottle_exists=$(brew info --json=v1 "$item" | jq ".[].versions.bottle") 
-        if [[ $bottle_exists == "true" ]]; then
-          brew info --json=v1 "$item" | jq ".[].bottle.stable.files.high_sierra.url" | xargs brew reinstall
+        hs_bottle_exists=$(brew info --json=v2 "$item" | jq ".formulae[].bottle.stable.files.high_sierra") 
+        if [[ $hs_bottle_exists -ne "null" ]]; then
+          brew info --json=v2 "$item" | jq ".formulae[].bottle.stable.files.high_sierra.url" | xargs brew reinstall
         else
-          echo "No bottled version exists for $item, installing from source."
+          echo "No High Sierra bottled version exists for $item, installing from source."
           brew reinstall -s $item
         fi
       done
