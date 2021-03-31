@@ -1,4 +1,4 @@
 DOTFILES_DIRS="$HOME/Projects/dotfiles"
 EXCLUDES="LICENSE* README.md"
-SYMLINK_DIRS="emacs.d vim zsh bin"
+SYMLINK_DIRS="bash emacs.d zsh bin"
 UNDOTTED="bin"
