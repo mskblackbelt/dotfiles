@@ -1,29 +1,38 @@
 " VIM configuration by Dustin Wheeler
-" Created 2019-04-16, edited 2019-04-16
+" Created 2019-04-16, edited 2021-03-31
 
 "Remove compatibility with Vi
 set nocompatible
 
-" Specify plugin directory
-call plug#begin('~/.vimplugs')
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 
-" Shorthand notation; fetches https://github.com/altercation/vim-colors-solarized.git
-Plug 'altercation/vim-colors-solarized'	" Add Solarized color scheme
-Plug 'vim-latex/vim-latex'				" Add Vim-LaTeX for LaTeX support
-Plug 'sjbach/lusty'						" Add Lusty Explorer file manager
-										" trigger with <Leader>l[frbg]
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin()
+
+" Shorthand notation; fetches https://github.com/mileszs/ack.vim
 Plug 'mileszs/ack.vim'					" Add support for Ack (or Ag)
+Plug 'scrooloose/nerdcommenter'			" Add support for commenting out lines
+Plug 'altercation/vim-colors-solarized'	" Add Solarized color scheme
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
 " Enable <Tab> completion and load a default snippets set
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'vim-scripts/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'vim-latex/vim-latex', { 'for': 'latex' }		" Add LaTeX support
+"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Initialize plugin system
 call plug#end()
@@ -56,10 +65,9 @@ set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 set showmatch		" Show matching parentheses
 
-set scrolloff=3		" Display a least 3 lines around the cursor
-					" when scrolling
+set scrolloff=3		" Display a least 3 lines around the cursor when scrolling
 set laststatus=2	" Always display status line
-set mouse=a			" Enable mouse in a ll modes
+set mouse=a			" Enable mouse in all modes
 set showmode		" Display the current mode
 set title			" Show the filename in the title bar
 set showcmd			" Show the (partial) command as it's  being typed
@@ -91,13 +99,24 @@ set wildmenu
 set esckeys
 " Backspace key behaves as expected
 set backspace=indent,eol,start
-" Set Leader key up for  Lusty Explorer, another file browser plugin
+" Set Leader key up for plugins
+" nnoremap <SPACE> <Nop>
 let mapleader=","
+
 " Centralize backups, swapfiles, and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+if !isdirectory($HOME . "/.vim/backup")
+    call mkdir($HOME . "/.vim/backup", "p", 0722)
+endif
+if !isdirectory($HOME . "/.vim/swaps")
+    call mkdir($HOME . "/.vim/swaps", "p", 0722)
+endif
+if !isdirectory($HOME . "/.vim/undo")
+    call mkdir($HOME . "/.vim/undo", "p", 0722)
+endif
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swaps//
 if exists("&undodir")
-	set undodir=~/.vim/undo
+	set undodir=~/.vim/undo//
 endif
 
 
@@ -109,13 +128,6 @@ set history=100
 " -- Color options
 syntax enable
 
-if has("gui_running")
-    let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
-    set background=light
-    colorscheme solarized
-endif
-set guifont=Inconsolata:h13
 set antialias
 
 " -- Toggle keys
