@@ -38,19 +38,16 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      emacs-lisp
      ;; git
      helm
-     (latex :variables
-            ;; latex-backend 'lsp
-            latex-build-engine 'luatex)
-     ;; lsp-mode
-     ;; lsp-ui
+     ;; lsp
      markdown
      multiple-cursors
-     ;; org
+     deft
+     org
      (osx :variables
           osx-dictionary-dictionary-choice "English")
      python
@@ -60,7 +57,15 @@ This function should only modify configuration layer settings."
      spell-checking
      syntax-checking
      ;; version-control
-     treemacs)
+     treemacs
+
+     (latex :variables
+            ;; latex-backend 'lsp
+            latex-build-engine 'luatex)
+     bibtex
+     deft
+     pandoc
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -540,15 +545,22 @@ you should place your code here."
   ;; Make line motions work on visual lines, not semantic lines when lines are wrapped
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
-  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
-  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
   ;; Make Option key behave like normal and set Command key to Meta
   (setq mac-option-modifier nil)
   (setq mac-command-modifier 'meta)
-  
+
   ;; Make underscore count as a word character in Python mode.
   (modify-syntax-entry ?_ "w" python-mode-syntax-table)
+
+  ;; Set directory for deft notes
+  (setq deft-directory "~/iCloud Drive/notes")
+
+  ;; Moke the modeline look good on macOS
+  (setq powerline-default-separator 'utf-8)
+
+  ;; Follow symlinks to files without complaining
+  (setq vc-follow-symlinks t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -570,3 +582,25 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  )
  
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default))
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   '(yasnippet-snippets company-reftex company-math lsp-latex lsp-ui lsp-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-auctex company-anaconda auctex-latexmk auctex anaconda-mode pythonic windresize python-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode unfill mwim mmm-mode markdown-toc markdown-mode helm-company helm-c-yasnippet gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
