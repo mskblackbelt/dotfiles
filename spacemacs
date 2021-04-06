@@ -50,7 +50,10 @@ This function should only modify configuration layer settings."
      org
      (osx :variables
           osx-dictionary-dictionary-choice "English")
-     python
+     (python :variables
+             python-format-on-save t
+             python-formatter 'black
+             python-fill-column 81)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
