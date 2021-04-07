@@ -27,16 +27,9 @@ fi
 export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 
 function pip_upgrade () {
-  pip list --outdated --local --format=columns | tail -n +3 | cut -d ' ' -f1 | xargs -n1 pip install -U
+  pip list --outdated --local | tail -n +3 | cut -d ' ' -f1 | xargs -n1 python -m pip install -U
   }
 
-function pip2_upgrade () {
-  pip2 list --outdated --local --format=columns | tail -n +3 | cut -d ' ' -f1 | xargs -n1 pip2 install -U
-  }
-
-function pip3_upgrade () {
-  pip3 list --outdated --local --format=columns | tail -n +3 | cut -d ' ' -f1 | xargs -n1 pip3 install -U
-  }
 
 
 alias jpnb="jupyter notebook"
