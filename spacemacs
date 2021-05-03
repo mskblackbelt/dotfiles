@@ -46,14 +46,7 @@ This function should only modify configuration layer settings."
      ;; lsp
      markdown
      multiple-cursors
-     deft
      org
-     (osx :variables
-          osx-dictionary-dictionary-choice "English")
-     (python :variables
-             python-format-on-save t
-             python-formatter 'black
-             python-fill-column 81)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -62,6 +55,14 @@ This function should only modify configuration layer settings."
      ;; version-control
      treemacs
 
+     (osx :variables
+          osx-dictionary-dictionary-choice "English")
+     (python :variables
+             python-format-on-save t
+             python-formatter 'black
+             python-fill-column 81)
+
+    deft
      (latex :variables
             ;; latex-backend 'lsp
             latex-build-engine 'luatex)
@@ -551,7 +552,7 @@ before packages are loaded."
   (setq mac-option-modifier nil)
   (setq mac-command-modifier 'meta)
 
-  ;; Make underscore count as a word character in Python mode.
+  ;; Make underscore count as a word character in programming modes.
   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
   ;; Set directory for deft notes
