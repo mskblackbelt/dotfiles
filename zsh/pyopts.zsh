@@ -11,7 +11,7 @@ export MPLCONFIGDIR=$HOME/.matplotlib
 
 ## Auto-activate and enable pyenv and shims
 if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
-  eval "$(pyenv init - zsh)"
+  eval "$(pyenv init --path)"
 
   # Auto-activate pyenv-virtualenv
   if [[ $(pyenv commands | grep -c "virtualenv-init" 2> /dev/null) -gt 0 ]]; then
