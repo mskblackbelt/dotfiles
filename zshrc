@@ -40,18 +40,8 @@ done;
 unset file;
 
 
-# Enable ZSH syntax highlighting
-if [[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-
 #Autoload modules
 module_path=($module_path)
-if [[ -e /usr/local/lib/zpython ]]; then
-  module_path=($module_path /usr/local/lib/zpython)
-  zmodload zsh/zpython
-fi
 autoload -U zcalc
 [[ -e $(alias run-help) ]] && unalias run-help
 autoload run-help
@@ -62,17 +52,10 @@ typeset -U path # -U for unique
 path=($path)
 # export $PATH
 
-# if [ -n "$PATH" ]; then
-#   old_PATH=$PATH:; PATH=
-#   while [ -n "$old_PATH" ]; do
-#     x=${old_PATH%%:*}       # the first remaining entry
-#     case $PATH: in
-#       *:"$x":*) ;;         # already there
-#       *) PATH=$PATH:$x;;    # not there yet
-#     esac
-#     old_PATH=${old_PATH#*:}
-#   done
-#   PATH=${PATH#:}
-#   unset old_PATH x
-# fi
-#
+# Enable ZSH syntax highlighting (must be loaded at the end of .zshrc)
+if [[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif
+  [[ -e /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

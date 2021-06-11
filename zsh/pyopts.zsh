@@ -9,18 +9,25 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export MPLCONFIGDIR=$HOME/.matplotlib
 
 
-## Auto-activate and enable pyenv and shims
+### Functionality provided by OMZ plugin `pyenv` 
+# Auto-activate and enable pyenv and shims
 if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
   eval "$(pyenv init --path)"
-
-  # Auto-activate pyenv-virtualenv
-  if [[ $(pyenv commands | grep -c "virtualenv-init" 2> /dev/null) -gt 0 ]]; then
+  eval "$(pyenv init - zsh)"
+  
+  # Enable pyenv-virtualenv
+  if (( $+commands[pyenv-virtualenv-init] )); then
     eval "$(pyenv virtualenv-init - zsh)"
   fi
 
   function pyenv_prompt_info() {
       echo "$(pyenv version-name)"
   }
+else
+    # fallback to system python
+    function pyenv_prompt_info() {
+        echo "system: $(python -V 2>&1 | cut -f 2 -d ' ')"
+    }
 fi
 
 # Needed because `git` calls for `gettext.sh`, fails if pyenv has a shim for that.
