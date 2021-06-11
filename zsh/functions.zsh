@@ -148,7 +148,7 @@ bindkey "^M" magic-enter
 function exists { which $1 &> /dev/null }
 
 function markdownify () {
-	pbpaste | /usr/local/bin/multimarkdown | textutil -convert rtf -stdin -stdout -format html > ${TMPDIR}tmp-md2rtf.rtf; \
+	pbpaste | multimarkdown | textutil -convert rtf -stdin -stdout -format html > ${TMPDIR}tmp-md2rtf.rtf; \
 	pbcopy -Prefer rtf < ${TMPDIR}tmp-md2rtf.rtf; \
 	rm ${TMPDIR}tmp-md2rtf.rtf
 }

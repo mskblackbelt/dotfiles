@@ -1,5 +1,11 @@
 # Enable ZSH completion
-fpath=(/usr/local/share/zsh-completions $fpath)
+typeset -U fpath # U for Unique, like a set; (N) == only if exists
+fpath=(
+  /opt/homebrew/share/zsh-completions(N)
+  /usr/local/share/zsh-completions(N)
+  $fpath
+)
+
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist

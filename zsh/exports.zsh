@@ -4,6 +4,18 @@ if [[ $IS_MAC -eq 1 ]]; then
 	unset PATH
 	eval `/usr/libexec/path_helper -s`
 fi
+# Add homebrew binaries to the path
+if [[ $IS_MAC -eq 1 ]]; then
+	export HOMEBREW_PREFIX="/opt/homebrew";
+	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+	export HOMEBREW_REPOSITORY="/opt/homebrew";
+	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi
+if [[ -d $HOME/.linuxbrew ]]; then
+   eval $($HOME/.linuxbrew/bin/brew shellenv)
+fi
 
 typeset -U path # U for Unique, like a set; (N) == only if exists
 path=(
@@ -15,19 +27,10 @@ path=(
   $path
 )
 
-# Add homebrew binaries to the path if using Linux
-if [[ -d $HOME/.linuxbrew ]]; then
-   eval $($HOME/.linuxbrew/bin/brew shellenv)
-fi
 
 # Add rust binaries to the path
 if [[ -d $HOME/.cargo ]]; then
   source "$HOME/.cargo/env"
-fi
-
-# This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
-if [[ $IS_MAC -eq 1 ]]; then
-	export ARCHFLAGS='-arch x86_64'
 fi
 
 # Export pagers and editors

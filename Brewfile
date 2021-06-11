@@ -119,6 +119,8 @@ brew "screen"
 brew "smartmontools"
 # Full-text search engine
 brew "sphinx"
+# Version control system designed to be a better CVS
+brew "svn"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Official documentation format of the GNU project
@@ -186,7 +188,6 @@ cask "chromium"
 cask "cocoaspell"
 cask "colorpicker-developer"
 cask "colorpicker-propicker"
-cask "coolterm"
 # Tool to help searching the web more efficiently
 cask "devonagent"
 # Collect, organize, edit and annotate documents
@@ -203,11 +204,11 @@ cask "fiji"
 # Web browser
 cask "firefox"
 cask "font-fira-code"
-cask "font-firacode-nerd-font"
+cask "font-fira-code-nerd-font"
 cask "font-inconsolata"
 # Typeface made for developers
 cask "font-jetbrains-mono"
-cask "font-liberation-sans"
+cask "font-liberation"
 cask "font-open-sans"
 # Unicode fonts for scientific, technical, and mathematical texts
 cask "font-stix"
@@ -238,14 +239,14 @@ cask "omnigraffle"
 cask "omnioutliner"
 # Manage all your tasks, files, and notes
 cask "pagico"
-cask "pdfpenpro11"
+#PDF editing software
+cask "pdfpenpro"
 # QuickLook generator for Markdown files
 cask "qlmarkdown"
 cask "qlstephen"
 cask "quicklook-csv"
 # Collection of apps available by subscription
 cask "setapp"
-cask "scriptql"
 # PDF reader and note-taking application
 cask "skim"
 # Video game digital distribution service

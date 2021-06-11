@@ -38,8 +38,8 @@ fi
 if [[ -x $(which prettyping 2> /dev/null) ]]; then 
 	alias ping="prettyping"
 fi
-if [[ -x "/usr/local/bin/r" ]]; then
-	alias rstat="/usr/local/bin/r"
+if [[ -x $(which R) ]]; then
+	alias rstat="R"
 fi
 if [[ -x $(which tldr 2> /dev/null) ]]; then 
 	alias help="tldr"
@@ -78,11 +78,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 	alias badge="tput bel"
 
 	
-fi
-
-# Hub alias created by github Oh-my-zsh plugin
-if [[ -x $(which hub 2> /dev/null) ]]; then
-  alias git="hub" 
 fi
 
 # Intuitive map function

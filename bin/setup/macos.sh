@@ -27,7 +27,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 #sudo nvram SystemAudioVolume=" "
 
 # Disable transparency in the menu bar and elsewhere
-defaults write com.apple.universalaccess reduceTransparency -bool true
+sudo defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons
 #for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
@@ -151,10 +151,10 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 #defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -189,11 +189,14 @@ sudo systemsetup -setrestartfreeze on
 # Restart after a power failure
 sudo systemsetup -setrestartpowerfailure on
 
+# Set time for ssytem sleep in minutes
+sudo systemsetup -setsleep 60
+
 # Set time for display sleep in minutes 
-sudo systemsetup -setdisplaysleep 30
+sudo systemsetup -setdisplaysleep 20
 
 # Set standby delay to 3 hours (default is 1 hour)
-sudo pmset -a standbydelay 10800
+# sudo pmset -a standbydelay 10800
 
 # Disable hibernation (speeds up entering sleep mode)
 # sudo pmset -a hibernatemode 0
@@ -342,8 +345,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string “clmv”
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Enable the MacBook Air SuperDrive on any Mac
-sudo nvram boot-args="mbasd=1"
+# Enable the MacBook Air SuperDrive on any Mac (doesnt't work with SIP enabled)
+# sudo nvram boot-args="mbasd=1"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -658,7 +661,7 @@ EOD
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Install the Solarized Dark theme for iTerm
-open "${HOME}/dotfiles/init/Solarized Dark.itermcolors"
+open "./Solarized Dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
@@ -669,9 +672,6 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
