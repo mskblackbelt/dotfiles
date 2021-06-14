@@ -1,6 +1,7 @@
 # Enable ZSH completion
 typeset -U fpath # U for Unique, like a set; (N) == only if exists
 fpath=(
+  $(brew --prefix)/share/zsh/site-functions(N)
   /opt/homebrew/share/zsh-completions(N)
   /usr/local/share/zsh-completions(N)
   $fpath
