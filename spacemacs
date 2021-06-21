@@ -62,7 +62,7 @@ This function should only modify configuration layer settings."
              python-formatter 'black
              python-fill-column 81)
 
-    deft
+     deft
      (latex :variables
             ;; latex-backend 'lsp
             latex-build-engine 'luatex)
@@ -386,6 +386,10 @@ It should only modify the values of Spacemacs settings."
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
 
+   ;; Show the scroll bar while scrolling. The auto hide time can be configured
+   ;; by setting this variable to a number. (default t)
+   dotspacemacs-scroll-bar-while-scrolling t
+
    ;; Control line numbers activation.
    ;; If set to `t', `relative' or `visual' then line numbers are enabled in all
    ;; `prog-mode' and `text-mode' derivatives. If set to `relative', line
@@ -492,6 +496,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-use-clean-aindent-mode t
 
+   ;; Accept SPC as y for prompts if non nil. (default nil)
+   dotspacemacs-use-SPC-as-y nil
+
    ;; If non-nil shift your number row to match the entered keyboard layout
    ;; (only in insert state). Currently supported keyboard layouts are:
    ;; `qwerty-us', `qwertz-de' and `querty-ca-fr'.
@@ -555,8 +562,9 @@ before packages are loaded."
   ;; Make underscore count as a word character in programming modes.
   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
-  ;; Set directory for deft notes
+  ;; Set directory and default extension for deft notes
   (setq deft-directory "~/iCloud Drive/notes")
+  (setq deft-default-extension "md")
 
   ;; Moke the modeline look good on macOS
   (setq powerline-default-separator 'utf-8)
@@ -610,7 +618,7 @@ before packages are loaded."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (defun dotspacemacs/emacs-custom-settings ()
-"Emacs custom settings.
+  "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
