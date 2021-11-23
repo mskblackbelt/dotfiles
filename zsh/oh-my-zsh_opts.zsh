@@ -19,7 +19,7 @@ plugins=(
 
 
 if [[ $IS_MAC -eq 1 ]]; then
-  plugins=($plugins osx textmate)
+  plugins=($plugins macos textmate)
 	# The following plugins may slow down shell startup
 	plugins=($plugins brew git)
 fi
