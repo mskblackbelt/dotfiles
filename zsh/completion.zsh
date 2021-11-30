@@ -1,12 +1,16 @@
 # Enable ZSH completion
-typeset -U fpath # U for Unique, like a set; (N) == only if exists
+if [[ $HAS_BREW -eq 1 ]]; then
+  fpath=(
+    $(brew --prefix)/share/zsh/site-functions(N) 
+    $(brew --prefix)/share/zsh-completions(N)
+    $fpath
+  )
+fi
+
 fpath=(
-  $(brew --prefix)/share/zsh/site-functions(N)
-  /opt/homebrew/share/zsh-completions(N)
   /usr/local/share/zsh-completions(N)
   $fpath
 )
-
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
