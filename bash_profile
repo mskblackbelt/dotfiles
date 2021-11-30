@@ -1,19 +1,45 @@
-unset PATH
-eval `/usr/libexec/path_helper -s`
+# checks (copied from zshuery)
+
+if [[ -x $(which brew 2> /dev/null) ]]; then
+    HAS_BREW=1
+fi
+
+if [[ -x $(which apt-get 2> /dev/null) ]]; then
+    HAS_APT=1
+fi
+
+if [[ -x $(which yum 2> /dev/null) ]]; then
+    HAS_YUM=1
+fi
+
+# Initialize PATH variable
+if [[ $IS_MAC -eq 1 ]]; then
+  unset PATH
+  eval `/usr/libexec/path_helper -s`
+fi
+
+if [[ -d $HOME/.linuxbrew ]]; then
+  eval $($HOME/.linuxbrew/bin/brew shellenv)
+fi
+
 export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# Set up Python environments
+if [[ -x $(which pyenv 2> /dev/null) ]]; then 
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)" ## Auto-activate and enable pyenv and shims
+fi
 export MPLCONFIGDIR="$HOME/.matplotlib"
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)" ## Auto-activate and enable pyenv and shims
+
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='rjorgenson'
+export BASH_IT_THEME='zork'
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
