@@ -14,7 +14,7 @@ function precmd {
   PR_FILLBAR=""
   PR_PWDLEN=""
   
-  TOP_BAR_LENGTH=" pyenv:$(pyenv_prompt_info) $(battery_level_gauge)\
+  TOP_BAR_LENGTH=" $(pyenv_prompt_info) $(battery_level_gauge)\
     $(battery_time_remaining)"
   # Calculation for length of top prompt (from http://stackoverflow.com/q/10564314/2216427)
   local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
