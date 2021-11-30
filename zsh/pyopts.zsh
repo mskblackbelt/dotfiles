@@ -26,6 +26,7 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
   function pyenv_prompt_info() {
       echo "pyenv:$(pyenv version-name)"
   }
+
 elif [[ $(which -a conda | grep -c 'bin/conda' 2> /dev/null) -gt 0]]; then
   function pyenv_prompt_info() {
     echo "conda:${CONDA_DEFAULT_ENV}"}
