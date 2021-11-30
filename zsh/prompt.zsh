@@ -106,14 +106,14 @@ function setprompt {
   # Display python venv, if present
   function venv_info {
       if [[ -n "$VIRTUAL_ENV" ]]; then
-          echo "%{$fg[green]%}venv:‹${VIRTUAL_ENV:t}›%{$reset_color%}"
+          echo "%{$fg[green]%}venv:${VIRTUAL_ENV:t}%{$reset_color%}"
       fi
   }
   
   # Display conda env, if present
   function conda_info {
       if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
-          echo "%{$fg[green]%}conda:‹${CONDA_DEFAULT_ENV}›%{$reset_color%}"
+          echo "%{$fg[green]%}conda:${CONDA_DEFAULT_ENV}%{$reset_color%}"
       fi
   }
   local venv='$(venv_info)'
