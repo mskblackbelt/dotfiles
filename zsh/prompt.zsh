@@ -103,6 +103,22 @@ function setprompt {
     user_info=''
   fi
   
+  # Display python venv, if present
+  function venv_info {
+      if [[ -n "$VIRTUAL_ENV" ]]; then
+          echo "%{$fg[green]%}venv:‹${VIRTUAL_ENV:t}›%{$reset_color%}"
+      fi
+  }
+  
+  # Display conda env, if present
+  function conda_info {
+      if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+          echo "%{$fg[green]%}conda:‹${CONDA_DEFAULT_ENV}›%{$reset_color%}"
+      fi
+  }
+  local venv='$(venv_info)'
+  local conda='$(conda_info)'
+  
   ###
   # Finally, the prompt.
   PROMPT='%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} \
@@ -116,7 +132,7 @@ $(battery_level_gauge)$(battery_time_remaining)\
 $(git_prompt_info)$(hg_prompt_info) %{$FG[105]%}%(!.#.»)%{$PR_NO_COLOUR%} '
 
 
-  RPROMPT='$(virtualenv_prompt_info) %{$PR_GREY%}%n\
+  RPROMPT='$(virtualenv_prompt_info) $(conda_info) %{$PR_GREY%}%n\
 $user_info%{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}$PR_LRCORNER%{$PR_SHIFT_OUT%}'
 
 
