@@ -1,0 +1,5 @@
+# Set default channels
+channels: [conda-forge]
+
+# Allow conda to change PS1 variable
+changeps1: False
