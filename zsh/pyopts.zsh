@@ -29,7 +29,7 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
 
 elif [[ $(which -a conda | grep -c 'bin/conda' 2> /dev/null) -gt 0 ]]; then
   function pyenv_prompt_info() {
-    echo "conda:${CONDA_DEFAULT_ENV}"
+    echo "conda:$(python -V 2>&1 | cut -f 2 -d ' ')"
   }
 else
     # fallback to system python
