@@ -31,10 +31,10 @@ function precmd {
 
 setopt extended_glob
 preexec () {
-    if [[ "$TERM" == "screen" ]]; then
-      local CMD=${1[(wr)^(*=*|sudo|-*)]}
-      echo -n "\ek$CMD\e\\"
-    fi
+  if [[ "$TERM" == "screen" ]]; then
+    local CMD=${1[(wr)^(*=*|sudo|-*)]}
+    echo -n "\ek$CMD\e\\"
+  fi
 }
 
 
@@ -97,12 +97,12 @@ function setprompt {
   }
   
   # Only display HOSTNAME for SSH or superuser prompts
-    if _user_is_ssh || (( EUID == 0 )); then
-      user_info="@${HOST%%.*}"
-    else
-      user_info=''
-    fi
-    
+  if _user_is_ssh || (( EUID == 0 )); then
+    user_info="@${HOST%%.*}"
+  else
+    user_info=''
+  fi
+  
   ###
   # Finally, the prompt.
   PROMPT='%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} \
@@ -116,8 +116,8 @@ $(battery_level_gauge)$(battery_time_remaining)\
 $(git_prompt_info)$(hg_prompt_info) %{$FG[105]%}%(!.#.»)%{$PR_NO_COLOUR%} '
 
 
-  RPROMPT=' $(virtualenv_prompt_info) %{$PR_GREY%}%n$user_info %{$PR_NO_COLOUR%}\
-%{$PR_SHIFT_IN%}$PR_LRCORNER%{$PR_SHIFT_OUT%}'
+  RPROMPT='$(virtualenv_prompt_info) %{$PR_GREY%}%n\
+$user_info%{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}$PR_LRCORNER%{$PR_SHIFT_OUT%}'
 
 
   PS2='$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
