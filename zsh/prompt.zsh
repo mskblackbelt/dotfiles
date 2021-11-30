@@ -122,7 +122,7 @@ function setprompt {
   ###
   # Finally, the prompt.
   PROMPT='%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} \
-pyenv:$(pyenv_prompt_info) \
+$(pyenv_prompt_info) \
 %{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}\
 $PR_HBAR${(e)PR_FILLBAR}%{$PR_SHIFT_OUT%}\
 $(battery_level_gauge)$(battery_time_remaining)\
