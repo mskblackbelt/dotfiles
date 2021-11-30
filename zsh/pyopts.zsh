@@ -26,7 +26,7 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
 else
     # fallback to system python
     function pyenv_prompt_info() {
-        echo "system: $(python -V 2>&1 | cut -f 2 -d ' ')"
+        echo "system($(python -V 2>&1 | cut -f 2 -d ' '))"
     }
 fi
 
