@@ -44,7 +44,8 @@ This function should only modify configuration layer settings."
      ;; git
      helm
      ;; lsp
-     markdown
+     (markdown :variables
+               visual-line-mode t)
      multiple-cursors
      org
      (shell :variables
