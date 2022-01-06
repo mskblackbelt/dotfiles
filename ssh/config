@@ -12,8 +12,7 @@ Host candyshop
   
 Host sugarcube
   HostName 146.95.158.49
-  User matma
+  User dwheeler
   IdentityFile ~/.ssh/heart_of_gold
   RemoteForward 52698 localhost:52698
-  # RemoteCommand /usr/bin/zsh
 
