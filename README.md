@@ -10,16 +10,10 @@ You can clone the repository wherever you want. (I like to keep it in `~/Project
 env RCRC="~/Projects/dotfiles/rcrc" rcup
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
+To install everything automatically (including [Homebrew](https://brew.sh, `rcm`, `zsh`, and `git`), `cd` into your local `dotfiles` repository and then:
 
 ```bash
-source bootstrap.sh
-```
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-```bash
-set -- -f; source bootstrap.sh
+./init/install.sh
 ```
 
 ### Sensible OS X defaults
@@ -27,7 +21,7 @@ set -- -f; source bootstrap.sh
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.osx
+./init/macos_install.sh
 ```
 
 ### Install Homebrew formulae
@@ -35,7 +29,7 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
 
 ```bash
-brew bundle ~/Brewfile
+brew bundle --file ./init/Brewfile
 ```
 
 
