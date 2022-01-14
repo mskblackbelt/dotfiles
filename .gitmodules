@@ -7,3 +7,6 @@
 [submodule "bash/.bash_it"]
 	path = bash/.bash_it
 	url = https://github.com/Bash-it/bash-it.git
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
