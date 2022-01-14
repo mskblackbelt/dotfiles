@@ -1,0 +1,47 @@
+% ***********************************************************
+% ******************* PHYSICS HEADER ************************
+% ***********************************************************
+% Version 2
+% The following four lines correct the behavior of \left and \right when used with operators
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+%
+% \@ifpackageloaded{physics}{}{
+	\newcommand{\vb}[1]{\ensuremath{\bm{#1}}} % for vectors
+	% \newcommand{\gv}[1]{\mbox{\ensuremath{\bm{#1}}}} % for vectors of Greek letters
+	\newcommand{\vu}[1]{\ensuremath{\bm{\hat{#1}}}} % for unit vector
+	\newcommand{\avg}[1]{\left\langle #1 \right\rangle} % for average
+	\let\underdot=\d % rename builtin command \d{} to \underdot{}
+	\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+	\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+	\ifx \@testmacro \@empty
+		\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} % for partial derivatives
+	\else
+	\fi
+	\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} % for double partial derivatives
+	\newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2} \right)_{#3}} % for thermodynamic partial derivatives
+	\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+	\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+	\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+	\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right| #2 \left| #3 \vphantom{#1#2} \right>} 
+	% for Dirac matrix elements
+	\newcommand{\grad}[1]{\vb{\nabla} #1} % for gradient
+	\newcommand{\laplacian}[1]{\vb{\nabla^2} #1} % for Laplacian
+	\let\divsymb=\div % rename builtin command \div to \divsymb
+	\renewcommand{\div}[1]{\vb{\nabla} \cdot #1} % for divergence
+	\newcommand{\curl}[1]{\vb{\nabla} \times #1} % for curl
+	\DeclareMathOperator{\erf}{erf} % Error function
+% }
+\ifx \@abs \@empty
+	\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\else
+\fi
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\DeclareMathOperator{\sgn}{sgn} % Sign of x
+\DeclareMathOperator{\erfc}{erfc} % Co-error function
+% ***********************************************************
+% ********************** END HEADER *************************
+% ***********************************************************
