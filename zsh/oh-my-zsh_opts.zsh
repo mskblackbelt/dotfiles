@@ -14,30 +14,31 @@ ZSH_CUSTOM=$ZDOTDIR/omz_custom
 plugins=(
   battery 
   colored-man-pages 
+  git
   virtualenv
 )
 
 
 if [[ $IS_MAC -eq 1 ]]; then
   plugins=($plugins macos textmate)
-	# The following plugins may slow down shell startup
-	plugins=($plugins brew git)
 fi
 
 if [[ $IS_LINUX -eq 1 ]]; then
-	plugins=($plugins extract)
+  plugins=($plugins extract)
+  
+  if [[ $HAS_APT -eq 1 ]]; then
+    plugins=($plugins debian)
+  fi
+
+  if [[ $HAS_YUM -eq 1 ]]; then
+    plugins=($plugins dnf yum)
+  fi	
 fi
 
-if [[ $HAS_APT -eq 1 ]]; then
-	plugins=($plugins debian)
-fi
 
-if [[ $HAS_YUM -eq 1 ]]; then
-	plugins=($plugins dnf yum)
-fi	
 
-if [[ -x $(which hg 2> /dev/null) ]]; then
-  plugins=($plugins mercurial)
+if [[ -x $(which brew 2> /dev/null) ]]; then
+  plugins=($plugins brew)
 fi
 
 source $ZSH/oh-my-zsh.sh

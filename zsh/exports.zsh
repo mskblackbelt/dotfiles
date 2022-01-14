@@ -24,6 +24,8 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+
 typeset -U path # U for Unique, like a set; (N) == only if exists
 path=(
   ~/.pyenv/bin(N)
