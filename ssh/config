@@ -15,5 +15,4 @@ Host sugarcube
   User REDACTED
   IdentityFile ~/.ssh/heart_of_gold
   RemoteForward 52698 localhost:52698
-  # RemoteCommand /usr/bin/zsh
 

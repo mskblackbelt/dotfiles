@@ -1,4 +1,4 @@
 DOTFILES_DIRS="$HOME/Projects/dotfiles"
-EXCLUDES="LICENSE* README.md"
+EXCLUDES="LICENSE* README.md *install*.sh Brewfile"
 SYMLINK_DIRS="bash emacs.d zsh bin"
 UNDOTTED="bin"
