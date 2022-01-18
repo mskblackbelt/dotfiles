@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$ZDOTDIR/.oh-my-zsh
+ZSH=$ZDOTDIR/oh-my-zsh
 ZSH_CUSTOM=$ZDOTDIR/omz_custom
 
 # Set name of the theme to load.
