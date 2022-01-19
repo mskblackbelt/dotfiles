@@ -12,6 +12,37 @@ tap "vitorgalvao/tiny-scripts"
 
 # Brews
 
+## Replacements for UNIX tools
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
+# New way to see and navigate directory trees
+brew "broot"
+# Make choices on the command-line
+brew "choose"
+# More intuitive version of du in rust
+brew "dust"
+# Modern replacement for 'ls'
+brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Modern replacement for ps written by Rust
+brew "procs"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Intuitive find & replace CLI
+brew "sd"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+
+## Other tools
 # Search tool like grep, but optimized for programmers
 # brew "ack"
 # Spell checker with better logic than ispell
@@ -20,8 +51,6 @@ brew "aspell"
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # Interpreted, interactive, object-oriented programming language
 brew "python"
 # GNU File, Shell, and Text utilities
@@ -42,8 +71,6 @@ brew "ffmpeg"
 brew "gist"
 # Distributed revision control system
 brew "git"
-# GNU implementation of the famous stream editor
-# brew "gnu-sed"
 # Improved top (interactive process viewer)
 brew "htop"
 # Tools and libraries to manipulate images in many formats
@@ -76,16 +103,12 @@ brew "pyenv-virtualenv"
 brew "r"
 # RC file (dotfile) management
 brew "rcm"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
 # Rust toolchain installer
 brew "rustup-init"
 # SMART hard drive monitoring
 brew "smartmontools"
-# Very fast implementation of tldr in Rust
-brew "tealdeer"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
 # Send macOS User Notifications from the command-line
