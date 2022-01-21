@@ -21,6 +21,12 @@ brew "bottom"
 brew "broot"
 # Make choices on the command-line
 brew "choose"
+# GNU File, Shell, and Text utilities
+# brew "coreutils"
+# Power of curl, ease of use of httpie
+brew "curlie"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # More intuitive version of du in rust
 brew "dust"
 # Modern replacement for 'ls'
@@ -29,6 +35,8 @@ brew "exa"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Improved top (interactive process viewer)
+brew "htop"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Modern replacement for ps written by Rust
@@ -39,12 +47,12 @@ brew "ripgrep"
 brew "sd"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
+# Cross-platform Rust rewrite of the GNU coreutils
+brew "uutils-coreutils"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 
-## Other tools
-# Search tool like grep, but optimized for programmers
-# brew "ack"
+## Other tools`
 # Spell checker with better logic than ispell
 brew "aspell"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -53,10 +61,6 @@ brew "bash"
 brew "bash-completion"
 # Interpreted, interactive, object-oriented programming language
 brew "python"
-# GNU File, Shell, and Text utilities
-# brew "coreutils"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
 # Perl lib for reading and writing EXIF metadata
 # brew "exiftool"
 # GNU Transport Layer Security (TLS) Library
@@ -71,8 +75,6 @@ brew "ffmpeg"
 brew "gist"
 # Distributed revision control system
 brew "git"
-# Improved top (interactive process viewer)
-brew "htop"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
@@ -123,8 +125,6 @@ brew "trash"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
-# Cross-platform Rust rewrite of the GNU coreutils
-brew "uutils-coreutils"
 # Internet file retriever
 brew "wget"
 # UNIX shell (command interpreter)
