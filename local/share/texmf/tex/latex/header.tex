@@ -32,6 +32,7 @@
 	% \newcommand{\sideways}[1]{\begin{sideways} #1 \end{sideways}} % turn things 90 degrees CCW
 	% \newcommand{\turn}[2][]{\begin{turn}{#2} #1 \end{turn}} % \turn[ang]{stuff} turns things arbitrary +/- angle
 % TO-DO: find package for easily drawing mapping / algebraic / commutative diagrams..??
+% TODO: Remove mathtools, cancel
 
 
 
@@ -59,36 +60,15 @@
 
 % standard and structural packages
 
-% \usepackage{soul} % provides commands for:
-	% hyphenatable letter spacing (\so), underlining (\ul), caps (\caps, alt. to \textsc)
-	% and some derivatives such as overstriking/strikethrough (\st) and highlighting (\hl)
-% \newcommand\bmmax{4} % increase max number of bm font allocations. default 4?
-% \newcommand\hmmax{1} % increase max number of hm font allocations. default 3?
 \usepackage{bm} % provides \bm command for robustly bolding math characters
 
 % TODO: Investigate necessity and compatibility of the following lines
 %%%%%%%%%%%%%%%%%%%%%% Additional math fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amssymb} % for \mathbb (upper case only), \mathfrak fonts
-%\usepackage{dsfont} % best option for non-alphabetical doublestruck characters
-	% use command \mathds{string}
-%\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it} % defines \mathpzc for Zapf Chancery font 
-	% (a standard postscript font) basically another calligraphic font, alternative to mathcal
-%\DeclareMathAlphabet{\mathsfbf}{T1}{cmss}{bx}{sl} % bold sans-serif italic (for tensors). too bold?
-	% see https://www.tug.org/TUGboat/tb30-3/tb96vieth.pdf
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{microtype} % improves kerning in certain cases. 
 	% recommended to disable protrusion in table of contents!
-\usepackage{moresize} % adds additional font sizes \HUGE and \ssmall
-\usepackage{relsize} % adds incredibly useful relative font sizing functions
-	% \relsize{i}				Change font size by i steps.
-	% \larger[i]				Increase size by (optional) i steps (default 1).
-	% \smaller[i]				Reduce font size by i steps (default 1).
-	% \relscale{f}				Change font size by scale factor f.
-	% \textlarger[i]{<text>}		Text size enlarged by (optional) i steps.
-	% \textsmaller[i]{<text>}		Text size reduced by (optional) i steps.
-	% \textscale{f}{<text>}		Text size scaled by factor f.
-
 
 %% Latex interface 
 
@@ -96,8 +76,6 @@
 \usepackage{letltxmacro} % provides \LetLtxMacro command for correct renaming of commands
 \usepackage{etoolbox} % provides many useful programming tools, 
 	% e.g. \ifdefempty{cs}{true}{false}
-
-
 
 %% media interface
 
@@ -114,52 +92,36 @@
 \makeatother%
 \usepackage{svg} % provides \includesvg command for svg figures. 
 \usepackage{pgfplots} % for plotting in tikzpicture environment
-	\pgfplotsset{compat=1.16} % required to select newest version
 \usepackage{tikzscale} % allows \includegraphics{*.tikz} and scaling of TiKZ images
-
-
 
 %% math interface
 
 \usepackage{amsmath} % for nice math commands and environments
-\usepackage{mathtools} % extends amsmath with bug fixes and useful commands, e.g.
-	% \shortintertext for short interjections in align environment,
-	% \prescript{t}{b}{X} for simple, nicely aligned math pre-(super/sub)scripts
-	% \Aboxed{...} for boxing full lines in 'align' environment
 \usepackage{array} % improves array support, esp. in tabular env. 
 	% see also xtab.sty
+
+
 \usepackage{booktabs} % allows for improved spacing in tabular env. 
 	% use \toprule, \*midrule, \bottomrule instead of \hline
 	% see also ctable.sty
-
-\usepackage{cancel} % for crossing out terms with \cancel, \cancelto{X}, etc
 \usepackage{bropd} % provides \br command which simplifies nesting of bracketed terms within one another
 	% e.g. \br{\br{x-a}^2+\br{y-b}^2} produces \left[ \left( x-a \right)^2 + \left( y-b \right)^2 \right]
 	% also provides rudimentary derivatives, but overwritten by custom definitions
 
 \usepackage{chemmacros,chemfig} % for writing chemical formulas with \ch, e.g. \ch{AgCl2-} or \ch{^{227}_{90}Th+}
-	\usechemmodule{
-		spectroscopy, % provides 
-    thermodynamics, % provides state variables and equations
-    units, % provides \[mM]olar, \Torr, \atm, \cal, \cmc, \MolMass
-		} % also loads siunitx and chemformula
+  % Also provides state variables and equations, 
+  % \[mM]olar, \Torr, \atm, \cal, \cmc, \MolMass units,
+  % also loads siunitx and chemformula
 	\DeclareSIUnit\ppm{ppm}
   \sisetup{% siunit package options
 			per-mode = symbol,%
 			inter-unit-product=\ensuremath{{}\!\cdot\!{}},%
-			separate-uncertainty,%
-			multi-part-units = single,%
+			uncertainty-mode = separate,%
+			separate-uncertainty-units = single,%
 			retain-explicit-plus,%
-			list-final-separator={, and },%
-			math-celsius = °\text{C}, % for temperatures
-			text-celsius = °C,
-			math-degree = °, % for angles
-			text-degree = °}%
+			list-final-separator={, and }%
+      }%
 
-% \usepackage{cool} % neato burrito COntent-Oriented Latex.
-	% has an unfortunate bug in otherwise ideal derivatives code
-	% see https://tex.stackexchange.com/questions/54425
-	% Warning: renamed \Beta and \Zeta to \BetaF and \ZetaF below
 \usepackage{physics} % provides streamlined interface with many commands to simplify
 	% writing standard physics notation (bra-kets, derivatives, etc.)
 	% differentials and derivatives: \dd[n]{x}, \dv[n]{f}{x}, \dv{x}, \pdv{f}{x}{y}, \var{Q}, \fdv{F}{g}
@@ -191,22 +153,12 @@
 %\usepackage{ctable} % allows for footnotes under table and properly spaced caption above 
 	% must be loaded after tikz
 	% incorporates (..?)
-\usepackage{framed} % provides boxed 'framed' environment for easily boxing text 
 \usepackage{tcolorbox}
 	\tcbuselibrary{skins, breakable, xparse, minted}
 	% provides fancier boxes than regular \makebox, \fbox, etc.
 	% e.g. \doublebox, \ovalbox, \shadowbox
 	% Can use `\tcbuselibrary{listings}` to use the listings library, 
 		% doesn't require a language to be defined. 
-\usepackage{empheq} % provides 'empheq' environment 
-	% for improved control over shape, size, color of framed boxes, e.g. 
-\newcommand{\boxedeq}[2]{
-	\begin{empheq}[box={\fboxsep=6pt\fbox}]{align}\label{#1}#2\end{empheq}
-}
-\newcommand{\coloredeq}[2]{
-	\begin{empheq}[box=\colorbox{lightgreen}]{align}\label{#1}#2\end{empheq}
-}
-
 
 %% document interface 
 
@@ -272,9 +224,6 @@
 \usepackage[textsize=footnotesize]{todonotes}
 
 
-
-
-
 %%%%%%%%%%%%%%%%%%
 %% COMMANDS
 %%%%%%%%%%%%%%%%%%
@@ -291,37 +240,18 @@
 		\colorbox{#1}{\texttt{#2}}
 	}
 }
-\definecolor{lighter-gray}{gray}{0.85} % lighter gray for code highlighting
-\newcommand{\codehl}[2][lighter-gray]{\code[#1]{#2}} % \code with light gray highlight by default
-\newcommand{\codeLtxMacro}[2]{\code[#1]{\textbackslash{}#2}} % same as \code but inserts backslash in front, for Latex macros
-\newcommand{\codehlLtxMacro}[2][lighter-gray]{\codeLtxMacro[#1]{#2}}
 \newcommand{\mtext}[1]{{\textnormal{#1}}} % for writing text within math mode, e.g. for subscripts
-% \LetLtxMacro{\mtxt}{\mtext} % legacy alias for \mtext
-% \LetLtxMacro{\opname}{\operatorname} % custom operator names
-% %\newcommand{\tr}{\opname{tr}} % for trace
-% %\newcommand{\rank}{\opname{rank}} % for rank
-% \newcommand{\diag}{\opname{diag}} % i.e. \diag(\lambda_1, \dots, \lambda_n)
-% \LetLtxMacro{\fancyRe}{\real} % already renamed from physics.sty
-% \LetLtxMacro{\fancyIm}{\imaginary} % see above
-% \renewcommand{\Re}{\opname{Re}}
-% \renewcommand{\Im}{\opname{Im}}
-% \renewcommand{\Res}{\opname*{Res}} % for residue function (handles limits properly)
-% \newcommand{\inv}{^{-1}}
-% \newcommand{\sgn}{\opname{sgn}} % sign/signum function
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\erfc}{erfc}
 \DeclareMathOperator{\GammaFunc}{\symup{\Gamma}}
 \newcommand{\iu}{\TextOrMath{$\mtext{i}$}{\mtext{i}\mkern1mu}}
-% \newcommand{\iu}{{i\mkern1mu}}
 %
 %
 % %%%%%%%%%%%%%%%%%%%%%
 % %% SPECIAL SYMBOLS %%
 % %%%%%%%%%%%%%%%%%%%%%
 %
-%
 % % special characters and shortcuts
-% \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$} % allows for overline in text mode, e.g. for MS-bar renormalization scheme
 \newcommand{\const}{{\textit{const}}} % shorthand for constant. works in math mode with proper kerning
 \newcommand{\bigO}{\mathcal{O}} % big O notation. is there a \O?
 \newcommand{\Lag}{\mathcal{L}} % fancy Lagrangian
@@ -338,99 +268,6 @@
 \newcommand{\irrats}{\mathbb{Q}} % irrationals
 \newcommand{\quats}{\mathbb{H}} % quaternions (a la Hamilton)
 \newcommand{\euclids}{\mathbb{E}} % Euclidean space
-% %\newcommand{\E}{\euclids}
-% \newcommand{\R}{\reals}
-% \renewcommand{\C}{\complexes}
-% \newcommand{\Z}{\ints}
-% \newcommand{\Q}{\irrats}
-% \newcommand{\N}{\nats}
-% \newcommand{\RP}{\mathbb{RP}} % real projective space
-% \newcommand{\CP}{\mathbb{CP}} % complex projective space
-% % Lie groups
-% \newcommand{\SO}{\mathrm{SO}}
-% \newcommand{\SU}{\mathrm{SU}}
-% % etc
-%
-%
-%
-% %%%%%%%%%%%%%%%%%%
-% %% ENVIRONMENTS
-% %%%%%%%%%%%%%%%%%%
-%
-%
-% %% theorem-style environments. note amsthm builtin proof environment: \begin{proof}[title]
-%
-% % appending [section] resets counter and prepends section number
-% % use \setcounter{counter}{0} to reset counter
-% % typical use cases:
-% % plain: Theorem, Lemma, Corollary, Proposition, Conjecture, Criterion, Algorithm
-% % definition: Definition, Condition, Problem, Example
-% % remark: Remark, Note, Notation, Claim, Summary, Acknowledgment, Case, Conclusion
-% \theoremstyle{plain} % default
-% \newtheorem{theorem}{Theorem}[section]
-% \newtheorem{lemma}[theorem]{Lemma}
-% \newtheorem{corollary}[theorem]{Corollary}
-% \newtheorem{proposition}[theorem]{Proposition}
-% \newtheorem{conjecture}[theorem]{Conjecture}
-% % definition style
-% \theoremstyle{definition}
-% \newtheorem{definition}[theorem]{Definition}
-% \newtheorem{problem}[theorem]{Problem}
-% \newtheorem{exercise}[theorem]{Exercise}
-% \newtheorem{example}[theorem]{Example}
-% % remark style
-% \theoremstyle{remark}
-% \newtheorem{remark}[theorem]{Remark}
-% \newtheorem{note}[theorem]{Note}
-% \newtheorem{claim}[theorem]{Claim}
-% \newtheorem{conclusion}[theorem]{Conclusion}
-%
-%
-% %% finally some commands for writing homework problems
-%
-% % Homework Problem Counter
-% \newcounter{HWproblemCounter}
-% % commend for setting current problem number
-% \newcommand{\HWsetCounter}[1]{
-% 	\setcounter{HWproblemCounter}{#1-1}
-% }
-% \HWsetCounter{1} % start at problem 1 by default
-% %\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
-%
-% % Problem Section command. Creates new section with correct problem number.
-% % Optional argument is a short title or description.
-% % To skip to problem N, change the counter to N-1
-% \newcommand{\HWproblemSec}[1][]{
-% 	\stepcounter{HWproblemCounter}
-% 	%\ifthenelse{\equal{#1}{}}{ % if description is empty
-% 	\ifstrempty{#1}{ % if description is empty
-% 		\section*{Problem \arabic{HWproblemCounter}}
-% 	}{ % else
-% 		\section*{Problem \arabic{HWproblemCounter}: #1} % {#1+1} ??
-% 	}
-% }
-%
-% % for enumerating sub-problems
-% \newenvironment{HWproblemEnum}{
-% 	% begin
-% 	\begin{enumerate}[label=\textbf{(\alph*)},listparindent=\parindent]
-% }{
-% 	% end
-% 	\end{enumerate}
-% }
-%
-% % for problem statements
-% \newenvironment{HWproblemState}{
-% 	% begin
-% 	\begin{em}
-% 	\relsize{-1}
-% }{
-% 	% end
-% 	%\newline
-% 	\vspace{5mm}
-% 	\end{em}
-% }
-%
 %
 % %%%%%%%%%%%%%%%%%%
 % %% USEFUL TEMPLATES
@@ -510,9 +347,6 @@
 %
 % \end{comment}
 % %%%%%%%%%%%%%%%%%%
-%
-%
-%
 %
 %
 % %%%%%%%%%%%%%%%%%%
