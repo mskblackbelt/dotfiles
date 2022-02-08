@@ -28,11 +28,13 @@
   % fix CoOL support for upright Greek function names
 	% commath -- basically rewrite it, especially by way of mathtools package's \DeclarePairedDelimiter command
 		% use \DeclarePairedDelimiter command to define delimited operators like \abs, \norm, etc. Enables stuff like \abs{x} for normal size, \abs*{x} for auto size, \abs[\big]{x} for specific size
-% TO-DO: custom commands using package rotating.sty
-	% \newcommand{\sideways}[1]{\begin{sideways} #1 \end{sideways}} % turn things 90 degrees CCW
-	% \newcommand{\turn}[2][]{\begin{turn}{#2} #1 \end{turn}} % \turn[ang]{stuff} turns things arbitrary +/- angle
-% TO-DO: find package for easily drawing mapping / algebraic / commutative diagrams..??
-% TODO: Remove mathtools, cancel
+% TODO: Remove cancel, physics (needs a replacement, or several)
+  % Physics replacements
+    % braket
+    % derivative, esdiff, or diffcoeff
+    % vectors?
+    
+
 
 
 
@@ -97,6 +99,7 @@
 %% math interface
 
 \usepackage{amsmath} % for nice math commands and environments
+\usepackage{mathtools} % Extension to amsmath, fixes some bugs
 \usepackage{array} % improves array support, esp. in tabular env. 
 	% see also xtab.sty
 
@@ -122,7 +125,9 @@
 			list-final-separator={, and }%
       }%
 
-\usepackage{physics} % provides streamlined interface with many commands to simplify
+%% Fix for old definition of \qty in physics package
+% \let\svqty\qty
+% \usepackage{physics} % provides streamlined interface with many commands tosimplify
 	% writing standard physics notation (bra-kets, derivatives, etc.)
 	% differentials and derivatives: \dd[n]{x}, \dv[n]{f}{x}, \dv{x}, \pdv{f}{x}{y}, \var{Q}, \fdv{F}{g}
 	% bra-ket notation: \bra, \ket, \braket, \dyad, \matrixel 
@@ -134,6 +139,8 @@
 	% in particular adds \tr, \Tr, \rank, \erf, \Res, \pv / \PV, \Re, \Im
 	% auto padding text: \qq{string}
 	% matrix quantities: \mqty(a & b \\ c & d) or \mqty[x \\ y], Pauli \pmat{n}, diagonal matrices \mqty(\dmat{1,2&3\\4&5}), anti-diagonal \admat
+% \let\qty\svqty
+
 
 %% misc packages
 
