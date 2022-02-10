@@ -66,6 +66,8 @@ This function should only modify configuration layer settings."
      deft
      (latex :variables
             ;; latex-backend 'lsp
+            visual-line-mode t
+            latex-enable-auto-fill nil
             latex-build-engine 'luatex)
      bibtex
      pandoc
