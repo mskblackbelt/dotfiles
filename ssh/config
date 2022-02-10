@@ -1,3 +1,8 @@
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+
 Host 35.202.175.130
   # Enable forwarding for rmate installed on server
   RemoteForward 52698 localhost:52698
