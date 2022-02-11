@@ -5,7 +5,7 @@ alias ohmyzsh="$EDITOR $ZSH"
 # Enable sudo with aliases
 alias sudo='sudo '  
 # Run previous command with root privileges 
-if [[ -x $(which thefuck 2> /dev/null) ]]; then
+if hash thefuck 2>/dev/null; then
   eval "$(thefuck --alias)"
 else
   alias fuck='sudo $(fc -ln -1)'
@@ -24,27 +24,56 @@ if [[ $HAS_BREW -eq 1 ]]; then
 fi
   
 
-# Miscellaneous aliases
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# UNIX tool replacements
 alias more="less"
-if [[ -x $(which most 2> /dev/null) ]]; then
-	alias less="most"
+
+if hash exa 2>/dev/null; then
+  alias ls="exa"
+  alias la="exa --all --long --group --header"
 fi
-if [[ -x $(which bat 2> /dev/null) ]]; then 
-	alias cat="bat --terminal-width=-2"
-fi
-if [[ -x $(which prettyping 2> /dev/null) ]]; then 
-	alias ping="prettyping"
-fi
-if [[ -x $(which R) ]]; then
-	alias rstat="R"
-fi
-if [[ -x $(which tldr 2> /dev/null) ]]; then 
-	alias help="tldr"
+if hash rg 2>/dev/null; then
+  alias grep="rg --color=auto"
+else
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
+if hash most 2>/dev/null; then
+	alias less="most"
+fi
+if hash batcat 2>/dev/null; then 
+	alias cat="bat --terminal-width=-2"
+fi
+if hash batcat 2>/dev/null; then 
+	alias bat="batcat"
+fi
+if hash dust 2>/dev/null; then 
+	alias du="dust"
+fi
+if hash duf 2>/dev/null; then 
+	alias df="duf"
+fi
+if hash fd 2>/dev/null; then 
+	alias find="fd"
+fi
+if hash gping 2>/dev/null; then
+  alias ping="gping"
+elif hash prettyping 2>/dev/null; then 
+	alias ping="prettyping"
+fi
+if hash tldr 2>/dev/null; then 
+	alias help="tldr"
+fi
+if hash zoxide 2>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+# Miscellaneous aliases
+
+if hash R 2>/dev/null; then
+	alias rstat="R"
+fi
 
 # -------------------------------------------------------------------
 # Folder aliases

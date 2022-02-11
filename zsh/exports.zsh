@@ -36,6 +36,8 @@ path=(
   $path
 )
 
+# Helper function for checking if a binary exists
+function exists { which $1 &> /dev/null }
 
 # Add rust binaries to the path
 if [[ -d $HOME/.cargo ]]; then
@@ -44,11 +46,11 @@ fi
 
 # Export pagers and editors
 export LESS='--ignore-case --raw-control-chars'
-if [[ -x `which most 2> /dev/null` ]]; then 
+if hash most 2>/dev/null; then 
 	export PAGER='most'
 	export MANPAGER='/usr/bin/less -X'
 fi
-if [[ -x `which bat 2> /dev/null` ]]; then 
+if hash bat 2>/dev/null; then 
 	export BAT_PAGER='/usr/bin/less' 
 	export BAT_THEME="TwoDark"
 fi
