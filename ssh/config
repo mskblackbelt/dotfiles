@@ -1,14 +1,8 @@
 Host github.com
-  Hostname ssh.github.com
+  HostName ssh.github.com
   Port 443
   User git
   IdentityFile ~/.ssh/github
-
-Host 35.202.175.130
-  # Enable forwarding for rmate installed on server
-  RemoteForward 52698 localhost:52698
-  # Start zsh on login to remote server 
-  RemoteCommand /usr/bin/zsh
 
 Host candyshop
   HostName 146.95.158.42
