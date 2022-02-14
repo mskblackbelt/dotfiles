@@ -43,10 +43,10 @@ if hash most 2>/dev/null; then
 	alias less="most"
 fi
 if hash batcat 2>/dev/null; then 
-	alias cat="bat --terminal-width=-2"
-fi
-if hash batcat 2>/dev/null; then 
 	alias bat="batcat"
+fi
+if hash bat 2>/dev/null; then 
+	alias cat="bat --terminal-width=-2"
 fi
 if hash dust 2>/dev/null; then 
 	alias du="dust"
