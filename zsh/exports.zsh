@@ -40,7 +40,7 @@ path=(
 function exists { which $1 &> /dev/null }
 
 # Add rust binaries to the path
-if [[ -d $HOME/.cargo ]]; then
+if [[ -f $HOME/.cargo/env ]]; then
   source "$HOME/.cargo/env"
 fi
 
