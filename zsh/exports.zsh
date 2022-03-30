@@ -1,21 +1,18 @@
-# path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
-# The function is run as part of /etc/zshenv by default. 
 if [[ $IS_MAC -eq 1 ]]; then
+  # path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
+  # The function is run as part of /etc/zshenv by default. 
 	unset PATH
 	eval `/usr/libexec/path_helper -s`
-fi
-# Add homebrew binaries to the path
-if [[ $IS_MAC -eq 1 ]]; then
+
+  # Add homebrew binaries to the path
 	export HOMEBREW_PREFIX="/opt/homebrew";
 	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 	export HOMEBREW_REPOSITORY="/opt/homebrew";
 	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-fi
-
-# Add linuxbrew directoryif present
-if [[ -d $HOME/.linuxbrew ]]; then
+  # Add linuxbrew directory if present
+elif [[ -d $HOME/.linuxbrew ]]; then
    eval $($HOME/.linuxbrew/bin/brew shellenv)
 fi
 
@@ -55,11 +52,15 @@ if hash bat 2>/dev/null; then
 	export BAT_THEME="TwoDark"
 fi
 
-if [[ -x $(which mate 2> /dev/null) ]]; then
+if hash nova 2> /dev/null; then
+  export EDITOR='nova -w'
+  export TEXEDIT='nova -w -l %d "%s"'
+  export GIT_EDITOR="nova --name 'Git Commit Message' -w -l 1"
+elif hash mate 2> /dev/null; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
   export GIT_EDITOR="mate --name 'Git Commit Message' -w -l 1"
-elif [[ -x `which code 2> /dev/null` ]]; then
+elif hash code 2> /dev/null; then
   export EDITOR='code -w'
 else
   export EDITOR='vi'
