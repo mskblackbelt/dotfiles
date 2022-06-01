@@ -33,7 +33,7 @@ function myip () {
   }
 
 function flush () {
-  dscacheutil -flushcache # Flush DNS cache
+  sudo killall -HUP mDNSResponder # Flush DNS cache
   }
   
 function speedtest () {
