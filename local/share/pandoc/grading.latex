@@ -1,97 +1,31 @@
-\documentclass[12pt$if(lang)$$babel-lang$,$endif$letterpaper,$for(classoption)$$classoption$$sep$,$endfor$]{article}
-\usepackage[letterpaper, includemp, marginparwidth=1in]{geometry}
-
-$if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
-$else$
-\usepackage{stix}
-$endif$
+\documentclass[12pt,letter]{article}
+\usepackage{stix2}
 
 \usepackage{setspace}
 \doublespacing % Set double spacing for grading purposes
+\usepackage{todonotes} % Insert margin notes for comments
+\usepackage{soul,xparse,xcolor} % Enable strikethrough for grading
+
+% Redefine strikethrough macro to give default red strike (optional argument sets alternate color)
+\RenewDocumentCommand{\st}{O{red}O{black}+m}
+	{%
+			\begingroup
+			\setulcolor{#1}%
+			\setul{-0.5ex}{0.4pt}%
+			\def\SOUL@uleverysyllable{%
+				\rlap{%
+					\color{#2}\the\SOUL@syllable
+					\SOUL@setkern\SOUL@charkern}%
+				\SOUL@underline{%
+					\phantom{\the\SOUL@syllable}}%
+			}%
+			\ul{#3}%
+			\endgroup
+	}
 
 \usepackage{amssymb,amsmath}
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-
-\usepackage[xcolor=svgnames]{changes}
-\usepackage{soul} % Enable strikethrough for grading
-\setstcolor{Red}
-\sethlcolor{Plum}
-% \setulcolor{Green}
-\setaddedmarkup{\color{Green}{\uline{#1}}}
-\setdeletedmarkup{\color{Red}\sout{{#1}}}
-
-
-\usepackage{todonotes} % Insert margine notes for comments
- \newcommand{\tinytodo}[2][]
-   {\todo[caption={#2}, size=\footnotesize, #1]{\renewcommand{\baselinestretch}{1}\selectfont#2\par}}
-
-	
-	
-\usepackage[unicode=true]{hyperref}
-\hypersetup{colorlinks=true,
-            linkcolor=Maroon,
-            citecolor=Blue,
-            urlcolor=Blue,
-            breaklinks=true}
-% \urlstyle{same}  % don't use monospace font for urls
-
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% % Redefines (sub)paragraphs to behave more like sections
-% \ifx\paragraph\undefined\else
-% \let\oldparagraph\paragraph
-% \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-% \fi
-% \ifx\subparagraph\undefined\else
-% \let\oldsubparagraph\subparagraph
-% \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-% \fi
-
-\usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-$for(fontfamilies)$
-  \newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
-$endfor$
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
-$if(mainfont)$
-    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-$endif$
-$if(sansfont)$
-    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-$endif$
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
-$endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-$if(CJKmainfont)$
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-$endif$
-\fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -102,30 +36,39 @@ $endif$
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
+
 \usepackage[unicode=true]{hyperref}
-$if(colorlinks)$
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-$endif$
-\hypersetup{
-$if(title-meta)$
-            pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-            pdfauthor={$author-meta$},
-$endif$
-$if(keywords)$
-            pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
-$endif$
-$if(colorlinks)$
-            colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
-$else$
-            pdfborder={0 0 0},
-$endif$
+\hypersetup{colorlinks=true,
+            linkcolor=purple,
+            citecolor=blue,
+            urlcolor=blue,
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+
+% \usepackage[unicode=true]{hyperref}
+% $if(colorlinks)$
+% \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+% $endif$
+% \hypersetup{
+% $if(title-meta)$
+%             pdftitle={$title-meta$},
+% $endif$
+% $if(author-meta)$
+%             pdfauthor={$author-meta$},
+% $endif$
+% $if(keywords)$
+%             pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
+% $endif$
+% $if(colorlinks)$
+%             colorlinks=true,
+%             linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+%             citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+%             urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+% $else$
+%             pdfborder={0 0 0},
+% $endif$
+%             breaklinks=true}
+% \urlstyle{same}  % don't use monospace font for urls
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
@@ -175,7 +118,8 @@ $if(graphics)$
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setkeys{Gin}{width=4in,height=4in,keepaspectratio}
+% \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
@@ -254,9 +198,9 @@ $endif$
 % Using fancy headers and footers for YAML data
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{$if(author)$$author$$else$ $endif$%
-			 $if(title)$\\$title$$else$ $endif$}
-\rfoot{$if(date)$$date$$else$\today$endif$}
+\rhead{$if(author)$\fontsize{10}{12}\selectfont\color{black!55}$author$$else$ $endif$}
+\lhead{$if(title)$\fontsize{10}{12}\selectfont\color{black!55}$title$$else$ $endif$}
+\rfoot{$if(date)$\fontsize{10}{12}\selectfont\color{black!55}$date$$else$\fontsize{10}{12}\selectfont\color{black!55}\today$endif$}
 
 
 \begin{document}
