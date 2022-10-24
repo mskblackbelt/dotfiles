@@ -153,6 +153,11 @@ try:
     h = re.sub(comm_pattern, commentProcess, h, flags=re.DOTALL)
 
     h = re.sub(subs_pattern, subsProcess, h, flags=re.DOTALL)
+    
+    # clean yaml metadata keywords
+    h = re.sub("Title:", "title:", h, flags=re.DOTALL)
+    h = re.sub("Author:", "author:", h, flags=re.DOTALL)
+    h = re.sub("Date:", "date:", h, flags=re.DOTALL)
 
     tmpfile = tempfile.NamedTemporaryFile(mode="w+",
                                           suffix=".md",
