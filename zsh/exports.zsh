@@ -55,7 +55,7 @@ fi
 if hash nova 2> /dev/null; then
   export EDITOR='nova -w'
   export TEXEDIT='nova -w -l %d "%s"'
-  export GIT_EDITOR="nova --name 'Git Commit Message' -w -l 1"
+  export GIT_EDITOR="nova  -w -l 1"
 elif hash mate 2> /dev/null; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
