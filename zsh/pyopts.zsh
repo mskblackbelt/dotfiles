@@ -1,7 +1,7 @@
 ## Python related exports
 
 ## Set location for matplotlib config files
-export MPLCONFIGDIR=$HOME/.matplotlib
+export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
 
 ### Functionality also provided by OMZ plugin `pyenv` 
 # Auto-activate and enable pyenv and shims
