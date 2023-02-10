@@ -1,8 +1,5 @@
-Host github.com
-  HostName ssh.github.com
-  Port 443
-  User git
-  IdentityFile ~/.ssh/github
+Host * 
+  IdentityAgent "~/.1password/agent.sock"
 
 Host candyshop
   HostName 146.95.158.42
@@ -13,6 +10,4 @@ Host candyshop
 Host sugarcube
   HostName 146.95.158.49
   User dwheeler
-  IdentityFile ~/.ssh/heart_of_gold
   RemoteForward 52698 localhost:52698
-
