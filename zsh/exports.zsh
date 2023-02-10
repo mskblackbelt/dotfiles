@@ -29,6 +29,7 @@ path=(
   ~/.local/bin(N) 
   ~/bin(N) 
   ~/.cask/bin(N) 
+  ~/.cargo/bin(N)
   ~/bin/anaconda/bin(N)
   $path
 )
