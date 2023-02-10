@@ -2,13 +2,10 @@
 
 tap "homebrew/bundle"
 tap "homebrew/cask"
-# tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
-# tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "railwaycat/emacsmacport"
-tap "vitorgalvao/tiny-scripts"
 
 # Brews
 
@@ -108,7 +105,7 @@ brew "rcm"
 # Safe, concurrent, practical language
 brew "rust"
 # Rust toolchain installer
-brew "rustup-init"
+# brew "rustup-init"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -135,8 +132,6 @@ brew "zsh-completions"
 brew "zsh-lovers"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Quickly repair outdated/broken Casks from homebrew-cask
-brew "vitorgalvao/tiny-scripts/cask-repair"
 
 
 ## Casks
@@ -145,13 +140,12 @@ brew "vitorgalvao/tiny-scripts/cask-repair"
 cask "1password"
 # Apple TV Aerial screensaver
 cask "aerial"
+# Integrated CAD, CAM, CAE, and PCB software
 cask "autodesk-fusion360"
 # Molecule editor and visualizer
 cask "avogadro"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Text, code, and markup editor
-# cask "bbedit"
 # Edit and manage bibliographies
 cask "bibdesk"
 # Reference management and bibliography software
@@ -160,14 +154,12 @@ cask "bookends"
 cask "boop"
 # Web browser focusing on privacy
 cask "brave-browser"
-# E-books management software
-cask "calibre"
 # Calculator software
 cask "chalk"
 # Tool to list all active shortcuts of the current application
 cask "cheatsheet"
 # Service provider for Aspell spell checker
-cask "cocoaspell"
+# cask "cocoaspell"
 cask "colorpicker-developer"
 cask "colorpicker-propicker"
 # Tool to help searching the web more efficiently
@@ -180,32 +172,22 @@ cask "discord"
 cask "emacs-mac-spacemacs-icon"
 # Web browser
 cask "firefox"
-cask "font-fira-code"
-cask "font-fira-code-nerd-font"
-cask "font-inconsolata"
-# Typeface made for developers
-cask "font-jetbrains-mono"
-cask "font-liberation"
-cask "font-open-sans"
-# Unicode fonts for scientific, technical, and mathematical texts
-cask "font-stix"
 # Web browser
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Add code completions to all your code editors
-cask "kite"
 # Productivity tool
 cask "launchbar"
 # Full TeX Live distribution with GUI applications
-cask "mactex"
+# cask "mactex"
 # Open-source Dropbox client
 cask "maestral"
-cask "meshmixer"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Free and open-source RSS reader
+cask "netnewswire"
 # Scheduling application focusing on organization
 cask "omnifocus"
 # Visual communication software
@@ -214,9 +196,6 @@ cask "omnigraffle"
 cask "omnioutliner"
 # Graphical user interface for the 'defaults' command
 cask "prefs-editor"
-cask "qlcommonmark"
-cask "qlstephen"
-cask "quicklook-csv"
 # Collection of apps available by subscription
 cask "setapp"
 # PDF reader and note-taking application
@@ -234,37 +213,56 @@ cask "ultimaker-cura"
 # Video communication and virtual meeting platform
 cask "zoom"
 
+# Fonts
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-inconsolata"
+# Typeface made for developers
+cask "font-jetbrains-mono"
+cask "font-liberation"
+cask "font-open-sans"
+# Unicode fonts for scientific, technical, and mathematical texts
+cask "font-stix"
+
+# QuickLook plugins
+cask "qlcommonmark"
+cask "syntax-highlight"
+cask "quicklook-csv"
+
 ## MAS apps
 
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
+mas "Affinity Designer 2", id: 1616831348
+mas "Affinity Photo 2", id: 1616822987
+mas "Affinity Designer 2", id: 1606941598
 mas "Airmail", id: 918858936
-# mas "Blogo", id: 902111700
-mas "Book Track", id: 1496543317
 mas "Calca", id: 635758264
 mas "DaisyDisk", id: 411643860
-mas "Darkroom", id: 953286746
 mas "Drafts", id: 1435957248
 mas "Hush", id: 1544743900
 mas "Irvue", id: 1039633667
-mas "Keynote", id: 409183694
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
-mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Microsoft Word", id: 462054704
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Pins", id: 1547106997
 mas "Pixelmator Pro", id: 1289583905
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
-mas "Twitterrific", id: 1289378661
 mas "URL Linker", id: 1289119450
+mas "Baking Soda", id: 1601151613
 mas "Vinegar", id: 1591303229
-mas "Xcode", id: 497799835
+mas "Tot", id: 1491071483
+# mas "Xcode", id: 497799835
+
+# Apple iWork apps
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+
+# Microsoft Office apps
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft OneNote", id: 784801555
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
 
 ## Setapp
 # Menu bar icon organizer
@@ -285,20 +283,24 @@ mas "Xcode", id: 497799835
 # cask "banktivity"
 # Video game digital distribution service
 # cask "steam"
+# E-books management software
+# cask "calibre"
 
 # MAS
 # mas "GarageBand", id: 682658836
 # mas "iMovie", id: 408981434
 # mas "HP Easy Scan", id: 967004861
+# mas "Darkroom", id: 953286746
+# mas "Book Track", id: 1496543317
 
 ## Work
 
 # Casks
 
 # Collection of apps and services for photography, design, video, web, and UX
-cask "adobe-creative-cloud"
+# cask "adobe-creative-cloud"
 # Open-source image processing package
-cask "fiji"
+# cask "fiji"
 # 3D printing setup, management, and monitoring
 # cask "preform"
 # Scientific Python IDE
