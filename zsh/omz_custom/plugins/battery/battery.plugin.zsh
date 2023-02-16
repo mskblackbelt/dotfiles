@@ -75,7 +75,7 @@ if [[ "IS_MAC" -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
   }
   
   function battery_is_charging() {
-    [[ $(ioreg -rc "AppleSmartBattery"| grep '^.*"IsCharging"\ =\ ' | sed -e 's/^.*"IsCharging"\ =\ //') == "Yes" ]]
+    [[ $(ioreg -rc "AppleSmartBattery"| grep '^.*"IsCharging" = ' | sed -e 's/^.*"IsCharging"\ =\ //') == "Yes" ]]
   }
   
   function battery_charged() {
