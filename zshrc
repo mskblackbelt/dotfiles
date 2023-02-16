@@ -33,7 +33,8 @@ functions,\
 zsh_hooks,\
 private,\
 local,\
-prompt\
+prompt,\
+iterm2_shell_integration\
 }.zsh; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
