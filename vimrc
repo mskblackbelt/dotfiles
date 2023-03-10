@@ -100,8 +100,8 @@ set esckeys
 " Backspace key behaves as expected
 set backspace=indent,eol,start
 " Set Leader key up for plugins
-nnoremap <SPACE> <Nop>
-let mapleader=" "
+" nnoremap <SPACE> <Nop>
+let mapleader=","
 
 " Centralize backups, swapfiles, and undo history
 if !isdirectory($HOME . "/.vim/backup")
