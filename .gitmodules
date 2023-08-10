@@ -1,14 +1,15 @@
-[submodule ".emacs.d"]
-	path = emacs.d
-	url = https://github.com/syl20bnr/spacemacs
-[submodule ".zsh/.oh-my-zsh"]
-	path = zsh/.oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "bash/.bash_it"]
-	path = bash/.bash_it
-	url = https://github.com/Bash-it/bash-it.git
 [submodule "zsh/oh-my-zsh"]
+	branch = master
+	update = rebase
 	path = zsh/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "emacs.d"]
 	branch = develop
+	update = rebase
+	path = emacs.d
+	url = https://github.com/syl20bnr/spacemacs
+[submodule "bash_it"]
+	path = bash_it
+	url = https://github.com/Bash-it/bash-it.git
+	branch = master
+	update = rebase
