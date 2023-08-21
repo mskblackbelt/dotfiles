@@ -16,30 +16,29 @@ elif
 fi
 
 # Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in $ZDOTDIR/{\
-colors,\
-exports,\
-checks,\
-oh-my-zsh_opts,\
-setopt,\
-pyopts,\
-perlopts,\
-completion,\
-aliases,\
-bindkeys,\
-functions,\
-zsh_hooks,\
-private,\
-local,\
-prompt,\
-iterm2_shell_integration\
-}.zsh; do
+load_files=(
+  colors
+  exports
+  checks
+  oh-my-zsh_opts
+  setopt
+  pyopts
+  perlopts
+  completion
+  aliases
+  bindkeys
+  functions
+  zsh_hooks
+  private
+  local
+  prompt
+  iterm2_shell_integration
+)
+for file in $load_files; do
+  file="$ZDOTDIR/$file.zsh"
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+  unset file;
 done;
-unset file;
-
 
 #Autoload modules
 module_path=($module_path)
@@ -51,7 +50,6 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 # Clean duplicates from $PATH
 typeset -U path # -U for unique
 path=($path)
-# export $PATH
 
 # Enable ZSH syntax highlighting (must be loaded at the end of .zshrc)
 if [[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
