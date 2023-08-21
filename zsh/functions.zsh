@@ -88,7 +88,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 	# Repair the "Open with…" menu in the Finder
 	function fixopenwith () {
     /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/\
-      LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user; 
+LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user; 
     killall Finder; 
     echo 'Open With has been rebuilt, Finder will relaunch'
   }
