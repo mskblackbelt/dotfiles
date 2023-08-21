@@ -38,7 +38,7 @@ path=(
 )
 
 # Helper function for checking if a binary exists and is executable
-function _command_exists() {
+function _command_executable() {
   local _binary="$1" _full_path
 
   # Checks if the binary is available.
@@ -55,6 +55,9 @@ function _command_exists() {
   fi
 }
 
+function _command_exists() {
+  _command_executable "$1" > /dev/null 2>&1
+}
 
 # Export pagers and editors
 export LESS='--ignore-case --raw-control-chars'
