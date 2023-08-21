@@ -8,18 +8,12 @@ if [[ $IS_MAC -eq 1 ]]; then
 	if [[ -x /opt/homebrew/bin/brew ]]; then
     export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix);
     export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
-    # export HOMEBREW_REPOSITORY=$HOMEBREW_PREFIX;
     export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
-    FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
     export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
-    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH;
-  # 
-  #   autoload -Uz compinit
-  #   compinit
   fi
   
-  # Add linuxbrew directory if present
+# Add linuxbrew directory if present
 elif [[ -d $HOME/.linuxbrew ]]; then
    eval $($HOME/.linuxbrew/bin/brew shellenv);
    export HOMEBREW_PREFIX=$(brew --prefix);
@@ -43,34 +37,45 @@ path=(
   $path
 )
 
-# Helper function for checking if a binary exists
-function exists { which $1 &> /dev/null }
+# Helper function for checking if a binary exists and is executable
+function _command_exists() {
+  local _binary="$1" _full_path
 
-# Add rust binaries to the path
-if [[ -f $HOME/.cargo/env ]]; then
-  source "$HOME/.cargo/env"
-fi
+  # Checks if the binary is available.
+  _full_path=$( whence "$_binary" )
+  commandStatus=$?
+  if [ $commandStatus -ne 0 ]; then
+    # It is not the case, if NOT in 'BSC_MODE_CHECK_CONFIG' mode, it is a fatal error.
+    echo "Unable to find binary '$_binary'." 
+  # Checks if the binary has "execute" permission.
+  elif [ -x "$_full_path" ]; then
+    return 0 
+  else
+    echo "Binary '$_binary' found but it does not have *execute* permission."
+  fi
+}
+
 
 # Export pagers and editors
 export LESS='--ignore-case --raw-control-chars'
-if hash most 2>/dev/null; then 
+if _command_exists "most"; then 
 	export PAGER='most'
 	export MANPAGER='/usr/bin/less -X'
 fi
-if hash bat 2>/dev/null; then 
+if _command_exists bat; then 
 	export BAT_PAGER='/usr/bin/less' 
 	export BAT_THEME="TwoDark"
 fi
 
-if hash nova 2> /dev/null; then
+if _command_exists nova; then
   export EDITOR='nova -w'
   export TEXEDIT='nova -w -l %d "%s"'
   export GIT_EDITOR="nova  -w -l 1"
-elif hash mate 2> /dev/null; then
+elif _command_exists mate; then
   export EDITOR='mate -w'
   export TEXEDIT='mate -w -l %d "%s"'
   export GIT_EDITOR="mate --name 'Git Commit Message' -w -l 1"
-elif hash code 2> /dev/null; then
+elif _command_exists code; then
   export EDITOR='code -w'
 else
   export EDITOR='vi'
