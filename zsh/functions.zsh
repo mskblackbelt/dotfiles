@@ -28,10 +28,12 @@ if _command_exists ifconfig; then
   function ips () {
     ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' # Machine IPs
     }
-if _command_exists ip; then
+elif _command_exists ip; then
   function ips () {
     ip address show | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1' # Machine IPs
-  }
+    }
+fi
+
 function myip () {
   curl ipinfo.io/ip # External IP
   }
