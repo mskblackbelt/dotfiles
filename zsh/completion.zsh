@@ -1,8 +1,8 @@
 # Enable ZSH completion
 if [[ $HAS_BREW -eq 1 ]]; then
   fpath=(
-    $(brew --prefix)/share/zsh/site-functions(N) 
-    $(brew --prefix)/share/zsh-completions(N)
+    $HOMEBREW_PREFIX/share/zsh/site-functions(N) 
+    $HOMEBREW_PREFIX/share/zsh-completions(N)
     $fpath
   )
 fi

@@ -15,6 +15,7 @@ plugins=(
   battery 
   colored-man-pages 
   git
+  safe-paste
   virtualenv
 )
 
@@ -27,7 +28,7 @@ if [[ $IS_LINUX -eq 1 ]]; then
   plugins=($plugins extract)
   
   if [[ $HAS_APT -eq 1 ]]; then
-    plugins=($plugins debian)
+    plugins=($plugins debian ubuntu)
   fi
 
   if [[ $HAS_YUM -eq 1 ]]; then
@@ -37,7 +38,7 @@ fi
 
 
 
-if [[ -x $(which brew 2> /dev/null) ]]; then
+if _command_exists brew; then
   plugins=($plugins brew)
 fi
 

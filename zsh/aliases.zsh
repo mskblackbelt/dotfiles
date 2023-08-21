@@ -5,7 +5,7 @@ alias ohmyzsh="$EDITOR $ZSH"
 # Enable sudo with aliases
 alias sudo='sudo '  
 # Run previous command with root privileges 
-if hash thefuck 2>/dev/null; then
+if _command_exists thefuck; then
   eval "$(thefuck --alias)"
 else
   alias fuck='sudo $(fc -ln -1)'
@@ -20,18 +20,18 @@ alias calc='noglob __calc_plugin'
 # Run hombrew maintenance functions
 # Similar to 'bubu' alias in oh-my-zsh, but added brew doctor
 if [[ $HAS_BREW -eq 1 ]]; then
-  alias brewmaint='brew update && brew outdated && brew upgrade && brew doctor'
+  alias brewmaint='brew update && brew outdated && brew upgrade && brew cleanup && brew doctor'
 fi
   
 
 # UNIX tool replacements
 alias more="less"
 
-if hash exa 2>/dev/null; then
+if _command_exists exa; then
   alias ls="exa"
   alias la="exa --all --long --group --header"
 fi
-if hash rg 2>/dev/null; then
+if _command_exists rg; then
   alias grep="rg --color=auto"
 else
   alias grep='grep --color=auto'
@@ -39,39 +39,39 @@ else
   alias egrep='egrep --color=auto'
 fi
 
-if hash most 2>/dev/null; then
+if _command_exists most; then
 	alias less="most"
 fi
-if hash batcat 2>/dev/null; then 
+if _command_exists batcat; then 
 	alias bat="batcat"
 fi
-if hash bat 2>/dev/null; then 
+if _command_exists bat; then 
 	alias cat="bat --terminal-width=-2"
 fi
-if hash dust 2>/dev/null; then 
+if _command_exists dust; then 
 	alias du="dust"
 fi
-if hash duf 2>/dev/null; then 
+if _command_exists duf; then 
 	alias df="duf"
 fi
-if hash fd 2>/dev/null; then 
+if _command_exists fd; then 
 	alias find="fd"
 fi
-if hash gping 2>/dev/null; then
+if _command_exists gping; then
   alias ping="gping"
-elif hash prettyping 2>/dev/null; then 
+elif _command_exists prettyping; then 
 	alias ping="prettyping"
 fi
-if hash tldr 2>/dev/null; then 
+if _command_exists tldr; then 
 	alias help="tldr"
 fi
-if hash zoxide 2>/dev/null; then
+if _command_exists zoxide; then
   eval "$(zoxide init zsh)"
 fi
 
 # Miscellaneous aliases
 
-if hash R 2>/dev/null; then
+if _command_exists R; then
 	alias rstat="R"
 fi
 
@@ -105,8 +105,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 	# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 	# (useful when executing time-consuming commands)
 	alias badge="tput bel"
-
-	
 fi
 
 # Intuitive map function

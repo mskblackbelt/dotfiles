@@ -5,7 +5,7 @@ export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
 
 ### Functionality also provided by OMZ plugin `pyenv` 
 # Auto-activate and enable pyenv and shims
-if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
+if _command_exists pyenv; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init - zsh)"
   
@@ -13,7 +13,7 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
   # export PATH="$PYENV_ROOT/bin:$PATH"
 
   # Enable pyenv-virtualenv
-  if (( $+commands[pyenv-virtualenv-init] )); then
+  if _command_exists pyenv-virtualenv-init; then
     eval "$(pyenv virtualenv-init - zsh)"
   fi
   
@@ -27,7 +27,7 @@ if [[ $(which -a pyenv | grep -c 'bin/pyenv' 2> /dev/null) -gt 0 ]]; then
       echo "pyenv:$(pyenv version-name)"
   }
 
-elif [[ $(which -a conda | grep -c 'bin/conda' 2> /dev/null) -gt 0 ]]; then
+elif _command_exists conda; then
   function pyenv_prompt_info() {
     echo "conda:$(python -V 2>&1 | cut -f 2 -d ' ')"
   }
