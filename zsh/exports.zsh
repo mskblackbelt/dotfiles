@@ -5,15 +5,24 @@ if [[ $IS_MAC -eq 1 ]]; then
 	eval `/usr/libexec/path_helper -s`
 
   # Add homebrew binaries to the path
-	export HOMEBREW_PREFIX="/opt/homebrew";
-	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-	export HOMEBREW_REPOSITORY="/opt/homebrew";
-	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+	if [[ -x /opt/homebrew/bin/brew ]]; then
+    export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix);
+    export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
+    # export HOMEBREW_REPOSITORY=$HOMEBREW_PREFIX;
+    export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
+    FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
+    export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
+    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH;
+  # 
+  #   autoload -Uz compinit
+  #   compinit
+  fi
+  
   # Add linuxbrew directory if present
 elif [[ -d $HOME/.linuxbrew ]]; then
-   eval $($HOME/.linuxbrew/bin/brew shellenv)
+   eval $($HOME/.linuxbrew/bin/brew shellenv);
+   export HOMEBREW_PREFIX=$(brew --prefix);
 fi
 
 # Set XDG variables if not present
