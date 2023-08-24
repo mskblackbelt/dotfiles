@@ -47,11 +47,13 @@ function _command_executable() {
   if [ $commandStatus -ne 0 ]; then
     # It is not the case, if NOT in 'BSC_MODE_CHECK_CONFIG' mode, it is a fatal error.
     echo "Unable to find binary '$_binary'." 
+    return 201
   # Checks if the binary has "execute" permission.
   elif [ -x "$_full_path" ]; then
     return 0 
   else
     echo "Binary '$_binary' found but it does not have *execute* permission."
+    return 202
   fi
 }
 
