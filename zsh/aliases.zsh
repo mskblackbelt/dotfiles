@@ -44,8 +44,8 @@ if _command_exists most; then
 fi
 if _command_exists batcat; then 
 	alias bat="batcat"
-fi
-if _command_exists bat; then 
+	alias cat="bat --terminal-width=-2"
+elif _command_exists bat; then 
 	alias cat="bat --terminal-width=-2"
 fi
 if _command_exists dust; then 
