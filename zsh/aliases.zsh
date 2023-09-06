@@ -27,9 +27,14 @@ fi
 # UNIX tool replacements
 alias more="less"
 
-if _command_exists exa; then
+if _command_exists eza; then
+  alias ls="eza"
+  alias la="eza --all --long --group --header"
+elif _command_exists exa; then
   alias ls="exa"
   alias la="exa --all --long --group --header"
+fi
+
 fi
 if _command_exists rg; then
   alias grep="rg --color=auto"
@@ -60,7 +65,7 @@ fi
 if _command_exists gping; then
   alias ping="gping"
 elif _command_exists prettyping; then 
-	alias ping="prettyping"
+  alias ping="prettyping"
 fi
 if _command_exists tldr; then 
 	alias help="tldr"
@@ -80,9 +85,16 @@ fi
 # -------------------------------------------------------------------
 hash -d dl=~/Downloads
 hash -d doc=~/Documents
-hash -d dev=~/Projects
 hash -d dt=~/Desktop
-hash -d icloud=~/iCloud\ Drive
+if [[ -d $HOME/iCloud\ Drive ]]; then 
+  hash -d icloud=~/iCloud\ Drive
+fi
+if [[ -d $HOME/Projects ]]; then
+  hash -d dev=~/Projects
+elif [[ -d $HOME/Developer ]]; then
+  hash -d dev=~/Developer
+fi
+
 
 # -------------------------------------------------------------------
 # Mac only
