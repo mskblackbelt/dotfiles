@@ -35,7 +35,6 @@ elif _command_exists exa; then
   alias la="exa --all --long --group --header"
 fi
 
-fi
 if _command_exists rg; then
   alias grep="rg --color=auto"
 else
