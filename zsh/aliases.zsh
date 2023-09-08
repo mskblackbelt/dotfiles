@@ -88,10 +88,10 @@ hash -d dt=~/Desktop
 if [[ -d $HOME/iCloud\ Drive ]]; then 
   hash -d icloud=~/iCloud\ Drive
 fi
-if [[ -d $HOME/Projects ]]; then
-  hash -d dev=~/Projects
-elif [[ -d $HOME/Developer ]]; then
+if [[ -d $HOME/Developer ]]; then
   hash -d dev=~/Developer
+elif [[ -d $HOME/Projects ]]; then
+  hash -d dev=~/Projects
 fi
 
 
