@@ -2,7 +2,7 @@ if [[ $IS_MAC -eq 1 ]]; then
   # path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
   # The function is run as part of /etc/zshenv by default. 
 	# unset PATH
-	# eval `/usr/libexec/path_helper -s`
+  # eval `/usr/libexec/path_helper -s`
 
   # Add homebrew binaries to the path
 	if [[ -x /opt/homebrew/bin/brew ]]; then
@@ -34,8 +34,10 @@ path=(
   ~/.cask/bin(N) 
   ~/.cargo/bin(N)
   ~/bin/anaconda/bin(N)
+  /usr/local/bin
   $path
 )
+typeset -U path # U for Unique, like a set; (N) == only if exists
 
 # Helper function for checking if a binary exists and is executable
 function _command_executable() {
