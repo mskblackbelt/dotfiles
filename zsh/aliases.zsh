@@ -29,10 +29,7 @@ alias more="less"
 
 if _command_exists eza; then
   alias ls="eza"
-  alias la="eza --all --long --group --header --git"
-elif _command_exists exa; then
-  alias ls="exa"
-  alias la="exa --all --long --group --header"
+  alias la="eza --all --long --group --header --git --icons"
 fi
 
 if _command_exists rg; then
