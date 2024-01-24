@@ -14,10 +14,6 @@ tap "railwaycat/emacsmacport"
 brew "bat"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
-# New way to see and navigate directory trees
-brew "broot"
-# Make choices on the command-line
-brew "choose"
 # GNU File, Shell, and Text utilities
 # brew "coreutils"
 # Power of curl, ease of use of httpie
@@ -27,15 +23,13 @@ brew "git-delta"
 # More intuitive version of du in rust
 brew "dust"
 # Modern replacement for 'ls'
-brew "exa"
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Improved top (interactive process viewer)
 brew "htop"
-# Clone of ls with colorful output, file type icons, and more
-brew "lsd"
 # Modern replacement for ps written by Rust
 brew "procs"
 # Search tool like grep and The Silver Searcher
@@ -112,14 +106,10 @@ brew "smartmontools"
 brew "tectonic"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# Code-search similar to ack
-brew "the_silver_searcher"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # CLI tool that moves files or folder to the trash
 brew "trash"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
 # Internet file retriever
@@ -131,7 +121,7 @@ brew "zsh-completions"
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
 # Fish shell like syntax highlighting for zsh
-brew "zsh-syntax-highlighting"
+brew "zsh-fast-syntax-highlighting"
 
 
 ## Casks
