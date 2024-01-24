@@ -65,12 +65,12 @@ function _command_exists() {
 
 # Export pagers and editors
 export LESS='--ignore-case --raw-control-chars'
-if _command_exists "most"; then 
-	export PAGER='most'
-	export MANPAGER='/usr/bin/less -X'
-fi
+# if _command_exists "most"; then 
+# 	export PAGER='most'
+# 	export MANPAGER='/usr/bin/less -X'
+# fi
 if _command_exists bat; then 
-	export BAT_PAGER='/usr/bin/less' 
+  export BAT_PAGER='/usr/bin/less' 
 	export BAT_THEME="TwoDark"
 fi
 
