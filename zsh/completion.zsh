@@ -9,6 +9,7 @@ fi
 
 fpath=(
   /usr/local/share/zsh-completions(N)
+  ~/.local/zsh-completions
   $fpath
 )
 
@@ -26,7 +27,7 @@ zstyle ':vcs_info:*' enable git hg #svn cvs
 
 # Enable completion caching, use rehash to clear
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+zstyle ':completion::complete:*' cache-path ~/.local/cache/$HOST
 
 # Fallback to built in ls colors
 zstyle ':completion:*' list-colors ''
