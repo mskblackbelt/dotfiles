@@ -54,6 +54,8 @@ path=($path)
 # Enable ZSH syntax highlighting (must be loaded at the end of .zshrc)
 if [[ -e $HOMEBREW_PREFIX/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
   source $HOMEBREW_PREFIX/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+  ## Need this line because of bug in whatis command called by highlighter
+  function whatis() { if [[ -v THEFD ]]; then :; else command whatis "$@"; fi; }
 elif [[ -e $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
