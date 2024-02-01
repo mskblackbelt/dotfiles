@@ -22,6 +22,10 @@ if [[ -d $HOME/.linuxbrew ]]; then
   eval $($HOME/.linuxbrew/bin/brew shellenv)
 fi
 
+if [[ -d /opt/homebrew ]]; then
+  export PATH=/opt/homebrew/bin:$PATH
+fi 
+
 export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin"
 
 # Set up Python environments
