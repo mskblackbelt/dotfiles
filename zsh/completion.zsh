@@ -9,11 +9,13 @@ fi
 
 fpath=(
   /usr/local/share/zsh-completions(N)
-  ~/.local/zsh-completions
+  ~/.local/zsh-completions(N)
   $fpath
 )
 
-autoload -U compinit && compinit
+typeset -U fpath
+
+autoload -Uz compinit && compinit
 zmodload -i zsh/complist
 
 
@@ -79,6 +81,3 @@ zstyle ':filter-select' max-lines -10 # use $LINES - 10 for filter-select
 zstyle ':filter-select' rotate-list yes # enable rotation for filter-select
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 zstyle ':filter-select' extended-search no # see below
-
-# Use ls completions with eza
-+compdef _ls eza
