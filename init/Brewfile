@@ -15,7 +15,7 @@ brew "bat"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
 # GNU File, Shell, and Text utilities
-# brew "coreutils"
+brew "coreutils"
 # Power of curl, ease of use of httpie
 brew "curlie"
 # Syntax-highlighting pager for git and diff output
@@ -39,7 +39,7 @@ brew "sd"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Cross-platform Rust rewrite of the GNU coreutils
-brew "uutils-coreutils"
+# brew "uutils-coreutils"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 
@@ -58,10 +58,8 @@ brew "python"
 # brew "gnutls"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# Collection of GNU find, xargs, and locate
-# brew "findutils"
 # Interpreter for PostScript and PDF
-# brew "ghostscript"
+brew "ghostscript"
 # Command-line utility for uploading Gists
 brew "gist"
 # Distributed revision control system
@@ -71,15 +69,13 @@ brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Compare and mark up LaTeX file differences
-brew "latexdiff"
-# Implementation of the file(1) command
-brew "libmagic"
+# brew "latexdiff"
 # GUI for vim, made for macOS
 brew "macvim"
 # Mac App Store command-line interface
 brew "mas"
 # Powerful paging program
-brew "most"
+# brew "most"
 # Turn marked-up plain text into well-formatted documents
 brew "multimarkdown"
 # Swiss-army knife of markup format conversion
@@ -118,8 +114,6 @@ brew "wget"
 brew "zsh"
 # Additional completion definitions for zsh
 brew "zsh-completions"
-# Tips, tricks, and examples for zsh
-brew "zsh-lovers"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-fast-syntax-highlighting"
 
@@ -131,7 +125,7 @@ cask "1password"
 # Apple TV Aerial screensaver
 cask "aerial"
 # Integrated CAD, CAM, CAE, and PCB software
-cask "autodesk-fusion360"
+cask "autodesk-fusion"
 # Molecule editor and visualizer
 cask "avogadro"
 # Tool to flash OS images to SD cards & USB drives
@@ -146,10 +140,7 @@ cask "boop"
 cask "brave-browser"
 # Calculator software
 cask "chalk"
-# Tool to list all active shortcuts of the current application
-cask "cheatsheet"
-# Service provider for Aspell spell checker
-# cask "cocoaspell"
+# Plugins for color picker utility
 cask "colorpicker-developer"
 cask "colorpicker-propicker"
 # Tool to help searching the web more efficiently
@@ -157,7 +148,7 @@ cask "devonagent"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
 # Voice and text chat software
-cask "discord"
+# cask "discord"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac-spacemacs-icon"
 # Web browser
@@ -178,14 +169,22 @@ cask "maestral"
 cask "microsoft-teams"
 # Free and open-source RSS reader
 cask "netnewswire"
+# Native code editor
+cask "nova"
 # Scheduling application focusing on organization
 cask "omnifocus"
 # Visual communication software
 cask "omnigraffle"
 # Note taking applciation and information organizer
 cask "omnioutliner"
+# Cloud storage client
+# cask "onedrive"
+# WebKit based web browser
+cask "orion"
 # Graphical user interface for the 'defaults' command
 cask "prefs-editor"
+# All-in-one bookmark manager
+cask "raindropio"
 # Collection of apps available by subscription
 cask "setapp"
 # PDF reader and note-taking application
@@ -193,9 +192,9 @@ cask "skim"
 # Backup, recovery and cloning software
 cask "superduper"
 # Graphical user interface for TeX Live Manager
-cask "tex-live-utility"
+# cask "tex-live-utility"
 # General-purpose text editor
-cask "textmate"
+# cask "textmate"
 # Open-source BitTorrent client
 cask "transmission"
 # 3D printer and slicing GUI
@@ -213,6 +212,8 @@ cask "font-liberation"
 cask "font-open-sans"
 # Unicode fonts for scientific, technical, and mathematical texts
 cask "font-stix"
+cask "font-stix-two-text"
+cask "font-stix-two-math"
 
 # QuickLook plugins
 cask "qlcommonmark"
@@ -228,6 +229,7 @@ mas "Affinity Photo 2", id: 1616822987
 mas "Affinity Designer 2", id: 1606941598
 mas "Airmail", id: 918858936
 mas "Calca", id: 635758264
+mas "Color Picker", id: 1545870783
 mas "DaisyDisk", id: 411643860
 mas "Drafts", id: 1435957248
 mas "Hush", id: 1544743900
@@ -249,8 +251,8 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 
 # Microsoft Office apps
+mas "OneDrive", id: 823766827
 mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 
@@ -270,7 +272,7 @@ mas "Microsoft Word", id: 462054704
 
 # Casks
 # App to manage bank accounts in one place
-# cask "banktivity"
+# cask "copilot"
 # Video game digital distribution service
 # cask "steam"
 # E-books management software
@@ -297,5 +299,6 @@ mas "Microsoft Word", id: 462054704
 # cask "spyder"
 
 # MAS apps
-# mas "OneDrive", id: 823766827
 # mas "Microsoft Outlook", id: 985367838
+# mas "Microsoft OneNote", id: 784801555
+
