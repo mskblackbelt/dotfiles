@@ -4,10 +4,10 @@
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`) Use [`rcm`](http://thoughtbot.github.io/rcm/rcm.7.html) to link the files to your home directory.
+You can clone the repository wherever you want. (I like to keep it in `~/Developer/dotfiles`) Use [`rcm`](http://thoughtbot.github.io/rcm/rcm.7.html) to link the files to your home directory.
 
 ```bash
-env RCRC="~/Projects/dotfiles/rcrc" rcup
+env RCRC="~/Developer/dotfiles/rcrc" rcup
 ```
 
 To install everything automatically (including [Homebrew](https://brew.sh, `rcm`, `zsh`, and `git`), `cd` into your local `dotfiles` repository and then:
