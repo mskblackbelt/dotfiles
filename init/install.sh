@@ -16,6 +16,9 @@ if ! which brew > /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi;
 
+# Add Homebrew to path
+export PATH=/opt/homebrew/bin:$PATH
+
 # Update Homebrew
 brew update
 
