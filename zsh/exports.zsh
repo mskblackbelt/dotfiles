@@ -34,7 +34,12 @@ path=(
   ~/.cask/bin(N) 
   ~/.cargo/bin(N)
   ~/bin/anaconda/bin(N)
-  /usr/local/bin
+  /usr/local/bin(N)
+  /usr/bin
+  /bin
+  /usr/local/sbin(N)
+  /usr/sbin
+  /sbin
   $path
 )
 typeset -U path # U for Unique, like a set; (N) == only if exists
