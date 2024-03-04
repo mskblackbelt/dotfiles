@@ -40,6 +40,7 @@ path=(
   /usr/local/sbin(N)
   /usr/sbin
   /sbin
+  /Library/TeX/texbin(N)
   $path
 )
 typeset -U path # U for Unique, like a set; (N) == only if exists

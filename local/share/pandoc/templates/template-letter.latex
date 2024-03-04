@@ -11,6 +11,23 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
+% \usepackage{xparse}
+% % Get environmental variables with \getenv
+% \ExplSyntaxOn
+% \NewDocumentCommand{\getenv}{om}
+%  {
+%   \sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 } { } \l_tmpa_tl
+%   \tl_trim_spaces:N \l_tmpa_tl
+%   \IfNoValueTF { #1 }
+%    {
+%     \tl_use:N \l_tmpa_tl
+%    }
+%    {
+%     \tl_set_eq:NN #1 \l_tmpa_tl
+%    }
+%  }
+% \ExplSyntaxOff
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -133,6 +150,8 @@ $if(graphics)$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% % Set graphics path to current + XDG_DATA_HOME
+% \graphicspath{{.}{/Users/mskblackbelt/.local/share/images/}}
 $endif$
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
