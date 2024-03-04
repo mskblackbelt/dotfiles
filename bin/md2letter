@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 #
 # Script to convert selected markdown file to a PDF letter
-# set -euf
 set -euo pipefail
 IFS=$'\n\t'
 shopt -s nullglob
 
-
 filename=$(basename "$1" .md)
-/opt/homebrew/bin/pandoc -f markdown+link_attributes --template="/Users/mskblackbelt/.pandoc/template-letter.latex" --pdf-engine=tectonic "$1" \
-	-o "$filename".pdf
+/opt/homebrew/bin/pandoc "$1" \
+	--from=markdown+link_attributes \
+	--template="template-letter.latex" \
+	--pdf-engine=tectonic \
+	--output="$filename".pdf
 # If file conversion results in an error (RESULT != 0), report the file and move on.
 if [ $? -eq 0 ]; then
 	true
 else
 	echo "Could not convert $file"
 fi
-

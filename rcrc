@@ -1,4 +1,4 @@
 DOTFILES_DIRS="$HOME/Developer/dotfiles"
 EXCLUDES="LICENSE* README.md *install*.sh Brewfile init"
-SYMLINK_DIRS="bash_it emacs.d zsh bin local/share/texmf local/share/pandoc"
+SYMLINK_DIRS="bash_it emacs.d zsh bin local/share/*"
 UNDOTTED="bin"
