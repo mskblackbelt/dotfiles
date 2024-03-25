@@ -75,7 +75,7 @@ else
 	alias help="man"
 fi
 if _command_exists zoxide; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 # Miscellaneous aliases
