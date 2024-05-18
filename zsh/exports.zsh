@@ -8,7 +8,7 @@ if [[ $IS_MAC -eq 1 ]]; then
 	if [[ -x /opt/homebrew/bin/brew ]]; then
     export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix);
     export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
-    export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
+    # export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
     export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
   fi
@@ -34,9 +34,11 @@ path=(
   ~/.cask/bin(N) 
   ~/.cargo/bin(N)
   ~/bin/anaconda/bin(N)
+  /opt/homebrew/bin(N)
   /usr/local/bin(N)
   /usr/bin
   /bin
+  /opt/homebrew/sbin(N)
   /usr/local/sbin(N)
   /usr/sbin
   /sbin
