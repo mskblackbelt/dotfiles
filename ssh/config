@@ -1,12 +1,6 @@
 Host * 
   IdentityAgent "~/.1password/agent.sock"
 
-Host candyshop
-  HostName REDACTED-IP
-  User REDACTED
-  Port 22
-  RequestTTY yes
-  
 Host sugarcube
   HostName REDACTED-IP
   User REDACTED
