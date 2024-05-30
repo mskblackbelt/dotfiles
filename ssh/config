@@ -1,12 +1,6 @@
 Host * 
   IdentityAgent "~/.1password/agent.sock"
 
-Host candyshop
-  HostName 146.95.158.42
-  User dusti
-  Port 22
-  RequestTTY yes
-  
 Host sugarcube
   HostName 146.95.158.49
   User dwheeler
