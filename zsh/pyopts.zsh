@@ -23,20 +23,28 @@ if _command_exists pyenv; then
   # Needed because `git` calls for `gettext.sh`, fails if pyenv has a shim for that.
   export GIT_INTERNAL_GETTEXT_TEST_FALLBACKS=1
 
-  function pyenv_prompt_info() {
+  function python_prompt_info() {
       echo "pyenv:$(pyenv version-name)"
   }
 
+### UV setup
+
+elif _command_exists uv; then  
+  function python_prompt_info() {
+    echo "uv:$(python -V 2>&1 | cut -f 2 -d ' ')"
+  }
+
 elif _command_exists conda; then
-  function pyenv_prompt_info() {
+  function python_prompt_info() {
     echo "conda:$(python -V 2>&1 | cut -f 2 -d ' ')"
   }
 else
-    # fallback to system python
-    function pyenv_prompt_info() {
-        echo "system($(python -V 2>&1 | cut -f 2 -d ' '))"
-    }
+  # fallback to system python
+  function python_prompt_info() {
+      echo "system($(python -V 2>&1 | cut -f 2 -d ' '))"
+  }
 fi
+
 
 
 function pip_upgrade () {
@@ -45,3 +53,5 @@ function pip_upgrade () {
   
 alias jpnb="jupyter notebook"
 alias jplab="jupyter lab"
+
+
