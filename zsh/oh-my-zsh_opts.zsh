@@ -42,4 +42,8 @@ if _command_exists brew; then
   plugins=($plugins brew)
 fi
 
+if _command_exists uv; then
+  plugins=($plugins uv)
+fi
+
 source $ZSH/oh-my-zsh.sh
