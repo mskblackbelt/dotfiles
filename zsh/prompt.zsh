@@ -14,7 +14,7 @@ function precmd {
   PR_FILLBAR=""
   PR_PWDLEN=""
   
-  TOP_BAR_LENGTH=" $(pyenv_prompt_info) $(battery_level_gauge)\
+  TOP_BAR_LENGTH=" $(python_prompt_info) $(battery_level_gauge)\
     $(battery_time_remaining)"
   # Calculation for length of top prompt (from http://stackoverflow.com/q/10564314/2216427)
   local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
@@ -122,7 +122,7 @@ function setprompt {
   ###
   # Finally, the prompt.
   PROMPT='%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} \
-$(pyenv_prompt_info) \
+$(python_prompt_info) \
 %{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}\
 $PR_HBAR${(e)PR_FILLBAR}%{$PR_SHIFT_OUT%}\
 $(battery_level_gauge)$(battery_time_remaining)\
