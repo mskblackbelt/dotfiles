@@ -1,11 +1,11 @@
-Host * 
+Host *
   IdentityAgent "~/.1password/agent.sock"
 
 Host sugarcube
-  HostName 146.95.158.49
+  HostName 146.95.135.236
   User dwheeler
   RemoteForward 52698 localhost:52698
-  
+
 Host wheeler-server
   HostName 192.168.4.124
   User mskblackbelt
