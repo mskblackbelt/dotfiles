@@ -1,1 +1,11 @@
 theme = light:dayfox,dark:terafox
+
+font-family = "FiraCode Nerd Font Mono"
+font-size = 12
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = "top"
+quick-terminal-autohide = true
+
+window-height = 40
+window-width = 120
