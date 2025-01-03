@@ -78,9 +78,8 @@ export LESS='--ignore-case --raw-control-chars'
 # 	export MANPAGER='/usr/bin/less -X'
 # fi
 if _command_exists bat; then
-  export BAT_PAGER='/usr/bin/less'
-	export BAT_THEME_LIGHT="Coldark-Cold"
-    export BAT_THEME_DARK="Coldark-Dark"
+  # export BAT_PAGER='/usr/bin/less'
+  export BAT_THEME="ansi"
 fi
 
 if _command_exists nova; then
