@@ -1,6 +1,6 @@
 if [[ $IS_MAC -eq 1 ]]; then
   # path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
-  # The function is run as part of /etc/zshenv by default. 
+  # The function is run as part of /etc/zshenv by default.
 	# unset PATH
   # eval `/usr/libexec/path_helper -s`
 
@@ -12,7 +12,7 @@ if [[ $IS_MAC -eq 1 ]]; then
     export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
   fi
-  
+
 # Add linuxbrew directory if present
 elif [[ -d $HOME/.linuxbrew ]]; then
    eval $($HOME/.linuxbrew/bin/brew shellenv);
@@ -29,9 +29,9 @@ export TEXMFHOME="$XDG_DATA_HOME/texmf"
 typeset -U path # U for Unique, like a set; (N) == only if exists
 path=(
   ~/.pyenv/bin(N)
-  ~/.local/bin(N) 
-  ~/bin(N) 
-  ~/.cask/bin(N) 
+  ~/.local/bin(N)
+  ~/bin(N)
+  ~/.cask/bin(N)
   ~/.cargo/bin(N)
   ~/bin/anaconda/bin(N)
   /opt/homebrew/bin(N)
@@ -56,11 +56,11 @@ function _command_executable() {
   commandStatus=$?
   if [ $commandStatus -ne 0 ]; then
     # It is not the case, if NOT in 'BSC_MODE_CHECK_CONFIG' mode, it is a fatal error.
-    echo "Unable to find binary '$_binary'." 
+    echo "Unable to find binary '$_binary'."
     return 201
   # Checks if the binary has "execute" permission.
   elif [ -x "$_full_path" ]; then
-    return 0 
+    return 0
   else
     echo "Binary '$_binary' found but it does not have *execute* permission."
     return 202
@@ -73,13 +73,14 @@ function _command_exists() {
 
 # Export pagers and editors
 export LESS='--ignore-case --raw-control-chars'
-# if _command_exists "most"; then 
+# if _command_exists "most"; then
 # 	export PAGER='most'
 # 	export MANPAGER='/usr/bin/less -X'
 # fi
-if _command_exists bat; then 
-  export BAT_PAGER='/usr/bin/less' 
-	export BAT_THEME="TwoDark"
+if _command_exists bat; then
+  export BAT_PAGER='/usr/bin/less'
+	export BAT_THEME_LIGHT="Coldark-Cold"
+    export BAT_THEME_DARK="Coldark-Dark"
 fi
 
 if _command_exists nova; then
@@ -98,10 +99,10 @@ fi
 
 export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
 
-# Set up history file location and size 
+# Set up history file location and size
 # The following two lines are set by Oh-my-ZSH
-# export HISTSIZE=5000 
-# export SAVEHIST=5000 
+# export HISTSIZE=5000
+# export SAVEHIST=5000
 export HISTFILE="$HOME/.local/.zsh_history"
 export ZSH_COMPDUMP="${HOME}/.local/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
