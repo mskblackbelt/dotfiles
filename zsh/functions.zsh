@@ -42,14 +42,11 @@ function flush () {
   sudo killall -HUP mDNSResponder # Flush DNS cache
   }
   
-function speedtest () {
-  if (( $# == 0 ))
-    then wget -O /dev/null "http://speedtest.wdc01.softlayer.com/downloads/test10.zip"; 
-  fi
-  for i; 
-    do wget -O /dev/null "http://speedtest.wdc01.softlayer.com/downloads/test$i.zip";
-  done
-}
+if _command_exists() uvx; then
+  function speedtest () {
+    uvx speedtest-cli; 
+    }
+fi
 
 # Misc. functions to extend OS X application control
 # TODO create a function to relaunch a launchctl daemon
