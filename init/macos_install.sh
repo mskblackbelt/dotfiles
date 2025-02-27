@@ -323,7 +323,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
 
-# Use list view in all Finder windows by default
+# Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
@@ -352,7 +352,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 # Set up symlinks for folders
 ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs/iCloud Drive" "$HOME/iCloud Drive"
-ls -s "$HOME/iCloud Drive/Projects" "$HOME/Projects"
+ls -s "$HOME/iCloud Drive/Projects" "$HOME/Developer"
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
