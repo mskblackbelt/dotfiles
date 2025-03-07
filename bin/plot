@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 
-from __future__ import division
-from numpy import *
+import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import getopt
 
-usage = '''plot [option] 'functions' minx maxx [miny maxy]
+usage = """plot [option] 'functions' minx maxx [miny maxy]
 
 Options:
   -h, --help    print this message
@@ -20,52 +19,52 @@ expressions. The output is typically redirected to a file.
 Example:
   plot 'tan(x); x' pi 3*pi/2-.01 0 5 > plot.png
 
-'''
+"""
 
 # Handle the options.
 try:
-  opts, args = getopt.getopt(sys.argv[1:], 'hf', ['help', 'pdf'])
+    opts, args = getopt.getopt(sys.argv[1:], "hf", ["help", "pdf"])
 except getopt.GetoptError as err:
-  sys.stderr.write(str(err) + '\n\n')
-  sys.stderr.write(usage)
-  sys.exit()
-
-fmt = 'png'
-for o, a in opts:
-  if o == '-f' or o == '--pdf':
-    fmt = 'pdf'
-  else:
+    sys.stderr.write(str(err) + "\n\n")
     sys.stderr.write(usage)
     sys.exit()
 
+fmt = "png"
+for o, a in opts:
+    if o == "-f" or o == "--pdf":
+        fmt = "pdf"
+    else:
+        sys.stderr.write(usage)
+        sys.exit()
+
 # Handle the arguments.
 try:
-  fcns = args[0].split(';')
-  minx = eval(args[1])
-  maxx = eval(args[2])
+    fcns = args[0].split(";")
+    minx = eval(args[1])
+    maxx = eval(args[2])
 except IndexError:
-  sys.stderr.write(usage)
-  sys.exit()
+    sys.stderr.write(usage)
+    sys.exit()
 
 plt.xlim(minx, maxx)
 try:
-  miny = float(args[3])
-  maxy = float(args[4])
-  plt.ylim(miny, maxy)
+    miny = float(args[3])
+    maxy = float(args[4])
+    plt.ylim(miny, maxy)
 except IndexError:
-  pass
+    pass
 
 # Make the plot.
-x = linspace(minx, maxx, 100)
+x = np.linspace(minx, maxx, 100)
 for i, f in enumerate(fcns):
-  y = eval(f)
-  plt.plot(x, y, "-", linewidth=2)
+    y = eval(f)
+    plt.plot(x, y, "-", linewidth=2)
 
 plt.minorticks_on()
-plt.grid(which='both', color='#dddddd ')
+plt.grid(which="both", color="#dddddd")
 
 # Output the plot.
-if fmt == 'pdf':
-  plt.savefig(sys.stdout.buffer, format='pdf')
+if fmt == "pdf":
+    plt.savefig(sys.stdout.buffer, format="pdf")
 else:
-  plt.savefig(sys.stdout.buffer, format='png')
+    plt.savefig(sys.stdout.buffer, format="png")
