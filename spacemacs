@@ -661,7 +661,7 @@ before packages are loaded."
   (setq zoom-ignored-buffer-names '("zoom.el" "init.el"))
   (setq zoom-ignored-major-modes '(dired-mode markdown-mode))
 
-  (setq projectile-project-search-path '("~/Projects/" "~/iCloud Drive/OPNMR Research/"))
+  (setq projectile-project-search-path '("~/Projects/" "~/iCloud Drive/Research Projects/"))
   )
 
 ;; Set up text folding
