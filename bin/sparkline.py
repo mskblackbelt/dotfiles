@@ -1,17 +1,22 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python3
+# /// script
+# ///
 
-from sys import stdin, stdout
+import sys
 
-blocks = u'▁▂▃▄▅▆▇██'
+vals = sys.argv[1]
+
+blocks = '▁▂▃▄▅▆▇██'
 
 def spark(data):
-  line = ''
-  lo = float(min(data))
-  hi = float(max(data))
-  incr = (hi - lo)/8
-  for n in data:
-    line += blocks[int((float(n) - lo)/incr)]
-  return line
+    line = ''
+    lo = float(min(data))
+    hi = float(max(data))
+    incr = (hi - lo)/8
+    for n in data:
+        line += blocks[int((float(n) - lo)/incr)]
+    return line
 
-stdout.write(spark([float(x) for x in stdin.read().split()]).encode('utf8'))
+
+
+sys.stdout.write(spark([float(x) for x in vals.split()])+'\n')
