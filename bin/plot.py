@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# /// script
+# dependencies = [
+#   "numpy",
+#   "matplotlib",
+# ]
+# ///
 
 import numpy as np
 import matplotlib.pyplot as plt
