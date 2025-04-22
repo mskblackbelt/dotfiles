@@ -42,7 +42,7 @@ function flush () {
   sudo killall -HUP mDNSResponder # Flush DNS cache
   }
   
-if _command_exists() uvx; then
+if _command_exists uvx; then
   function speedtest () {
     uvx speedtest-cli; 
     }
