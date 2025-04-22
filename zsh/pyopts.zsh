@@ -47,6 +47,7 @@ fi
 
 if _command_exists pixi; then
   export PIXI_HOME=$XDG_CONFIG_HOME/pixi
+fi 
 
 function pip_upgrade () {
   pip list --outdated --local | tail -n +3 | cut -d ' ' -f1 | xargs -n1 python -m pip install -U
