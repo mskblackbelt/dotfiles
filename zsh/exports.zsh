@@ -52,7 +52,7 @@ function _command_executable() {
   local _binary="$1" _full_path
 
   # Checks if the binary is available.
-  _full_path=$( whence "$_binary" )
+  _full_path=$( whence -p "$_binary" )
   commandStatus=$?
   if [ $commandStatus -ne 0 ]; then
     # It is not the case, if NOT in 'BSC_MODE_CHECK_CONFIG' mode, it is a fatal error.
