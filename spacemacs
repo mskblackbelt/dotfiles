@@ -628,6 +628,8 @@ before packages are loaded."
   ;; Set directory and default extension for deft notes
   (setq deft-directory "~/iCloud Drive/notes")
   (setq deft-default-extension "md")
+  (add-hook 'markdown-mode-hook 'spacemacs/toggle-whitespace-cleanup-off)
+  (add-hook 'markdown-mode-hook 'dotspacemacs-show-trailing-whitespace nil)
 
   ;; Make the modeline look good on macOS
   (setq powerline-default-separator 'utf-8)
