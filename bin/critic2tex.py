@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script# /// script
+# dependencies = [
+#   "pypandoc",
+# ]
+# ///
 
 # Author: Dustin Wheeler
 # Date: 2022-09-13
@@ -50,7 +54,7 @@ hl_pattern = r"(?s)\{\=\=(?P<value>.*?)\=\=\}\{\>\>(?P<comment>.*?)\<\<\}"
 
 def deletionProcess(group_object):
     removeString = ""
-    removeString = re.sub(r'(\\n){2,}', r'\\P', removeString)
+    removeString = re.sub(r"(\\n){2,}", r"\\P", removeString)
     removeString = r"\deleted{" + group_object.group("value") + r"}"
     return removeString
 
@@ -131,7 +135,6 @@ parser.add_argument(
 
 args = parser.parse_args()
 try:
-
     if args.source:
         inputFile = open(args.source, "r")
         inputText = inputFile.read()
@@ -153,15 +156,13 @@ try:
     h = re.sub(comm_pattern, commentProcess, h, flags=re.DOTALL)
 
     h = re.sub(subs_pattern, subsProcess, h, flags=re.DOTALL)
-    
+
     # clean yaml metadata keywords
     h = re.sub("Title:", "title:", h, flags=re.DOTALL)
     h = re.sub("Author:", "author:", h, flags=re.DOTALL)
     h = re.sub("Date:", "date:", h, flags=re.DOTALL)
 
-    tmpfile = tempfile.NamedTemporaryFile(mode="w+",
-                                          suffix=".md",
-                                          dir=Path.cwd())
+    tmpfile = tempfile.NamedTemporaryFile(mode="w+", suffix=".md", dir=Path.cwd())
     tmpfile.write(h)
 
     # Why the hell is this read critical to writing the content to tmpfile?
