@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env -S uv run --script
 # /// script
 # ///
 
@@ -6,17 +6,17 @@ import sys
 
 vals = sys.argv[1]
 
-blocks = '▁▂▃▄▅▆▇██'
+blocks = "▁▂▃▄▅▆▇██"
+
 
 def spark(data):
-    line = ''
+    line = ""
     lo = float(min(data))
     hi = float(max(data))
-    incr = (hi - lo)/8
+    incr = (hi - lo) / 8
     for n in data:
-        line += blocks[int((float(n) - lo)/incr)]
+        line += blocks[int((float(n) - lo) / incr)]
     return line
 
 
-
-sys.stdout.write(spark([float(x) for x in vals.split()])+'\n')
+sys.stdout.write(spark([float(x) for x in vals.split()]) + "\n")
