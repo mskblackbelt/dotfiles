@@ -53,6 +53,17 @@ function pip_upgrade () {
   pip list --outdated --local | tail -n +3 | cut -d ' ' -f1 | xargs -n1 python -m pip install -U
   }
   
+if _command_exists uv; then
+  function jpcon () {
+    uv run \
+    --with 'numpy' \
+    --with 'scipy' \
+    --with 'matplotlib' \
+    --with 'jupyter' \
+    jupyter-console
+  }
+fi
+
 alias jpnb="jupyter notebook"
 alias jplab="jupyter lab"
 
