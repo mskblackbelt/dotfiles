@@ -12,8 +12,6 @@ import sys
 import re
 import getopt
 
-# plot [option] [minx maxx [miny maxy]]
-
 usage = """pplot [option] [minx maxx]
 
 Options:
