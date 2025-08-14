@@ -3,9 +3,15 @@
 ## Set location for matplotlib config files
 export MPLCONFIGDIR=$XDG_CONFIG_HOME/matplotlib
 
-### Functionality also provided by OMZ plugin `pyenv` 
+### UV setup
+if _command_exists uv; then  
+  function python_prompt_info() {
+    echo "uv:$(python -V 2>&1 | cut -f 2 -d ' ')"
+    }
+
+### Pyenv setup
 # Auto-activate and enable pyenv and shims
-if _command_exists pyenv; then
+elif _command_exists pyenv; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init - zsh)"
   
@@ -25,13 +31,6 @@ if _command_exists pyenv; then
 
   function python_prompt_info() {
       echo "pyenv:$(pyenv version-name)"
-  }
-
-### UV setup
-
-elif _command_exists uv; then  
-  function python_prompt_info() {
-    echo "uv:$(python -V 2>&1 | cut -f 2 -d ' ')"
   }
 
 elif _command_exists conda; then
