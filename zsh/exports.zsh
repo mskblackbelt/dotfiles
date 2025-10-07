@@ -8,7 +8,6 @@ if [[ $IS_MAC -eq 1 ]]; then
 	if [[ -x /opt/homebrew/bin/brew ]]; then
     export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix);
     export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
-    # export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
     export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
   fi
@@ -26,7 +25,12 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 
-typeset -U path # U for Unique, like a set; (N) == only if exists
+manpath=(
+  $HOMEBREW_PREFIX/share/man(N)
+  $manpath
+)
+typeset -U manpath
+
 path=(
   ~/.pyenv/bin(N)
   ~/.local/bin(N)
