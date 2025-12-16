@@ -4,6 +4,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "railwaycat/emacsmacport"
+tap "ttscoff/thelab"
 
 # Brews
 
@@ -36,8 +37,6 @@ brew "ripgrep"
 brew "sd"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# Cross-platform Rust rewrite of the GNU coreutils
-# brew "uutils-coreutils"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 
@@ -50,10 +49,6 @@ brew "bash"
 brew "bash-completion"
 # Interpreted, interactive, object-oriented programming language
 brew "python"
-# Perl lib for reading and writing EXIF metadata
-# brew "exiftool"
-# GNU Transport Layer Security (TLS) Library
-# brew "gnutls"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Interpreter for PostScript and PDF
@@ -66,34 +61,24 @@ brew "git"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Compare and mark up LaTeX file differences
-# brew "latexdiff"
 # GUI for vim, made for macOS
 brew "macvim"
 # Mac App Store command-line interface
 brew "mas"
-# Powerful paging program
-# brew "most"
 # Turn marked-up plain text into well-formatted documents
 brew "multimarkdown"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
+# Package management made easy
+brew "pixi"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Python version management
-brew "pyenv"
-# Pyenv plugin to manage virtualenv
-brew "pyenv-virtualenv"
 # Software environment for statistical computing
 brew "r"
 # RC file (dotfile) management
 brew "rcm"
 # Safe, concurrent, practical language
 brew "rust"
-# Rust toolchain installer
-# brew "rustup-init"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -106,6 +91,8 @@ brew "thefuck"
 brew "trash"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Python version management
+brew "uv"
 # Internet file retriever
 brew "wget"
 # UNIX shell (command interpreter)
@@ -120,8 +107,8 @@ brew "zsh-fast-syntax-highlighting"
 
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Apple TV Aerial screensaver
-cask "aerial"
+# Image editing and design software
+cask "affinity"
 # Integrated CAD, CAM, CAE, and PCB software
 cask "autodesk-fusion"
 # Molecule editor and visualizer
@@ -138,15 +125,12 @@ cask "boop"
 cask "brave-browser"
 # Calculator software
 cask "chalk"
-# Plugins for color picker utility
-cask "colorpicker-developer"
+# Plugin for color picker utility
 cask "colorpicker-propicker"
 # Tool to help searching the web more efficiently
 cask "devonagent"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
-# Voice and text chat software
-# cask "discord"
 # YAMAMOTO Mitsuharu's Mac port of GNU Emacs
 cask "emacs-mac-spacemacs-icon"
 # Web browser
@@ -189,10 +173,6 @@ cask "setapp"
 cask "skim"
 # Backup, recovery and cloning software
 cask "superduper"
-# Graphical user interface for TeX Live Manager
-# cask "tex-live-utility"
-# General-purpose text editor
-# cask "textmate"
 # Open-source BitTorrent client
 cask "transmission"
 # 3D printer and slicing GUI
@@ -222,9 +202,6 @@ cask "quicklook-csv"
 
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
-mas "Affinity Designer 2", id: 1616831348
-mas "Affinity Photo 2", id: 1616822987
-mas "Affinity Designer 2", id: 1606941598
 mas "Airmail", id: 918858936
 mas "Calca", id: 635758264
 mas "Color Picker", id: 1545870783
@@ -254,15 +231,11 @@ mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 
-## Setapp
+## If no Setapp
 # Menu bar icon organizer
 # cask "bartender"
 # Utility to create and modify archives
 # cask "betterzip"
-# Calendar software
-# cask "fantastical" # replace with BusyCal
-# Finder replacement and FTP, SFTP, WebDAV and Amazon s3 client
-# cask "forklift"
 # Previewer for Markdown, MultiMarkdown and other text markup languages
 # cask "marked2"
 
