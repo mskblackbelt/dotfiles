@@ -47,7 +47,7 @@ url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
 [settings]
 backspaceBehavior = 'deleteCharacters'
 catalogPeriodicRescanIntervalMinutes = 10
-leaderModeModifierTrigger = 'rightCommand'
+leaderModeModifierTrigger = 'rightOption'
 leaderModeTriggerType = 'modifier'
 switchToTextModeWhenNoResults = true
 themeIdentifier = 'com.brnbw.tuna.themes.default'
