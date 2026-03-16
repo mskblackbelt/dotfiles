@@ -1,0 +1,15 @@
+width: 80
+overwrite: false
+reverse_emphasis : true
+rules:
+  skip: 
+    # - blank-lines
+    # - wrap
+    - emoji-spellcheck
+    # - typography
+    # - bold-italic
+    # - list-markers
+    # - list-reset
+    # - reference-links
+    # - links-at-end
+    # - inline-links
