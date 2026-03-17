@@ -30,7 +30,7 @@ url = 'tuna://run/path.%252FApplications%252FSafari.app/Open'
 
 [[leaderMode.bindings]]
 key = 't'
-url = 'tuna://run/path.%252FSystem%252FApplications%252FUtilities%252FTerminal.app/Open'
+url = 'tuna://run/path.%252FApplications%252FGhostty.app/Open'
 
 [[leaderMode.bindings]]
 key = 'f'
@@ -38,7 +38,7 @@ url = 'tuna://run/path.%252FSystem%252FLibrary%252FCoreServices%252FFinder.app/O
 
 [[leaderMode.bindings]]
 key = 'm'
-url = 'tuna://run/path.%252FSystem%252FApplications%252FMessages.app/Open'
+url = 'tuna://run/path.%252FSystem%252FApplications%252FMusic.app/Open'
 
 [[leaderMode.bindings]]
 key = 'n'
