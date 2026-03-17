@@ -1,5 +1,13 @@
 schemaVersion = 1
 
+[catalogConfiguration]
+customFolders = []
+scriptsDirectories = []
+
+    [[catalogConfiguration.folderDepthOverrides]]
+    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
+    depthRawValue = 2
+
 [hotkeys.app.activate]
 carbonKeyCode = 49
 carbonModifiers = 256
