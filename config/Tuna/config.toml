@@ -26,11 +26,11 @@ presentation = 'auto'
 
 [[leaderMode.bindings]]
 key = 's'
-url = 'tuna://run/path.%252FApplications%252FSafari.app/Open'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Safari/Open'
 
 [[leaderMode.bindings]]
 key = 't'
-url = 'tuna://run/path.%252FApplications%252FGhostty.app/Open'
+url = 'tuna://run/TunaCore.AllApplicationsCatalog.Ghostty/Open'
 
 [[leaderMode.bindings]]
 key = 'f'
@@ -38,11 +38,11 @@ url = 'tuna://run/path.%252FSystem%252FLibrary%252FCoreServices%252FFinder.app/O
 
 [[leaderMode.bindings]]
 key = 'm'
-url = 'tuna://run/path.%252FSystem%252FApplications%252FMusic.app/Open'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Music/Open'
 
 [[leaderMode.bindings]]
 key = 'n'
-url = 'tuna://run/path.%252FSystem%252FApplications%252FNotes.app/Open'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Notes/Open'
 
 [[leaderMode.bindings]]
 key = 'd'
@@ -51,6 +51,10 @@ url = 'tuna://run/path.%252FUsers%252Fmskblackbelt%252FDownloads/Open'
 [[leaderMode.bindings]]
 key = 'h'
 url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
+
+[[leaderMode.bindings]]
+key = 'o'
+url = 'tuna://run/TunaCore.AllApplicationsCatalog.Orion/Open'
 
 [settings]
 backspaceBehavior = 'deleteCharacters'
