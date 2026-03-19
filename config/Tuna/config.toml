@@ -13,6 +13,18 @@ carbonKeyCode = 49
 carbonModifiers = 256
 
 [[hotkeys.custom]]
+id = '1929FCC9-FDB9-4C65-B7B0-D313773DDA47'
+presentation = 'show'
+
+    [hotkeys.custom.command]
+    actionIdentifier = 'Tuna.BasicActionsCatalog.Select in Command Window'
+    subjectIdentifier = 'Tuna.CurrentSelectionCatalog.Current Selection'
+
+    [hotkeys.custom.shortcut]
+    carbonKeyCode = 49
+    carbonModifiers = 768
+
+[[hotkeys.custom]]
 id = '3F16C9F7-990E-4CB5-BED2-AA9DD57F6B81'
 presentation = 'auto'
 
