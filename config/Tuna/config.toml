@@ -1,5 +1,36 @@
 schemaVersion = 1
 
+[actionPreferences]
+objectOverrides = []
+version = 2
+
+    [[actionPreferences.typeRankings]]
+    typeID = 'com.tuna.type.application'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Open'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Reveal'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Toggle Application'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Activate'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Quit'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Kill'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+
 [catalogConfiguration]
 customFolders = []
 scriptsDirectories = []
@@ -7,6 +38,10 @@ scriptsDirectories = []
     [[catalogConfiguration.folderDepthOverrides]]
     catalogIdentifier = 'TunaCore.UserFoldersCatalog'
     depthRawValue = 2
+
+    [[catalogConfiguration.folderDepthOverrides]]
+    catalogIdentifier = 'TunaSystem.PreferencePanesCatalog'
+    depthRawValue = 1
 
 [hotkeys.app.activate]
 carbonKeyCode = 49
@@ -73,7 +108,6 @@ backspaceBehavior = 'deleteCharacters'
 catalogPeriodicRescanIntervalMinutes = 10
 leaderModeModifierTrigger = 'rightOption'
 leaderModeTriggerType = 'modifier'
-switchToTextModeWhenNoResults = true
 themeIdentifier = 'com.brnbw.tuna.themes.default'
 typingTimeoutDuration = 1.05
 
