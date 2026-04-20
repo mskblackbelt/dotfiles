@@ -31,6 +31,29 @@ version = 2
         actionKey = 'Kill'
         catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
+    [[actionPreferences.typeRankings]]
+    typeID = 'com.tuna.type.text-solver-result'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Copy Answer'
+        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Copy Unformatted Answer'
+        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Copy Question and Answer'
+        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Resolve Result'
+        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+
+        [[actionPreferences.typeRankings.actions]]
+        actionKey = 'Swap Units'
+        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+
 [catalogConfiguration]
 customFolders = []
 scriptsDirectories = []
