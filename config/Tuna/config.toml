@@ -127,6 +127,7 @@ key = 'o'
 url = 'tuna://run/TunaCore.AllApplicationsCatalog.Orion/Open'
 
 [settings]
+appPresentationMode = 'never'
 backspaceBehavior = 'deleteCharacters'
 catalogPeriodicRescanIntervalMinutes = 10
 leaderModeModifierTrigger = 'rightOption'
