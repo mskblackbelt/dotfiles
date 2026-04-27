@@ -66,6 +66,38 @@ scriptsDirectories = []
     catalogIdentifier = 'TunaSystem.PreferencePanesCatalog'
     depthRawValue = 1
 
+[[comboMode.bindings]]
+key = 's'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Safari/Open'
+
+[[comboMode.bindings]]
+key = 't'
+url = 'tuna://run/TunaCore.AllApplicationsCatalog.Ghostty/Open'
+
+[[comboMode.bindings]]
+key = 'f'
+url = 'tuna://run/path.%252FSystem%252FLibrary%252FCoreServices%252FFinder.app/Open'
+
+[[comboMode.bindings]]
+key = 'm'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Music/Open'
+
+[[comboMode.bindings]]
+key = 'n'
+url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Notes/Open'
+
+[[comboMode.bindings]]
+key = 'd'
+url = 'tuna://run/path.%252FUsers%252Fmskblackbelt%252FDownloads/Open'
+
+[[comboMode.bindings]]
+key = 'h'
+url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
+
+[[comboMode.bindings]]
+key = 'o'
+url = 'tuna://run/TunaCore.AllApplicationsCatalog.Orion/Open'
+
 [hotkeys.app.activate]
 carbonKeyCode = 49
 carbonModifiers = 256
@@ -94,44 +126,12 @@ presentation = 'auto'
     carbonKeyCode = 42
     carbonModifiers = 4352
 
-[[leaderMode.bindings]]
-key = 's'
-url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Safari/Open'
-
-[[leaderMode.bindings]]
-key = 't'
-url = 'tuna://run/TunaCore.AllApplicationsCatalog.Ghostty/Open'
-
-[[leaderMode.bindings]]
-key = 'f'
-url = 'tuna://run/path.%252FSystem%252FLibrary%252FCoreServices%252FFinder.app/Open'
-
-[[leaderMode.bindings]]
-key = 'm'
-url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Music/Open'
-
-[[leaderMode.bindings]]
-key = 'n'
-url = 'tuna://run/TunaCore.SystemApplicationsCatalog.Notes/Open'
-
-[[leaderMode.bindings]]
-key = 'd'
-url = 'tuna://run/path.%252FUsers%252Fmskblackbelt%252FDownloads/Open'
-
-[[leaderMode.bindings]]
-key = 'h'
-url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
-
-[[leaderMode.bindings]]
-key = 'o'
-url = 'tuna://run/TunaCore.AllApplicationsCatalog.Orion/Open'
-
 [settings]
 appPresentationMode = 'never'
 backspaceBehavior = 'deleteCharacters'
 catalogPeriodicRescanIntervalMinutes = 10
-leaderModeModifierTrigger = 'rightOption'
-leaderModeTriggerType = 'modifier'
+comboModeModifierTrigger = 'rightOption'
+comboModeTriggerType = 'modifier'
 themeIdentifier = 'com.brnbw.tuna.themes.default'
 typingTimeoutDuration = 1.05
 
