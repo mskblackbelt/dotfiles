@@ -133,7 +133,7 @@ catalogPeriodicRescanIntervalMinutes = 10
 comboModeModifierTrigger = 'rightOption'
 comboModeTriggerType = 'modifier'
 themeIdentifier = 'com.brnbw.tuna.themes.default'
-typingTimeoutDuration = 0.5
+typingTimeoutDuration = 0.75
 
 [[catalogSettings]]
 catalogIdentifier = 'com.brnbw.tuna.themes.default'
