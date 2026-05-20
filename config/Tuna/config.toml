@@ -36,23 +36,23 @@ version = 2
 
         [[actionPreferences.typeRankings.actions]]
         actionKey = 'Copy Answer'
-        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
         [[actionPreferences.typeRankings.actions]]
         actionKey = 'Copy Unformatted Answer'
-        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
         [[actionPreferences.typeRankings.actions]]
         actionKey = 'Copy Question and Answer'
-        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
         [[actionPreferences.typeRankings.actions]]
         actionKey = 'Resolve Result'
-        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
         [[actionPreferences.typeRankings.actions]]
         actionKey = 'Swap Units'
-        catalogIdentifier = 'Tuna.BasicActionsCatalog'
+        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
 
 [catalogConfiguration]
 customFolders = []
@@ -65,6 +65,24 @@ scriptsDirectories = []
     [[catalogConfiguration.folderDepthOverrides]]
     catalogIdentifier = 'TunaSystem.PreferencePanesCatalog'
     depthRawValue = 1
+
+[catalogs]
+sortOrders = []
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'Tuna.EffectsCatalog'
+    mode = 'none'
+    selectedItemKeys = []
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
+    mode = 'none'
+    selectedItemKeys = []
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'TunaEmoji.EmojiCatalog'
+    mode = 'none'
+    selectedItemKeys = []
 
 [[comboMode.bindings]]
 key = 's'
