@@ -75,8 +75,18 @@ sortOrders = []
     selectedItemKeys = []
 
     [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
+    catalogIdentifier = 'TunaContacts.ContactsCatalog'
     mode = 'none'
+    selectedItemKeys = []
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'TunaCore.AllApplicationsCatalog'
+    mode = 'all'
+    selectedItemKeys = []
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
+    mode = 'all'
     selectedItemKeys = []
 
     [[catalogs.globalScopes]]
