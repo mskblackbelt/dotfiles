@@ -56,6 +56,7 @@ version = 2
 
 [catalogConfiguration]
 customFolders = []
+customItems = []
 scriptsDirectories = []
 
     [[catalogConfiguration.folderDepthOverrides]]
@@ -85,6 +86,11 @@ sortOrders = []
     selectedItemKeys = []
 
     [[catalogs.globalScopes]]
+    catalogIdentifier = 'TunaCore.ApplicationsCatalog'
+    mode = 'all'
+    selectedItemKeys = [ 'Applications' ]
+
+    [[catalogs.globalScopes]]
     catalogIdentifier = 'TunaCore.UserFoldersCatalog'
     mode = 'all'
     selectedItemKeys = []
@@ -96,23 +102,25 @@ sortOrders = []
 
 [[comboMode.bindings]]
 key = 's'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Safari/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Safari/TunaCore.CommonActionsCatalog.Open'
 
 [[comboMode.bindings]]
+iconPath = '/Applications/Ghostty.app'
 key = 't'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Ghostty/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Ghostty/TunaCore.CommonActionsCatalog.Open'
 
 [[comboMode.bindings]]
+iconPath = '/System/Library/CoreServices/Finder.app'
 key = 'f'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Finder/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Finder/TunaCore.CommonActionsCatalog.Open'
 
 [[comboMode.bindings]]
 key = 'm'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Music/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Music/TunaCore.CommonActionsCatalog.Open'
 
 [[comboMode.bindings]]
 key = 'n'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Notes/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Notes/TunaCore.CommonActionsCatalog.Open'
 
 [[comboMode.bindings]]
 key = 'd'
@@ -123,8 +131,9 @@ key = 'h'
 url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
 
 [[comboMode.bindings]]
+iconPath = '/Applications/Orion.app'
 key = 'o'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Orion/Open'
+url = 'tuna://run/TunaCore.ApplicationsCatalog.Orion/TunaCore.CommonActionsCatalog.Open'
 
 [hotkeys.app.activate]
 carbonKeyCode = 49
