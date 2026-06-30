@@ -173,6 +173,12 @@ themeIdentifier = 'com.brnbw.tuna.themes.default'
 typingTimeoutDuration = 0.75
 
 [[catalogSettings]]
+catalogIdentifier = 'com.brnbw.TunaPrompts'
+
+    [catalogSettings.values]
+    Provider = 'apple'
+
+[[catalogSettings]]
 catalogIdentifier = 'com.brnbw.tuna.themes.default'
 
     [catalogSettings.values]
