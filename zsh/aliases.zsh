@@ -47,13 +47,13 @@ if _command_exists batcat; then
 	alias bat="batcat"
 	alias cat="bat --terminal-width=-2"
 	# alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-	alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+	# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 
 if _command_exists bat; then 
 	alias cat="bat --terminal-width=-2"
-	alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-	alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+	# alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+	# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 if _command_exists dust; then 
 	alias du="dust"
