@@ -1,185 +1,314 @@
-schemaVersion = 1
+schemaVersion = 4
 
 [actionPreferences]
-objectOverrides = []
-version = 2
+applicationOrderOverrides = []
+itemDefaultOverrides = []
 
-    [[actionPreferences.typeRankings]]
+    [[actionPreferences.typeOrderOverrides]]
     typeID = 'com.tuna.type.application'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Open'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Reveal'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'reveal'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Toggle Application'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'toggle-application'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Activate'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'activate'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Quit'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'quit'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Kill'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'kill'
+        catalogIdentifier = 'tuna.common-actions'
 
-    [[actionPreferences.typeRankings]]
-    typeID = 'com.tuna.type.text-solver-result'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'copy-to-clipboard'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Copy Answer'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'add-to-catalog'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Copy Unformatted Answer'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'add-to-custom-items'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Copy Question and Answer'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'add-to-shelf'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Resolve Result'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'always-open-type-with'
+        catalogIdentifier = 'tuna.common-actions'
 
-        [[actionPreferences.typeRankings.actions]]
-        actionKey = 'Swap Units'
-        catalogIdentifier = 'TunaCore.CommonActionsCatalog'
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'assign-alias'
+        catalogIdentifier = 'tuna.common-actions'
 
-[catalogConfiguration]
-customFolders = []
-customItems = []
-scriptsDirectories = []
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'browse'
+        catalogIdentifier = 'tuna.common-actions'
 
-    [[catalogConfiguration.folderDepthOverrides]]
-    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
-    depthRawValue = 2
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'browse-recents'
+        catalogIdentifier = 'tuna.common-actions'
 
-    [[catalogConfiguration.folderDepthOverrides]]
-    catalogIdentifier = 'TunaSystem.PreferencePanesCatalog'
-    depthRawValue = 1
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'check-for-updates'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'compress'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'compress-to-shelf'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'copy-paths-to-clipboard'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'copy-to'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'do-not-open-at-login'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'get-absolute-posix-path'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'get-file-url'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'get-info'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'get-path'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'hide'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'load-more-results'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'make-alias-in'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'make-link-in'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'move-to-trash'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'move-to'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open-at-login'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open-file'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open-with'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'perform-quick-action'
+        catalogIdentifier = 'tuna.quick-actions.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'pick'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'remove-custom-item'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'rename'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'resolve'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'run-applescript-with-file'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'run-as-prompt'
+        catalogIdentifier = 'tuna.prompts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'search'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-feedback'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-keys.from-app'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-custom-prompt-on-shelf'
+        catalogIdentifier = 'tuna.prompts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-custom-prompt'
+        catalogIdentifier = 'tuna.prompts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-prompt-on-shelf'
+        catalogIdentifier = 'tuna.prompts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-prompt'
+        catalogIdentifier = 'tuna.prompts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-script'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-shortcut'
+        catalogIdentifier = 'tuna.shortcuts.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'send-to-smart-link'
+        catalogIdentifier = 'tuna.smart-links.actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'share'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'show-onboarding'
+        catalogIdentifier = 'tuna.common-actions'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'uninstall'
+        catalogIdentifier = 'tuna.common-actions'
 
 [catalogs]
 sortOrders = []
 
     [[catalogs.globalScopes]]
-    catalogIdentifier = 'Tuna.EffectsCatalog'
-    mode = 'none'
-    selectedItemKeys = []
+    catalogIdentifier = 'tuna.contacts'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
 
     [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaContacts.ContactsCatalog'
-    mode = 'none'
-    selectedItemKeys = []
+    catalogIdentifier = 'tuna.effects'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
 
     [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaCore.AllApplicationsCatalog'
-    mode = 'all'
-    selectedItemKeys = []
+    catalogIdentifier = 'tuna.emoji'
 
-    [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaCore.ApplicationsCatalog'
-    mode = 'all'
-    selectedItemKeys = [ 'Applications' ]
-
-    [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaCore.UserFoldersCatalog'
-    mode = 'all'
-    selectedItemKeys = []
-
-    [[catalogs.globalScopes]]
-    catalogIdentifier = 'TunaEmoji.EmojiCatalog'
-    mode = 'none'
-    selectedItemKeys = []
+        [catalogs.globalScopes.scope]
+        kind = 'none'
 
 [[comboMode.bindings]]
 key = 's'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Safari/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/Applications/Safari.app&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
-iconPath = '/Applications/Ghostty.app'
 key = 't'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Ghostty/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/Applications/Ghostty.app&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
-iconPath = '/System/Library/CoreServices/Finder.app'
 key = 'f'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Finder/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/System/Library/CoreServices/Finder.app&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
 key = 'm'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Music/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/System/Applications/Music.app&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
 key = 'n'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Notes/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/System/Applications/Notes.app&action=tuna.common-actions/open'
+
+[[comboMode.bindings]]
+key = 'o'
+url = 'tuna://run?subject=path:/Applications/Orion.app&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
 key = 'd'
-url = 'tuna://run/path.%252FUsers%252Fmskblackbelt%252FDownloads/Open'
+url = 'tuna://run?subject=path:/Users/mskblackbelt/Downloads&action=tuna.common-actions/open'
 
 [[comboMode.bindings]]
 key = 'h'
-url = 'tuna://run/path.%252FUsers%252Fmskblackbelt/Open'
-
-[[comboMode.bindings]]
-iconPath = '/Applications/Orion.app'
-key = 'o'
-url = 'tuna://run/TunaCore.ApplicationsCatalog.Orion/TunaCore.CommonActionsCatalog.Open'
+url = 'tuna://run?subject=path:/Users/mskblackbelt&action=tuna.common-actions/open'
 
 [hotkeys.app.activate]
 carbonKeyCode = 49
 carbonModifiers = 256
 
 [[hotkeys.custom]]
-id = '1929FCC9-FDB9-4C65-B7B0-D313773DDA47'
-presentation = 'show'
-
-    [hotkeys.custom.command]
-    actionIdentifier = 'Tuna.BasicActionsCatalog.Select in Command Window'
-    subjectIdentifier = 'Tuna.CurrentSelectionCatalog.Current Selection'
-
-    [hotkeys.custom.shortcut]
-    carbonKeyCode = 49
-    carbonModifiers = 768
-
-[[hotkeys.custom]]
-id = '3F16C9F7-990E-4CB5-BED2-AA9DD57F6B81'
+id = 'D6943468-50B3-45E7-BD30-B5170B779C2C'
 presentation = 'auto'
 
     [hotkeys.custom.command]
-    actionIdentifier = 'Tuna.BasicActionsCatalog.Browse'
-    subjectIdentifier = 'Tuna.Internal.ClipboardProxyCatalog.Clipboard History'
+    actionIdentifier = 'tuna.common-actions/browse'
+    subjectIdentifier = 'tuna.clipboard/clipboard.history.root'
 
     [hotkeys.custom.shortcut]
     carbonKeyCode = 42
     carbonModifiers = 4352
 
+[[hotkeys.custom]]
+id = 'FFA88463-4F6A-4A4D-A7FF-761250819CFD'
+presentation = 'show'
+
+    [hotkeys.custom.command]
+    actionIdentifier = 'tuna.common-actions/stage'
+    subjectIdentifier = 'tuna.current-selection/Current Selection'
+
+    [hotkeys.custom.shortcut]
+    carbonKeyCode = 49
+    carbonModifiers = 768
+
 [settings]
 appPresentationMode = 'never'
 backspaceBehavior = 'deleteCharacters'
-catalogPeriodicRescanIntervalMinutes = 10
 comboModeModifierTrigger = 'rightOption'
 comboModeTriggerType = 'modifier'
-themeIdentifier = 'com.brnbw.tuna.themes.default'
 typingTimeoutDuration = 0.75
 
 [[catalogSettings]]
-catalogIdentifier = 'com.brnbw.TunaPrompts'
+catalogIdentifier = 'tuna.prompts'
 
     [catalogSettings.values]
     Provider = 'apple'
-
-[[catalogSettings]]
-catalogIdentifier = 'com.brnbw.tuna.themes.default'
-
-    [catalogSettings.values]
-    ThemeTint = 'system'
