@@ -219,7 +219,17 @@ itemDefaultOverrides = []
         actionID = 'uninstall'
         catalogIdentifier = 'tuna.common-actions'
 
+[catalogConfiguration]
+customFolders = []
+customItems = []
+scriptsDirectories = []
+
+    [[catalogConfiguration.folderDepthOverrides]]
+    catalogIdentifier = 'tuna.system-settings'
+    depthRawValue = 1
+
 [catalogs]
+searchPriorities = []
 sortOrders = []
 
     [[catalogs.globalScopes]]
