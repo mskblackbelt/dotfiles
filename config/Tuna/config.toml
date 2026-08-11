@@ -1,5 +1,3 @@
-schemaVersion = 4
-
 [actionPreferences]
 applicationOrderOverrides = []
 itemDefaultOverrides = []
@@ -219,6 +217,27 @@ itemDefaultOverrides = []
         actionID = 'uninstall'
         catalogIdentifier = 'tuna.common-actions'
 
+    [[actionPreferences.typeOrderOverrides]]
+    typeID = 'com.tuna.type.settings-pane'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open-settings'
+        catalogIdentifier = 'tuna.common-actions'
+
+    [[actionPreferences.typeOrderOverrides]]
+    typeID = 'com.tuna.type.smart-link'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'open-smart-link'
+        catalogIdentifier = 'tuna.smart-links.actions'
+
+    [[actionPreferences.typeOrderOverrides]]
+    typeID = 'com.tuna.type.window'
+
+        [[actionPreferences.typeOrderOverrides.actions]]
+        actionID = 'activate'
+        catalogIdentifier = 'tuna.window-actions'
+
 [catalogConfiguration]
 customFolders = []
 customItems = []
@@ -252,35 +271,107 @@ sortOrders = []
 
 [[comboMode.bindings]]
 key = 's'
-url = 'tuna://run?subject=path:/Applications/Safari.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/Applications/Safari.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 't'
-url = 'tuna://run?subject=path:/Applications/Ghostty.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/Applications/Ghostty.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'f'
-url = 'tuna://run?subject=path:/System/Library/CoreServices/Finder.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/System/Library/CoreServices/Finder.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'm'
-url = 'tuna://run?subject=path:/System/Applications/Music.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/System/Applications/Music.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'n'
-url = 'tuna://run?subject=path:/System/Applications/Notes.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/System/Applications/Notes.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'o'
-url = 'tuna://run?subject=path:/Applications/Orion.app&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/Applications/Orion.app' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'd'
-url = 'tuna://run?subject=path:/Users/mskblackbelt/Downloads&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/Users/mskblackbelt/Downloads' ]
+        type = 'savedCommand'
 
 [[comboMode.bindings]]
 key = 'h'
-url = 'tuna://run?subject=path:/Users/mskblackbelt&action=tuna.common-actions/open'
+
+    [comboMode.bindings.destination]
+    type = 'command'
+
+        [comboMode.bindings.destination.command]
+        actionIdentifier = 'tuna.common-actions/open'
+        behavior = 'run'
+        presentation = 'automatic'
+        subjectIdentifiers = [ 'path:/Users/mskblackbelt' ]
+        type = 'savedCommand'
 
 [hotkeys.app.activate]
 carbonKeyCode = 49
@@ -288,11 +379,13 @@ carbonModifiers = 256
 
 [[hotkeys.custom]]
 id = 'D6943468-50B3-45E7-BD30-B5170B779C2C'
-presentation = 'auto'
 
     [hotkeys.custom.command]
     actionIdentifier = 'tuna.common-actions/browse'
-    subjectIdentifier = 'tuna.clipboard/clipboard.history.root'
+    behavior = 'run'
+    presentation = 'automatic'
+    subjectIdentifiers = [ 'tuna.clipboard/clipboard.history.root' ]
+    type = 'savedCommand'
 
     [hotkeys.custom.shortcut]
     carbonKeyCode = 42
@@ -300,11 +393,13 @@ presentation = 'auto'
 
 [[hotkeys.custom]]
 id = 'FFA88463-4F6A-4A4D-A7FF-761250819CFD'
-presentation = 'show'
 
     [hotkeys.custom.command]
-    actionIdentifier = 'tuna.common-actions/stage'
-    subjectIdentifier = 'tuna.current-selection/Current Selection'
+    actionIdentifier = 'tuna.common-actions/resolve'
+    behavior = 'run'
+    presentation = 'show'
+    subjectIdentifiers = [ 'tuna.current-selection/Current Selection' ]
+    type = 'savedCommand'
 
     [hotkeys.custom.shortcut]
     carbonKeyCode = 49
