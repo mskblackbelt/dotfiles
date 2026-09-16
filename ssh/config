@@ -11,6 +11,11 @@ Host sugarcube
 	HostName 146.95.135.236
 	RemoteForward 52698 localhost:52698
 
+Host germanium
+    User dwheeler
+    HostName 146.95.158.251
+    RemoteForward 52698 localhost:52698
+
 Host wheeler-server
 	User mskblackbelt
 	HostName 192.168.4.124
