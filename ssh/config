@@ -11,6 +11,11 @@ Host sugarcube
 	HostName REDACTED-IP
 	RemoteForward 52698 localhost:52698
 
+Host germanium
+    User REDACTED
+    HostName REDACTED-IP
+    RemoteForward 52698 localhost:52698
+
 Host wheeler-server
 	User REDACTED
 	HostName REDACTED-IP
