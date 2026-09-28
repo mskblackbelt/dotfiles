@@ -239,9 +239,14 @@ itemDefaultOverrides = []
         catalogIdentifier = 'tuna.window-actions'
 
 [catalogConfiguration]
-customFolders = []
 customItems = []
 scriptsDirectories = []
+
+    [[catalogConfiguration.customFolders]]
+    depthRawValue = 4
+    entryType = 'directory'
+    id = '939442A7-23DB-4AC6-9D81-04124EBEEA6A'
+    path = '~/Library/Mobile Documents/com~apple~CloudDocs/iCloud Drive/Teaching'
 
     [[catalogConfiguration.folderDepthOverrides]]
     catalogIdentifier = 'tuna.system-settings'
