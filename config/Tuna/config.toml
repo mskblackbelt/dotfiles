@@ -257,6 +257,13 @@ searchPriorities = []
 sortOrders = []
 
     [[catalogs.globalScopes]]
+    catalogIdentifier = 'music.controls'
+
+        [catalogs.globalScopes.scope]
+        itemIDs = [ 'music.now-playing' ]
+        kind = 'only'
+
+    [[catalogs.globalScopes]]
     catalogIdentifier = 'tuna.contacts'
 
         [catalogs.globalScopes.scope]
