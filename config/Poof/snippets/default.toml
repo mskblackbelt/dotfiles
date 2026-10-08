@@ -1,0 +1,24 @@
+[[snippets]]
+trigger = ";date"
+replace = "{{date}}"
+description = "Current ISO date"
+
+[[snippets]]
+trigger = ";dt"
+replace = "{{date:M/d/yy}}"
+description = "Current short date"
+
+[[snippets]]
+trigger = ";time"
+replace = "{{time}}"
+description = "Current time"
+
+[[snippets]]
+trigger = ";clip"
+replace = "{{clipboard}}"
+description = "Paste current clipboard text"
+
+[[snippets]]
+trigger = ";sig"
+replace = "Cheers,\nDustin Wheeler{{cursor}}"
+description = "Signature snippet with cursor placement"
