@@ -26,20 +26,10 @@ if [[ -d /opt/homebrew ]]; then
   export PATH=/opt/homebrew/bin:$PATH
 fi 
 
-export PATH="$PATH:$HOME/bin:$HOME/bin/anaconda/bin"
-
-# Set up Python environments
-if [[ -x $(which pyenv 2> /dev/null) ]]; then 
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)" ## Auto-activate and enable pyenv and shims
-fi
-export MPLCONFIGDIR="$HOME/.matplotlib"
+export PATH="$HOME/bin:$HOME/bin/anaconda/bin:$PATH"
 
 # Path to the bash it configuration
-export BASH_IT="$HOME/.bash_it/bash-it"
+export BASH_IT="$HOME/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
