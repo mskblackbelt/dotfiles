@@ -257,11 +257,35 @@ searchPriorities = []
 sortOrders = []
 
     [[catalogs.globalScopes]]
+    catalogIdentifier = 'music.albums'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'music.artists'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
+
+    [[catalogs.globalScopes]]
     catalogIdentifier = 'music.controls'
 
         [catalogs.globalScopes.scope]
         itemIDs = [ 'music.now-playing' ]
         kind = 'only'
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'music.playlists'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
+
+    [[catalogs.globalScopes]]
+    catalogIdentifier = 'music.songs'
+
+        [catalogs.globalScopes.scope]
+        kind = 'none'
 
     [[catalogs.globalScopes]]
     catalogIdentifier = 'tuna.contacts'
