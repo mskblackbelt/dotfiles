@@ -47,8 +47,15 @@ git pull origin main
 git submodule init
 git submodule update --recursive
 
+# Clone the private companion repo next to this one, if this account can access it
+private_dir="$(cd ../.. && pwd)/dotfiles-private"
+if [[ ! -d "$private_dir" ]]; then
+	GIT_TERMINAL_PROMPT=0 git clone -q https://github.com/mskblackbelt/dotfiles-private.git "$private_dir" \
+		|| echo "Skipping dotfiles-private (no access). Run 'gh auth login && gh auth setup-git', then re-run."
+fi
+
 # Install rc files using rcm
-RCRC="../rcrc"; rcup
+RCRC="$(cd .. && pwd)/rcrc" rcup
 
 echo "Run macos_install.sh to set up additonal MacOS options."
 echo "Run 'brew bundle --file ./init/Brewfile' to install all Homebrew formulae."

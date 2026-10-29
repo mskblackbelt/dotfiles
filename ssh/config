@@ -3,23 +3,9 @@ Include ~/.orbstack/ssh/config
 # Added by OrbStack: 'orb' SSH host for Linux machines
 # This only works if it's at the top of ssh_config (before any Host blocks).
 # This won't be added again if you remove it.
+
+# Private host entries (dotfiles-private repo, linked by rcm)
+Include ~/.ssh/config.d/*
+
 Host *
 	IdentityAgent "~/.1password/agent.sock"
-
-Host sugarcube
-	User REDACTED
-	HostName REDACTED-IP
-	RemoteForward 52698 localhost:52698
-
-Host boron
-    User REDACTED
-    HostName REDACTED-IP
-    RemoteForward 52698 localhost:52698
-
-Host wheeler-server
-	User REDACTED
-	HostName REDACTED-IP
-
-Host oracle-plex
-	User REDACTED
-	HostName REDACTED-IP
