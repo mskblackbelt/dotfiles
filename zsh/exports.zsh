@@ -1,22 +1,17 @@
-if [[ $IS_MAC -eq 1 ]]; then
-  # path_helper creates a default path based on the contents of /etc/paths.d and /etc/manpaths.d
-  # The function is run as part of /etc/zshenv by default.
-	# unset PATH
-  # eval `/usr/libexec/path_helper -s`
-
-  # Add homebrew binaries to the path
-	if [[ -x /opt/homebrew/bin/brew ]]; then
-    export HOMEBREW_PREFIX=$(/opt/homebrew/bin/brew --prefix);
-    export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
-    export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
-    export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
+# Homebrew: Apple Silicon, Intel, then Linuxbrew. Found by directory instead of
+# running `brew --prefix`, which costs a subprocess on every shell start.
+# (macOS's /etc/zprofile already runs path_helper for the default PATH.)
+for prefix in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew $HOME/.linuxbrew; do
+  if [[ -x $prefix/bin/brew ]]; then
+    export HOMEBREW_PREFIX=$prefix
+    export HOMEBREW_CELLAR="$prefix/Cellar"
+    export HOMEBREW_REPOSITORY=$prefix
+    [[ $prefix == /opt/homebrew ]] || HOMEBREW_REPOSITORY="$prefix/Homebrew"
+    export INFOPATH="$prefix/share/info${INFOPATH:+:$INFOPATH}"
+    break
   fi
-
-# Add linuxbrew directory if present
-elif [[ -d $HOME/.linuxbrew ]]; then
-   eval $($HOME/.linuxbrew/bin/brew shellenv);
-   export HOMEBREW_PREFIX=$(brew --prefix);
-fi
+done
+unset prefix
 
 # Set XDG variables if not present
 export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
@@ -25,8 +20,11 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 
+# pixi installs global tools here; its settings stay in ~/.config/pixi
+export PIXI_HOME="$XDG_DATA_HOME/pixi"
+
 manpath=(
-  $HOMEBREW_PREFIX/share/man(N)
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/share/man}(N)
   $manpath
 )
 typeset -U manpath
@@ -37,7 +35,9 @@ path=(
   ~/bin(N)
   ~/.cask/bin(N)
   ~/.cargo/bin(N)
-  ~/bin/anaconda/bin(N)
+  $PIXI_HOME/bin(N)
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/bin}(N)
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/sbin}(N)
   /opt/homebrew/bin(N)
   /usr/local/bin(N)
   /usr/bin
@@ -51,28 +51,9 @@ path=(
 )
 typeset -U path # U for Unique, like a set; (N) == only if exists
 
-# Helper function for checking if a binary exists and is executable
-function _command_executable() {
-  local _binary="$1" _full_path
-
-  # Checks if the binary is available.
-  _full_path=$( whence -p "$_binary" )
-  commandStatus=$?
-  if [ $commandStatus -ne 0 ]; then
-    # It is not the case, if NOT in 'BSC_MODE_CHECK_CONFIG' mode, it is a fatal error.
-    echo "Unable to find binary '$_binary'."
-    return 201
-  # Checks if the binary has "execute" permission.
-  elif [ -x "$_full_path" ]; then
-    return 0
-  else
-    echo "Binary '$_binary' found but it does not have *execute* permission."
-    return 202
-  fi
-}
-
+# True if a command is on PATH (zsh's command hash table; no subshell)
 function _command_exists() {
-  _command_executable "$1" > /dev/null 2>&1
+  (( $+commands[$1] ))
 }
 
 # Export pagers and editors
@@ -107,19 +88,20 @@ export GNUTERM='svg' # Terminal used for gnuplot, matplotlib
 # export HISTSIZE=5000
 # export SAVEHIST=5000
 export HISTFILE="$HOME/.local/.zsh_history"
-export ZSH_COMPDUMP="${HOME}/.local/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+# Completion cache (compinit dump), per host and zsh version
+[[ -d $XDG_CACHE_HOME/zsh ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${HOST%%.*}-${ZSH_VERSION}"
 
-# -------------------------------------------------------------------
-# Collection of exports from matias bynens dotfiles
-# -------------------------------------------------------------------
+# Leave these commands out of the history file
+HISTORY_IGNORE='(ls|cd|cd -|pwd|exit|date|* --help)'
 
-# Exclude some commands from history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
-
-# Prefer US English and use UTF-8
-export LANG="en_US.UTF-8";
-export LC_ALL="en_US.UTF-8";
-
-# Highlight section titles in manual pages
-export LESS_TERMCAP_md="${yellow}";
+# Prefer US English with UTF-8 when nothing is set; minimal Linux images often
+# only have C.UTF-8. LC_ALL is left alone so per-category settings still work.
+if [[ -z $LANG ]]; then
+  if [[ $IS_MAC -eq 1 ]] || locale -a 2> /dev/null | grep -qiE '^en_US\.utf-?8$'; then
+    export LANG=en_US.UTF-8
+  else
+    export LANG=C.UTF-8
+  fi
+fi
 

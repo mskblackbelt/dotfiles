@@ -1,25 +1,6 @@
-# Enable ZSH completion
-if [[ $HAS_BREW -eq 1 ]]; then
-  fpath=(
-    $HOMEBREW_PREFIX/share/zsh/site-functions(N) 
-    $HOMEBREW_PREFIX/share/zsh-completions(N)
-    $fpath
-  )
-fi
-
-fpath=(
-  /usr/local/share/zsh-completions(N)
-  ~/.local/zsh-completions(N)
-  $fpath
-)
-
-typeset -U fpath
-
-autoload -Uz compinit && compinit
+# Completion styles. compinit itself runs once, inside oh-my-zsh
+# (fpath is set up in oh-my-zsh_opts.zsh before that).
 zmodload -i zsh/complist
-
-
-# TODO What is all of this??
 
 # man zshcontrib
 autoload -Uz vcs_info

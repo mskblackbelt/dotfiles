@@ -105,8 +105,10 @@ function precmd {
   PR_FILLBAR=""
   PR_PWDLEN=""
   
-  TOP_BAR_LENGTH=" $(python_prompt_info) $(battery_level_gauge)\
-    $(battery_time_remaining)"
+  # Run the slower helpers once per prompt
+  local py_info="$(python_prompt_info)"
+  local batt_info="$(battery_level_gauge)$(battery_time_remaining)"
+  TOP_BAR_LENGTH=" $py_info $batt_info    "
   # Calculation for length of top prompt (from http://stackoverflow.com/q/10564314/2216427)
   local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
   FOOLENGTH=${#${(S%%)TOP_BAR_LENGTH//$~zero/}} 
@@ -119,7 +121,7 @@ function precmd {
   # Put the parentdir/currentdir in the tab
   echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
   
-  print -rP "%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} $(python_prompt_info) %{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}$PR_HBAR${(e)PR_FILLBAR}%{$PR_SHIFT_OUT%}$(battery_level_gauge)$(battery_time_remaining)%{$PR_SHIFT_IN%}$PR_URCORNER%{$PR_SHIFT_OUT%}"
+  print -rP "%{$PR_SHIFT_IN%}$PR_ULCORNER%{$PR_SHIFT_OUT%}%{$PR_GREY%} $py_info %{$PR_NO_COLOUR%}%{$PR_SHIFT_IN%}$PR_HBAR${(e)PR_FILLBAR}%{$PR_SHIFT_OUT%}$batt_info%{$PR_SHIFT_IN%}$PR_URCORNER%{$PR_SHIFT_OUT%}"
   
 }
 

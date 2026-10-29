@@ -17,12 +17,6 @@ setopt LONG_LIST_JOBS
 
 # ===== History
 
-# Allow multiple terminal sessions to all append to one zsh command history
-setopt APPEND_HISTORY 
-
-# Add comamnds as they are typed, don't wait until shell exit
-setopt INC_APPEND_HISTORY 
-
 # Do not write events to history that are duplicates of previous events
 setopt HIST_IGNORE_ALL_DUPS
 
@@ -38,7 +32,9 @@ setopt HIST_IGNORE_SPACE
 # Include more information about when the command was executed, etc
 setopt EXTENDED_HISTORY
 
-# Share the history file between multiple shells
+# Write each command to the history file as it runs and read other sessions'
+# commands in. (Includes APPEND_HISTORY and INC_APPEND_HISTORY; the zsh manual
+# says not to set INC_APPEND_HISTORY alongside it.)
 setopt SHARE_HISTORY
 
 # ===== Completion 
@@ -56,9 +52,6 @@ setopt AUTO_LIST
 
 # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 setopt PROMPT_SUBST
-
-# Display red dots while waiting for completion
-COMPLETION_WAITING_DOTS="true"
 
 unsetopt MENU_COMPLETE
 setopt AUTO_MENU

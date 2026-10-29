@@ -47,6 +47,24 @@ if _command_exists uv; then
   plugins=($plugins uv)
 fi
 
+# Keep oh-my-zsh's caches out of its checkout
+ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
+
+# bin/update-externals updates oh-my-zsh, so turn off its own updater
+zstyle ':omz:update' mode disabled
+
+# Display red dots while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Extra completion functions; must be on fpath before oh-my-zsh runs compinit
+fpath=(
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/share/zsh/site-functions}(N)
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/share/zsh-completions}(N)
+  ~/.local/zsh-completions(N)
+  $fpath
+)
+typeset -U fpath
+
 if [[ -r $ZSH/oh-my-zsh.sh ]]; then
   source $ZSH/oh-my-zsh.sh
 else
