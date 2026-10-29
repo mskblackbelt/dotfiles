@@ -46,8 +46,8 @@ for o, a in opts:
 # Handle the arguments.
 try:
     fcns = args[0].split(";")
-    minx = eval(args[1])
-    maxx = eval(args[2])
+    minx = eval(args[1], vars(np))
+    maxx = eval(args[2], vars(np))
 except IndexError:
     sys.stderr.write(usage)
     sys.exit()
@@ -63,7 +63,7 @@ except IndexError:
 # Make the plot.
 x = np.linspace(minx, maxx, 100)
 for i, f in enumerate(fcns):
-    y = eval(f)
+    y = eval(f, vars(np), {"x": x})
     plt.plot(x, y, "-", linewidth=2)
 
 plt.minorticks_on()

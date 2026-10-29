@@ -1,5 +1,15 @@
-curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -s https://www.iblocklist.com/lists.php \
- | sed -n "s/.*value='\(http:.*\)'.*/\1/p" \
- | xargs wget -O - \
- | gunzip \
- | egrep -v '^#' > /Volumes/Airlock/Torrents/transmission_blocklist.txt
+#!/usr/bin/env bash
+#
+# Build a Transmission blocklist from the free lists on iblocklist.com
+# Usage: blocklist_download.sh [output-file]
+set -uo pipefail
+
+out="${1:-/Volumes/Airlock/Torrents/transmission_blocklist.txt}"
+
+curl -fsS -A "Mozilla/5.0" https://www.iblocklist.com/lists.php \
+	| grep -oE "http://list\.iblocklist\.com/\?list=[a-z]+&amp;fileformat=p2p&amp;archiveformat=gz" \
+	| sed 's/&amp;/\&/g' | sort -u \
+	| while read -r url; do
+		curl -fsSL "$url" | gunzip 2>/dev/null || echo "Skipped $url" >&2
+	done \
+	| grep -Ev '^(#|$)' > "$out"

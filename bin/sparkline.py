@@ -13,7 +13,7 @@ def spark(data):
     line = ""
     lo = float(min(data))
     hi = float(max(data))
-    incr = (hi - lo) / 8
+    incr = (hi - lo) / 8 or 1  # all values equal: draw a flat line
     for n in data:
         line += blocks[int((float(n) - lo) / incr)]
     return line
