@@ -10,7 +10,6 @@ data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
 externals=(
 	"oh-my-zsh|https://github.com/ohmyzsh/ohmyzsh.git|master|$data_dir/oh-my-zsh"
 	"spacemacs|https://github.com/syl20bnr/spacemacs.git|develop|$HOME/.emacs.d"
-	"bash-it|https://github.com/Bash-it/bash-it.git|master|$HOME/.bash_it"
 )
 
 if [[ ${1-} == -h || ${1-} == --help ]]; then

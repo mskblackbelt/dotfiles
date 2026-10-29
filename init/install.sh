@@ -43,7 +43,7 @@ brew cleanup
 # Update dotfiles repository
 git pull origin main
 
-# Clone or update oh-my-zsh, Spacemacs, and bash-it
+# Clone or update oh-my-zsh and Spacemacs
 ../bin/update-externals
 
 # Clone the private companion repo next to this one, if this account can access it
