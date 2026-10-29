@@ -28,11 +28,9 @@ load_files=(
   aliases
   bindkeys
   functions
-  zsh_hooks
   private
   local
   prompt
-  iterm2_shell_integration
 )
 for file in $load_files; do
   file="$ZDOTDIR/$file.zsh"
@@ -43,9 +41,9 @@ done;
 #Autoload modules
 module_path=($module_path)
 autoload -U zcalc
-[[ -e $(alias run-help) ]] && unalias run-help
+(( $+aliases[run-help] )) && unalias run-help
 autoload run-help
-HELPDIR=/usr/local/share/zsh/helpfiles
+HELPDIR="${HOMEBREW_PREFIX:-/usr/local}/share/zsh/help"
 
 # Clean duplicates from $PATH
 typeset -U path # -U for unique
