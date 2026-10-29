@@ -43,9 +43,8 @@ brew cleanup
 # Update dotfiles repository
 git pull origin main
 
-# Initialize and pull submodules
-git submodule init
-git submodule update --recursive
+# Clone or update oh-my-zsh, Spacemacs, and bash-it
+../bin/update-externals
 
 # Clone the private companion repo next to this one, if this account can access it
 private_dir="$(cd ../.. && pwd)/dotfiles-private"

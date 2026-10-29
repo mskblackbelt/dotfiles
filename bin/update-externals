@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Clone or update the third-party frameworks these dotfiles rely on.
+# Usage: update-externals [name ...]   (default: all)
+set -uo pipefail
+
+data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+# name|url|branch|path
+externals=(
+	"oh-my-zsh|https://github.com/ohmyzsh/ohmyzsh.git|master|$data_dir/oh-my-zsh"
+	"spacemacs|https://github.com/syl20bnr/spacemacs.git|develop|$HOME/.emacs.d"
+	"bash-it|https://github.com/Bash-it/bash-it.git|master|$HOME/.bash_it"
+)
+
+if [[ ${1-} == -h || ${1-} == --help ]]; then
+	echo "Usage: $(basename "$0") [name ...]"
+	printf '  %s\n' "${externals[@]%%|*}"
+	exit 0
+fi
+
+status=0
+for entry in "${externals[@]}"; do
+	IFS='|' read -r name url branch path <<< "$entry"
+	[[ $# -gt 0 && " $* " != *" $name "* ]] && continue
+
+	if [[ -L $path || ( -e $path && ! -d $path/.git ) ]]; then
+		echo "$name: $path exists but isn't a git checkout; skipping" >&2
+		status=1
+	elif [[ ! -e $path ]]; then
+		echo "$name: cloning into $path"
+		mkdir -p "$(dirname "$path")"
+		git clone -q --branch "$branch" "$url" "$path" || status=1
+	elif [[ $(git -C "$path" rev-parse --abbrev-ref HEAD) != "$branch" ]]; then
+		echo "$name: $path is not on $branch; skipping" >&2
+		status=1
+	elif [[ -n $(git -C "$path" status --porcelain --untracked-files=no) ]]; then
+		echo "$name: local changes in $path; skipping" >&2
+		status=1
+	else
+		before=$(git -C "$path" rev-parse --short HEAD)
+		if git -C "$path" pull -q --ff-only origin "$branch"; then
+			after=$(git -C "$path" rev-parse --short HEAD)
+			if [[ $before == "$after" ]]; then
+				echo "$name: up to date ($after)"
+			else
+				echo "$name: updated $before..$after ($(git -C "$path" rev-list --count "$before..$after") commits)"
+			fi
+		else
+			echo "$name: can't fast-forward; resolve it in $path" >&2
+			status=1
+		fi
+	fi
+done
+exit $status

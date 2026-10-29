@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$ZDOTDIR/oh-my-zsh
+# Cloned and updated by bin/update-externals
+ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"
 ZSH_CUSTOM=$ZDOTDIR/omz_custom
 
 # Set name of the theme to load.
@@ -46,4 +47,8 @@ if _command_exists uv; then
   plugins=($plugins uv)
 fi
 
-source $ZSH/oh-my-zsh.sh
+if [[ -r $ZSH/oh-my-zsh.sh ]]; then
+  source $ZSH/oh-my-zsh.sh
+else
+  echo "oh-my-zsh not found at $ZSH; run update-externals" >&2
+fi
