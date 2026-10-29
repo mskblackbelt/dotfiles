@@ -352,7 +352,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 # Set up symlinks for folders
 ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs/iCloud Drive" "$HOME/iCloud Drive"
-ls -s "$HOME/iCloud Drive/Projects" "$HOME/Developer"
+ln -s "$HOME/iCloud Drive/Projects" "$HOME/Developer"
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
