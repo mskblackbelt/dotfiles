@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 #
-# Script to convert selected markdown file to a PDF letter
+# Convert a markdown file to a PDF letter
 set -euo pipefail
-IFS=$'\n\t'
-shopt -s nullglob
 
-filename=$(basename "$1" .md)
-/opt/homebrew/bin/pandoc "$1" \
+if [[ $# -lt 1 ]]; then
+	echo "Usage: $(basename "$0") file.md" >&2
+	exit 1
+fi
+
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+input="$1"
+output="${input%.md}.pdf"   # PDF lands next to the input file
+
+data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+if ! /opt/homebrew/bin/pandoc "$input" \
 	--from=markdown+link_attributes \
-	--template="template-letter.latex" \
+	--template="$script_dir/template-letter.latex" \
 	--pdf-engine=tectonic \
-	--output="$filename".pdf
-# If file conversion results in an error (RESULT != 0), report the file and move on.
-if [ $? -eq 0 ]; then
-	true
-else
-	echo "Could not convert $file"
+	-V graphicspath="." \
+	-V graphicspath="$data_dir/images" \
+	--output="$output"; then
+	echo "Could not convert $input" >&2
+	exit 1
 fi
