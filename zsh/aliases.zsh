@@ -4,8 +4,14 @@ alias ohmyzsh="$EDITOR ${ZSH:A}"
 
 # Enable sudo with aliases
 alias sudo='sudo '
-# Run previous command with root privileges
-alias fuck='sudo $(fc -ln -1)'
+# Correct the previous command with thefuck. Its alias is generated on first
+# use instead of at every shell start (saves ~0.08s per shell).
+if _command_exists thefuck; then
+  fuck() { unfunction fuck; eval "$(thefuck --alias)"; fuck "$@" }
+else
+  # Fallback: rerun the previous command with root privileges
+  alias fuck='sudo $(fc -ln -1)'
+fi
 
 # Show history
 alias history='fc -l 1'

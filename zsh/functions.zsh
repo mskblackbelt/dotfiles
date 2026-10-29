@@ -116,7 +116,8 @@ LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -d
     defaults write com.apple.finder CreateDesktop -bool true && killall Finder
   }
   
-  # Merge PDF files with Ghostscript
+  # Merge PDF files with macOS's built-in Combine PDF Pages tool, which copies
+  # pages without re-rendering them
   # Usage: `mergepdf output.pdf input{1,2,3}.pdf`
   function mergepdf () {
     if (( $# < 3 )); then
@@ -124,7 +125,7 @@ LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -d
       return 1
     fi
     local out=$1; shift
-    gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -sOutputFile="$out" "$@"
+    "/System/Library/Automator/Combine PDF Pages.action/Contents/MacOS/join" -o "$out" "$@"
   }
   
   # Disable/enable Spotlight
