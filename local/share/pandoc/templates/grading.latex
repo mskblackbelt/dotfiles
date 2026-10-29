@@ -1,10 +1,9 @@
 \documentclass[12pt,letter]{article}
-\usepackage{stix2}
 
 \usepackage{setspace}
 \doublespacing % Set double spacing for grading purposes
 \usepackage{todonotes} % Insert margin notes for comments
-\usepackage{soul,xparse,xcolor} % Enable strikethrough for grading
+\usepackage{soul,xcolor} % Enable strikethrough for grading
 
 % Redefine strikethrough macro to give default red strike (optional argument sets alternate color)
 \RenewDocumentCommand{\st}{O{red}O{black}+m}
@@ -23,8 +22,17 @@
 			\endgroup
 	}
 
-\usepackage{amssymb,amsmath}
-\usepackage{fixltx2e} % provides \textsubscript
+\usepackage{iftex}       % defines \ifxetex, used in the language block below
+\usepackage{amsmath}     % must load before unicode-math
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{STIXTwoText}[
+  Extension      = .otf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic]
+\setmathfont{STIXTwoMath-Regular.otf}
 
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -110,25 +118,26 @@ $if(tables)$
 \usepackage{longtable,booktabs}
 $endif$
 $if(graphics)$
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 \makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=4in,height=4in,keepaspectratio}
-% \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 $if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\usepackage{soul} % pandoc writes ~~strikeout~~ as \st
 $endif$
 $if(indent)$
 $else$
