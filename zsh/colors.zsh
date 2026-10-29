@@ -1,7 +1,7 @@
 autoload colors && colors
 
-# Setup terminal, and turn on colors
-export TERM=xterm-256color
+# Fall back to a sane TERM only if the terminal didn't set one
+[[ -z $TERM ]] && export TERM=xterm-256color
 
 # The variables are wrapped in %{%}. This should be the case for every
 # variable that does not contain space.
