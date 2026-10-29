@@ -1,4 +1,4 @@
 DOTFILES_DIRS="$HOME/Developer/dotfiles $HOME/Developer/dotfiles-private"
 EXCLUDES="LICENSE* README.md *install*.sh Brewfile init austin_persona.md"
-SYMLINK_DIRS="zsh bin local/share/* config/*"
+SYMLINK_DIRS="zsh bin local/share/images local/share/pandoc local/share/texmf config/*"
 UNDOTTED="bin"

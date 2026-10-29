@@ -28,6 +28,10 @@ export PATH
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+# pixi installs global tools here; its settings stay in ~/.config/pixi
+export PIXI_HOME="$XDG_DATA_HOME/pixi"
+__path_prepend "$PIXI_HOME/bin"
 # Default to en_US.UTF-8 where it's installed; minimal Linux images often only have C.UTF-8
 if [[ -z ${LANG-} ]]; then
 	if locale -a 2> /dev/null | grep -qiE '^en_US\.utf-?8$'; then

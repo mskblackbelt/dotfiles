@@ -1,0 +1,3 @@
+# Global tools installed with `pixi global install`. Linked to
+# $PIXI_HOME/manifests/pixi-global.toml by rcm; `pixi global sync` installs them all.
+version = 1
