@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Convert Markdown files to PDFs using pandoc and tectonic
+set -uo pipefail
+
+if [[ $# -lt 1 ]]; then
+	echo "Usage: $(basename "$0") file.md [file.md ...]" >&2
+	exit 1
+fi
+
+status=0
+for input in "$@"; do
+	# PDF lands next to the input file; pandoc uses ~/.local/share/pandoc/templates/default.latex
+	if ! pandoc "$input" \
+		--from=markdown+link_attributes \
+		--pdf-engine=tectonic \
+		--output="${input%.md}.pdf"; then
+		echo "Could not convert $input" >&2
+		status=1
+	fi
+done
+exit $status

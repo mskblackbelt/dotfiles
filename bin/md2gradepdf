@@ -1,27 +1,17 @@
 #!/usr/bin/env bash
 #
-# Script to convert all Markdown documents in the folder to 
-# gradable PDFs using pandoc and my custom grading template. 
-# set -euf
-set -euo pipefail
-IFS=$'\n\t'
+# Convert all Markdown documents in the folder to gradable PDFs
+# using pandoc, tectonic, and my custom grading template.
+set -uo pipefail
 shopt -s nullglob
 
-[[ -d ./to_grade ]] || mkdir -p ./to_grade
-mkdir -p ./tmp
-for file in *.md; do 
-	(filename=$(basename "$file" .md)
-	tmpfile="$(mktemp ./tmp/conv.XXXXXXXX)"
-	## Broken in 10.14.5 on the Mac Pro 3,1 with uconv # Use uconv to merge any weird Unicode accents into a single character for LaTeX
-  # /usr/local/opt/icu4c/bin/uconv -x any-nfc "$file" > "$tmpfile"
-	/usr/local/bin/pandoc -f markdown+link_attributes --template=/Users/mskblackbelt/.pandoc/grading.latex "$file" \
-		-o ./to_grade/"$filename".pdf
-	# If file conversion results in an error (RESULT != 0), report the file and move on.
-	if [ $? -eq 0 ]; then
-		true
-	else
-		echo "Could not convert $file"
-	fi) &
-done
+template="${XDG_DATA_HOME:-$HOME/.local/share}/pandoc/templates/grading.latex"
 
-wait && trash ./tmp
+mkdir -p ./to_grade
+for file in *.md; do
+	(pandoc -f markdown+link_attributes --template="$template" \
+		--pdf-engine=tectonic \
+		-o "./to_grade/$(basename "$file" .md).pdf" "$file" \
+		|| echo "Could not convert $file" >&2) &
+done
+wait

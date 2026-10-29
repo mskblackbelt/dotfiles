@@ -8,15 +8,14 @@ if [[ $# -lt 1 ]]; then
 	exit 1
 fi
 
-script_dir="$(cd "$(dirname "$0")" && pwd)"
 input="$1"
 output="${input%.md}.pdf"   # PDF lands next to the input file
 
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
 
-if ! /opt/homebrew/bin/pandoc "$input" \
+if ! pandoc "$input" \
 	--from=markdown+link_attributes \
-	--template="$script_dir/template-letter.latex" \
+	--template="$data_dir/pandoc/templates/template-letter.latex" \
 	--pdf-engine=tectonic \
 	-V graphicspath="." \
 	-V graphicspath="$data_dir/images" \
