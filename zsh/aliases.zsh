@@ -1,15 +1,11 @@
 # Edit ZSH configuration files
-alias zshconfig="$EDITOR $(readlink $ZDOTDIR)"
-alias ohmyzsh="$EDITOR $(readlink $ZSH)"
+alias zshconfig="$EDITOR ${ZDOTDIR:A}"
+alias ohmyzsh="$EDITOR ${ZSH:A}"
 
 # Enable sudo with aliases
-alias sudo='sudo '  
-# Run previous command with root privileges 
-if _command_exists thefuck; then
-  eval "$(thefuck --alias)"
-else
-  alias fuck='sudo $(fc -ln -1)'
-fi
+alias sudo='sudo '
+# Run previous command with root privileges
+alias fuck='sudo $(fc -ln -1)'
 
 # Show history
 alias history='fc -l 1'
@@ -106,8 +102,8 @@ fi
 if [[ $IS_MAC -eq 1 ]]; then
 	alias ql="quick-look"
 	alias pman="man-preview"
-	if [[ -x '/Applications/Mathematica.app/contents/MacOS/MathKernel' ]]; then 
-		alias math='/Applications/Mathematica.app/contents/MacOS/MathKernel'
+	if [[ -x '/Applications/Wolfram.app/Contents/MacOS/WolframKernel' ]]; then
+		alias math='/Applications/Wolfram.app/Contents/MacOS/WolframKernel'
 	fi
 
 	

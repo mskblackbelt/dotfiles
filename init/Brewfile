@@ -85,8 +85,6 @@ brew "smartmontools"
 brew "tectonic"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# Programmatically correct mistyped console commands
-brew "thefuck"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Command-line unarchiving tools supporting multiple formats

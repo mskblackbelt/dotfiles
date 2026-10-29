@@ -59,7 +59,7 @@ function battery_level_gauge() {
 }
 
 
-if [[ "IS_MAC" -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
+if [[ $IS_MAC -eq 1 ]] && [[ $(pmset -g batt | grep -c "Batt") -gt 0 ]]; then
 	
   function battery_pct() {
     pmset -g batt | grep -o "\d*%" | tr -d "%"
@@ -144,7 +144,7 @@ elif [[ $(uname) == "Linux" ]] && _command_exists upower && [[ $(upower -e | gre
 	  }
 
 	  function battery_pct_remaining() {
-	    if [ ! $(battery_is_charging) ] ; then
+	    if ! battery_is_charging; then
 	      battery_pct
 	    else
 	      echo "External Power"
@@ -159,7 +159,7 @@ elif [[ $(uname) == "Linux" ]] && _command_exists upower && [[ $(upower -e | gre
 
 	  function battery_pct_prompt() {
 	    b=$(battery_pct_remaining) 
-	    if [[ $(battery_is_discharging) ]] ; then
+	    if battery_is_discharging; then
 	      if [ $b -gt 50 ] ; then
 	        color='green'
 	      elif [ $b -gt 20 ] ; then

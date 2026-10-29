@@ -1,16 +1,16 @@
 function zsh_recompile {
   autoload -U zrecompile
-  rm -f $ZDOTDIR/**/*.zwc
-  [[ -f $HOME/$HOME.zshrc ]] && zrecompile -p $HOME/.zshrc
-  [[ -f $HOME/$HOME.zshrc.zwc.old ]] && rm -f $HOME/.zshrc.zwc.old
+  rm -f $ZDOTDIR/**/*.zwc(N)
+  [[ -f $HOME/.zshrc ]] && zrecompile -p $HOME/.zshrc
+  rm -f $HOME/.zshrc.zwc.old(N)
 
-  for f in $ZSH/**/*.zsh; do
-    [[ -f $f ]] && zrecompile -p $f
-    [[ -f $f.zwc.old ]] && rm -f $f.zwc.old
+  for f in $ZSH/**/*.zsh(N); do
+    zrecompile -p $f
+    rm -f $f.zwc.old(N)
   done
 
-  [[ -f $HOME/.zcompdump* ]] && zrecompile -p $HOME/.zcompdump
-  [[ -f $HOME/.zcompdump*.zwc.old ]] && rm -f $HOME/.zcompdump*.zwc.old
+  [[ -f $ZSH_COMPDUMP ]] && zrecompile -p $ZSH_COMPDUMP
+  rm -f $ZSH_COMPDUMP.zwc.old(N)
 
   source $HOME/.zshrc
 }
@@ -60,7 +60,7 @@ if [[ $IS_MAC -eq 1 ]]; then
   }
 
 	function fix_airplay {
-	  sudo kill $(ps -ax | grep 'coreaudiod' | grep 'sbin' |awk '{print $1}')
+	  sudo killall coreaudiod
 	}
 	
 
@@ -99,8 +99,7 @@ LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -d
   
 	# Repair the services available in the OS X share sheet
 	function fixsharesheet () {
-    /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/\
-      LaunchServices.framework/Versions/A/Support/lsregister -kill -seed; 
+    /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -seed;
     killall Finder; 
     echo 'Sharing services have been reseeded, check your share sheet options.'
   }
@@ -117,10 +116,15 @@ LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -d
     defaults write com.apple.finder CreateDesktop -bool true && killall Finder
   }
   
-  # Merge PDF files
-  # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+  # Merge PDF files with Ghostscript
+  # Usage: `mergepdf output.pdf input{1,2,3}.pdf`
   function mergepdf () {
-    /System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py
+    if (( $# < 3 )); then
+      echo "Usage: mergepdf output.pdf input1.pdf input2.pdf [...]" >&2
+      return 1
+    fi
+    local out=$1; shift
+    gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -sOutputFile="$out" "$@"
   }
   
   # Disable/enable Spotlight
@@ -131,9 +135,10 @@ LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -d
     sudo mdutil -a -i on
   }
   
-  # Lock the screen (when going AFK)
+  # Lock the screen (when going AFK): sleeps the display, which locks it when
+  # "Require password after screen saver begins or display is turned off" is on
   function afk () {
-    /System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend
+    pmset displaysleepnow
   }
     
 fi
