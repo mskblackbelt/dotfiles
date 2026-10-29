@@ -1,4 +1,4 @@
-#!/Users/mskblackbelt/bin/mathScript -script
+#!/usr/bin/env wolframscript
 
 value=ToExpression[$ScriptCommandLine[[2]]];
 
