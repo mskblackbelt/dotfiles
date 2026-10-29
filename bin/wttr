@@ -2,7 +2,7 @@
 
 showHelp() {
   cat << EOF
-  wttr [-hlnv]:
+  wttr [-hlnpv]:
 
   Show the weather at your current location
       -v,           Show data-rich output
@@ -14,16 +14,75 @@ showHelp() {
                       1 - Current weather + today's forecast
                       2 - Current weather + today's + tomorrow's forecast
 
+      -p,           Plain output (no colors)
+
       -h,           Show this message.
 
 EOF
 }
 
+# wttr.in hardcodes 256-color codes tuned for dark backgrounds. Remap each one
+# to the nearest of the 16 basic ANSI colors so the terminal theme decides how
+# it looks; greys go to the default foreground so they stay legible on light
+# and dark themes alike. Also drop U+FE0F so emoji icons stay one column wide
+# and the forecast table keeps its alignment.
+themeColors() {
+  perl -CSD -pe '
+    use List::Util qw(max min);
+    sub basic {
+      my ($r, $g, $b, $base) = @_;
+      my ($hi, $lo) = (max($r, $g, $b), min($r, $g, $b));
+      return $base + 9 if !$hi || ($hi - $lo) / $hi < 0.25;    # grey: 39 or 49
+      my $d = $hi - $lo;
+      my $hue = $hi == $r ? 60 * ((($g - $b) / $d) + 6)
+              : $hi == $g ? 60 * ((($b - $r) / $d) + 2)
+              :             60 * ((($r - $g) / $d) + 4);
+      $hue -= 360 if $hue >= 360;
+      return $base + ($hue < 20 || $hue >= 330 ? 1    # red
+                    : $hue < 70  ? 3                  # yellow/orange
+                    : $hue < 160 ? 2                  # green
+                    : $hue < 200 ? 6                  # cyan
+                    : $hue < 260 ? 4                  # blue
+                    :              5);                # magenta
+    }
+    sub xterm {
+      my $n = shift;
+      return (map { $_ ? 55 + 40 * $_ : 0 } int(($n - 16) / 36), int(($n - 16) / 6) % 6, ($n - 16) % 6)
+        if $n >= 16 && $n < 232;
+      return (8 + 10 * ($n - 232)) x 3 if $n >= 232;
+      return;
+    }
+    sub sgr {
+      my @p = split /;/, shift, -1;
+      my @out;
+      while (@p) {
+        my $c = shift @p;
+        if (($c eq "38" || $c eq "48") && @p) {
+          my $base = $c eq "38" ? 30 : 40;
+          my $mode = shift @p;
+          if ($mode eq "5") {
+            my $n = shift @p;
+            push @out, $n < 8 ? $base + $n : $n < 16 ? $base + 60 + $n - 8 : basic(xterm($n), $base);
+          } elsif ($mode eq "2") {
+            push @out, basic(splice(@p, 0, 3), $base);
+          }
+          next;
+        }
+        push @out, $c;
+      }
+      return join ";", @out;
+    }
+    s/\e\[([0-9;]*)m/"\e[" . sgr($1) . "m"/ge;
+    s/\x{FE0F}//g;
+  '
+}
+
 url="wttr.in"
 location=""
 verbosity="1"
+plain=""
 
-while getopts ":hl:n:v" options; do
+while getopts ":hl:n:pv" options; do
   case "${options}" in
     v)
       url="v2.wttr.in"
@@ -37,6 +96,9 @@ while getopts ":hl:n:v" options; do
         exit 1
       fi
       verbosity="$OPTARG"
+      ;;
+    p)
+      plain="T"
       ;;
     h)
       showHelp
@@ -54,7 +116,7 @@ while getopts ":hl:n:v" options; do
   esac
 done
 
-request="https://$url/${location// /+}?T$verbosity"
-[ "$(tput cols)" -lt 125 ] && request+='&n'
+request="https://$url/${location// /+}?$plain$verbosity"
+[ "$(tput cols 2>/dev/null || echo 80)" -lt 125 ] && request+='&n'
 
-curl "$request"
+curl -fsS "$request" | themeColors
