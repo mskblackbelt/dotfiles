@@ -133,7 +133,7 @@ cask "brave-browser"
 cask "chalk"
 # Plugin for color picker utility
 cask "colorpicker-propicker"
-# Tool to compare and synchronise files and folders (git difftool/mergetool)
+# Tool to compare and synchronise files and folders
 cask "deltawalker"
 # Tool to help searching the web more efficiently
 cask "devonagent"

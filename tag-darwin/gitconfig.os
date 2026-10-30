@@ -17,12 +17,13 @@
 [interactive]
 	diffFilter = delta --color-only --features=interactive
 
+# GUI tools: `git mergetool` and `git difftool -g` open VS Code
+# (`git difftool` stays on difftastic in the terminal)
 [merge]
-	tool = deltawalker
-[difftool "deltawalker"]
-	cmd = '/Applications/DeltaWalker.app/Contents/Resources/git-diff' "$LOCAL" "$REMOTE"
-[mergetool "deltawalker"]
-	cmd = '/Applications/DeltaWalker.app/Contents/Resources/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+	tool = vscode
+[diff]
+	guitool = vscode
+
 # Jupyter notebook diffs and merges via nbdime (see ~/.config/git/attributes)
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
