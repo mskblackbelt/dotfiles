@@ -1,9 +1,5 @@
 ## Taps
 
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/services"
-tap "railwaycat/emacsmacport"
 tap "ttscoff/thelab"
 
 # Brews
@@ -35,12 +31,12 @@ brew "procs"
 brew "ripgrep"
 # Intuitive find & replace CLI
 brew "sd"
-# Very fast implementation of tldr in Rust
-brew "tealdeer"
+# Official tldr client written in Rust
+brew "tlrc"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 
-## Other tools`
+## Other tools
 # Spell checker with better logic than ispell
 brew "aspell"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -53,10 +49,14 @@ brew "python"
 brew "ffmpeg"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
+# GitHub command-line tool
+brew "gh"
 # Command-line utility for uploading Gists
 brew "gist"
 # Distributed revision control system
 brew "git"
+# Structural diff that understands syntax (git difftool)
+brew "difftastic"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
@@ -67,8 +67,12 @@ brew "macvim"
 brew "mas"
 # Turn marked-up plain text into well-formatted documents
 brew "multimarkdown"
+# Markdown linter and fixer (config in config/md-fixup)
+brew "ttscoff/thelab/md-fixup"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# PAM module for reattaching to the user's GUI (Aqua) session (Touch ID sudo in tmux)
+brew "pam-reattach"
 # Package management made easy
 brew "pixi"
 # Wrapper to colorize and simplify ping's output
@@ -107,6 +111,8 @@ brew "zsh-fast-syntax-highlighting"
 
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
+cask "1password-cli"
 # Image editing and design software
 cask "affinity"
 # Integrated CAD, CAM, CAE, and PCB software
@@ -127,20 +133,22 @@ cask "brave-browser"
 cask "chalk"
 # Plugin for color picker utility
 cask "colorpicker-propicker"
+# Tool to compare and synchronise files and folders (git difftool/mergetool)
+cask "deltawalker"
 # Tool to help searching the web more efficiently
 cask "devonagent"
 # Collect, organize, edit and annotate documents
 cask "devonthink"
-# YAMAMOTO Mitsuharu's Mac port of GNU Emacs
-cask "emacs-mac-spacemacs-icon"
+# GNU Emacs text editor (runs Spacemacs)
+cask "emacs-app"
 # Web browser
 cask "firefox"
 # Web browser
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
+# Terminal emulator with native macOS UI
+cask "ghostty"
 # Productivity tool
 cask "launchbar"
 # Full TeX Live distribution with GUI applications
@@ -163,6 +171,8 @@ cask "omnioutliner"
 # cask "onedrive"
 # WebKit based web browser
 cask "orion"
+# Text snippet expander (config in config/Poof)
+cask "poof"
 # Graphical user interface for the 'defaults' command
 cask "prefs-editor"
 # All-in-one bookmark manager
@@ -171,10 +181,14 @@ cask "raindropio"
 cask "setapp"
 # PDF reader and note-taking application
 cask "skim"
+# Graphical client for Git version control
+cask "sourcetree"
 # Backup, recovery and cloning software
 cask "superduper"
 # Open-source BitTorrent client
 cask "transmission"
+# Application launcher (config in config/Tuna)
+cask "tuna"
 # 3D printer and slicing GUI
 cask "ultimaker-cura"
 # Video communication and virtual meeting platform
@@ -194,9 +208,7 @@ cask "font-stix-two-text"
 cask "font-stix-two-math"
 
 # QuickLook plugins
-cask "qlcommonmark"
 cask "syntax-highlight"
-cask "quicklook-csv"
 
 ## MAS apps
 
@@ -213,7 +225,7 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pins", id: 1547106997
 mas "Pixelmator Pro", id: 1289583905
 mas "Slack", id: 803453959
-mas "StopTheMadness", id: 1376402589
+mas "StopTheMadness Pro", id: 6471380298
 mas "URL Linker", id: 1289119450
 mas "Baking Soda", id: 1601151613
 mas "Vinegar", id: 1591303229
@@ -221,9 +233,9 @@ mas "Tot", id: 1491071483
 # mas "Xcode", id: 497799835
 
 # Apple iWork apps
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Keynote", id: 361285480
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 
 # Microsoft Office apps
 mas "OneDrive", id: 823766827
@@ -258,8 +270,18 @@ mas "Microsoft Word", id: 462054704
 
 ## Work
 
+# Brews
+# Quickly rewrite git repository history
+# brew "git-filter-repo"
+
 # Casks
 
+# Terminal-based AI coding assistant
+# cask "claude-code"
+# Replacement for Docker Desktop
+# cask "orbstack"
+# Open-source code editor
+# cask "visual-studio-code"
 # Collection of apps and services for photography, design, video, web, and UX
 # cask "adobe-creative-cloud"
 # Open-source image processing package
