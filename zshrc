@@ -23,7 +23,7 @@ load_files=(
   oh-my-zsh_opts
   setopt
   pyopts
-  perlopts
+  # perlopts
   completion
   aliases
   bindkeys
