@@ -52,11 +52,34 @@ fi
 # TODO create a function to relaunch a launchctl daemon
 if [[ $IS_MAC -eq 1 ]]; then
 
-  # Convert pasteboard text to multimarkdown
+  # Convert Markdown on the clipboard to rich text
+  function md2rtf () {
+    pbpaste | apex |
+      textutil -convert rtf -format html -inputencoding UTF-8 -stdin -stdout |
+      pbcopy
+  }
+
+  # Convert rich text on the clipboard to Markdown
+  # (browsers copy HTML; Pages, Word, and Mail copy RTF)
   function markdownify () {
-    pbpaste | multimarkdown | textutil -convert rtf -stdin -stdout -format html > ${TMPDIR}tmp-md2rtf.rtf; \
-    pbcopy -Prefer rtf < ${TMPDIR}tmp-md2rtf.rtf; \
-    rm ${TMPDIR}tmp-md2rtf.rtf
+    local rich type body
+    rich=$(osascript -l JavaScript -e '
+      ObjC.import("AppKit");
+      const pb = $.NSPasteboard.generalPasteboard;
+      const html = pb.stringForType("public.html").js;
+      const rtf = pb.stringForType("public.rtf").js;
+      html ? "html\n" + html : rtf ? "rtf\n" + rtf : ""')
+    type=${rich%%$'\n'*} body=${rich#*$'\n'}
+    if [[ $type == rtf ]]; then
+      body=$(textutil -convert html -format rtf -stdin -stdout <<< $body)
+    elif [[ $type != html ]]; then
+      print -u2 "rtf2md: no rich text on the clipboard"
+      return 1
+    fi
+    # Drop styling attributes so links and spans come out as Markdown, not HTML
+    sed -E 's/ (style|class|id)="[^"]*"//g' <<< $body |
+      pandoc -f html-native_spans-native_divs -t gfm --wrap=none |
+      sed '/^\\$/d' | pbcopy
   }
 
 	function fix_airplay {
