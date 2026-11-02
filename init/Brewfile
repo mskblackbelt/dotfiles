@@ -1,10 +1,16 @@
+# Homebrew bundle for every Mac: brew bundle --file ~/Developer/dotfiles/init/Brewfile
+#
+# Everything above "Home" and "Work" is installed everywhere. Those two
+# sections are commented out; uncomment what a given machine needs.
+
 ## Taps
 
 tap "ttscoff/thelab"
 
-# Brews
+## Formulae
 
-## Replacements for UNIX tools
+### Replacements for UNIX tools
+
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Yet another cross-platform graphical process/system monitor
@@ -25,6 +31,8 @@ brew "fd"
 brew "fzf"
 # Improved top (interactive process viewer)
 brew "htop"
+# Powerful paging program
+brew "most"
 # Modern replacement for ps written by Rust
 brew "procs"
 # Search tool like grep and The Silver Searcher
@@ -36,69 +44,16 @@ brew "tlrc"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 
-## Other tools
-# Spell checker with better logic than ispell
-brew "aspell"
+### Shells and dotfiles
+
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
-# GitHub command-line tool
-brew "gh"
-# Command-line utility for uploading Gists
-brew "gist"
-# Distributed revision control system
-brew "git"
-# Structural diff that understands syntax (git difftool)
-brew "difftastic"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# GUI for vim, made for macOS
-brew "macvim"
-# Mac App Store command-line interface
-brew "mas"
-# Turn marked-up plain text into well-formatted documents
-brew "multimarkdown"
-# Markdown linter and fixer (config in config/md-fixup)
-brew "ttscoff/thelab/md-fixup"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
-# PAM module for reattaching to the user's GUI (Aqua) session (Touch ID sudo in tmux)
-brew "pam-reattach"
-# Package management made easy
-brew "pixi"
-# Wrapper to colorize and simplify ping's output
-brew "prettyping"
-# Software environment for statistical computing
-brew "r"
 # RC file (dotfile) management
 brew "rcm"
-# Safe, concurrent, practical language
-brew "rust"
-# SMART hard drive monitoring
-brew "smartmontools"
-# Modernized, complete, self-contained TeX/LaTeX engine
-brew "tectonic"
-# Send macOS User Notifications from the command-line
-brew "terminal-notifier"
 # Programmatically correct mistyped console commands
 brew "thefuck"
-# CLI tool that moves files or folder to the trash
-brew "trash"
-# Command-line unarchiving tools supporting multiple formats
-brew "unar"
-# Python version management
-brew "uv"
-# Internet file retriever
-brew "wget"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Additional completion definitions for zsh
@@ -106,144 +61,221 @@ brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-fast-syntax-highlighting"
 
+### Git
+
+# Structural diff that understands syntax (git difftool)
+brew "difftastic"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+
+### Writing and typesetting
+
+# Unified Markdown processor supporting CommonMark, GFM, MultiMarkdown, and Kramdown
+brew "ttscoff/thelab/apex"
+# Spell checker with better logic than ispell
+brew "aspell"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Configurable static site generator
+brew "hugo"
+# Markdown linter and fixer (config in config/md-fixup)
+brew "ttscoff/thelab/md-fixup"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
+# Necessary if using biber with tectonic
+# Link to ~/.local/bin/tectonic-biber for best results
+# brew "afonsofrancof/taps/biber@2.17"
+# LaTeX LSP
+brew "texlab"
+# Markup-based typesetting system
+brew "typst"
+
+### Programming
+
+# Create and run Linux containers using lightweight virtual machines
+brew "container"
+brew "container-compose"
+# Post-modern modal text editor
+brew "helix"
+# Package management made easy
+brew "pixi"
+# Software environment for statistical computing
+brew "r"
+# Safe, concurrent, practical language
+brew "rust"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+
+### Media
+
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+
+### System and networking
+
+# Mac App Store command-line interface
+brew "mas"
+# PAM module for reattaching to the user's GUI (Aqua) session (Touch ID sudo in tmux)
+brew "pam-reattach"
+# Wrapper to colorize and simplify ping's output
+brew "prettyping"
+# SMART hard drive monitoring
+brew "smartmontools"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Internet file retriever
+brew "wget"
 
 ## Casks
+
+### Browsers and reading
+
+# Web browser
+cask "firefox"
+# Chromium-based web browser
+cask "helium-browser"
+# Free and open-source RSS reader
+cask "netnewswire"
+# WebKit based web browser
+cask "orion"
+# All-in-one bookmark manager
+cask "raindropio"
+# Chromium-based browser with built-in email client
+cask "vivaldi"
+# Firefox-based web browser
+cask "zen"
+
+### Text editing and writing
+
+# Edit and manage bibliographies
+cask "bibdesk"
+# Reference management and bibliography software
+# cask "bookends"
+# GNU Emacs text editor (runs Spacemacs)
+cask "emacs-app"
+# Native code editor
+cask "nova"
+# PDF reader and note-taking application
+cask "skim"
+# Markdown knowledgebase manager
+cask "tolaria"
+# Open-source code editor (git mergetool)
+cask "visual-studio-code"
+
+### Development
+
+# Scriptable scratchpad for developers
+cask "boop"
+# Terminal emulator with native macOS UI
+cask "ghostty"
+# Graphical client for Git version control
+cask "sourcetree"
+
+### Productivity
+
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Tool to help searching the web more efficiently
+cask "devonagent"
+# Collect, organize, edit and annotate documents
+cask "devonthink"
+# Scheduling application focusing on organization
+cask "omnifocus"
+# Visual communication software
+cask "omnigraffle"
+# Note taking application and information organizer
+cask "omnioutliner"
+
+### Science and math
+
+# Molecule editor and visualizer
+cask "avogadro"
+# Calculator software
+cask "chalk"
+
+### Graphics
+
+# Image editor focused on simplicity
+cask "acorn"
+# Image editing and design software
+cask "affinity"
+
+### CAD/CAM and 3D printing
+
+# Integrated CAD, CAM, CAE, and PCB software
+cask "autodesk-fusion"
+# Bambu printer utility
+cask "bambu-studio"
+
+### Communication and media
+
+# Free and open-source media player
+cask "iina"
+# Microblogging and social networking service
+cask "microblog"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# Open-source BitTorrent client
+cask "transmission"
+# Video communication and virtual meeting platform
+cask "zoom"
+
+### Networking, security, and file transfer
+
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
+# Monitors common persistence locations
+cask "blockblock"
+# Inspector for iCloud Drive folders
+cask "cirrus"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Open-source Dropbox client
+cask "maestral"
+# Android file transfer app
+cask "openmtp"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
+
+### Utilities
 
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# Image editing and design software
-cask "affinity"
-# Integrated CAD, CAM, CAE, and PCB software
-cask "autodesk-fusion"
-# Molecule editor and visualizer
-cask "avogadro"
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher"
-# Edit and manage bibliographies
-cask "bibdesk"
-# Reference management and bibliography software
-cask "bookends"
-# Scriptable scratchpad for developers
-cask "boop"
-# Web browser focusing on privacy
-cask "brave-browser"
-# Calculator software
-cask "chalk"
-# Plugin for color picker utility
-cask "colorpicker-propicker"
-# Tool to compare and synchronise files and folders
-cask "deltawalker"
-# Tool to help searching the web more efficiently
-cask "devonagent"
-# Collect, organize, edit and annotate documents
-cask "devonthink"
-# GNU Emacs text editor (runs Spacemacs)
-cask "emacs-app"
-# Web browser
-cask "firefox"
-# Web browser
-cask "google-chrome"
-# Free and open-source media player
-cask "iina"
-# Terminal emulator with native macOS UI
-cask "ghostty"
-# Productivity tool
-cask "launchbar"
-# Full TeX Live distribution with GUI applications
-# cask "mactex"
-# Open-source Dropbox client
-cask "maestral"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
-# Free and open-source RSS reader
-cask "netnewswire"
-# Native code editor
-cask "nova"
-# Scheduling application focusing on organization
-cask "omnifocus"
-# Visual communication software
-cask "omnigraffle"
-# Note taking applciation and information organizer
-cask "omnioutliner"
-# Cloud storage client
-# cask "onedrive"
-# WebKit based web browser
-cask "orion"
+# Window peeking utility app
+cask "dockdoor"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
+# Automation software
+cask "keyboard-maestro"
+# Launcher utility - "The Original"
+# cask "launchbar"
+# Mouse utility to add gesture functions and smooth scrolling to 3rd party mice
+cask "mac-mouse-fix"
 # Text snippet expander (config in config/Poof)
 cask "poof"
 # Graphical user interface for the 'defaults' command
 cask "prefs-editor"
-# All-in-one bookmark manager
-cask "raindropio"
 # Collection of apps available by subscription
 cask "setapp"
-# PDF reader and note-taking application
-cask "skim"
-# Graphical client for Git version control
-cask "sourcetree"
 # Backup, recovery and cloning software
 cask "superduper"
-# Open-source BitTorrent client
-cask "transmission"
 # Application launcher (config in config/Tuna)
 cask "tuna"
-# 3D printer and slicing GUI
-cask "ultimaker-cura"
-# Video communication and virtual meeting platform
-cask "zoom"
 
-# Fonts
-cask "font-fira-code"
-cask "font-fira-code-nerd-font"
-cask "font-inconsolata"
-# Typeface made for developers
-cask "font-jetbrains-mono"
-cask "font-liberation"
-cask "font-open-sans"
-# Unicode fonts for scientific, technical, and mathematical texts
-cask "font-stix"
-cask "font-stix-two-text"
-cask "font-stix-two-math"
+### If no Setapp
 
-# QuickLook plugins
-cask "syntax-highlight"
-
-## MAS apps
-
-mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
-mas "Airmail", id: 918858936
-mas "Calca", id: 635758264
-mas "Color Picker", id: 1545870783
-mas "DaisyDisk", id: 411643860
-mas "Drafts", id: 1435957248
-mas "Hush", id: 1544743900
-mas "Irvue", id: 1039633667
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "Pins", id: 1547106997
-mas "Pixelmator Pro", id: 1289583905
-mas "Slack", id: 803453959
-mas "StopTheMadness Pro", id: 6471380298
-mas "URL Linker", id: 1289119450
-mas "Baking Soda", id: 1601151613
-mas "Vinegar", id: 1591303229
-mas "Tot", id: 1491071483
-# mas "Xcode", id: 497799835
-
-# Apple iWork apps
-mas "Keynote", id: 361285480
-mas "Numbers", id: 361304891
-mas "Pages", id: 361309726
-
-# Microsoft Office apps
-mas "OneDrive", id: 823766827
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
-
-## If no Setapp
 # Menu bar icon organizer
 # cask "bartender"
 # Utility to create and modify archives
@@ -251,47 +283,140 @@ mas "Microsoft Word", id: 462054704
 # Previewer for Markdown, MultiMarkdown and other text markup languages
 # cask "marked2"
 
+### Fonts
+
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-inconsolata"
+cask "font-jetbrains-mono"
+cask "font-liberation"
+cask "font-open-sans"
+# Unicode fonts for scientific, technical, and mathematical texts
+cask "font-stix-two-text"
+cask "font-stix-two-math"
+
+### Quick Look plugins
+
+cask "syntax-highlight"
+
+## Mac App Store
+
+### Utilities
+
+mas "Color Picker", id: 1545870783
+mas "DaisyDisk", id: 411643860
+mas "Irvue", id: 1039633667
+mas "Marked Quick Look", id: 6787414592
+mas "Parcel", id: 375589283
+mas "TestFlight", id: 899247664
+mas "Windows App", id: 1295203466
+mas "Xcode", id: 497799835
+
+### Writing and productivity
+
+mas "Calendar 366", id: 6502818600
+mas "Drafts", id: 1435957248
+mas "Finalist", id: 6447014685
+mas "Pixelmator Pro", id: 1289583905
+
+### Social
+
+mas "Hyperspace", id: 6739505345
+mas "Ivory", id: 6444602274
+
+### Content blockers and Safari extensions
+
+mas "1Blocker", id: 1365531024
+mas "1Password for Safari", id: 1569813296
+mas "Baking Soda", id: 1601151613
+mas "Hush", id: 1544743900
+mas "Kagi Search for Safari", id: 1622835804
+mas "Save to Raindrop.io", id: 1549370672
+mas "StopTheMadness Pro", id: 6471380298
+mas "URL Linker", id: 1289119450
+mas "Vinegar", id: 1591303229
+
+### Apple iWork
+
+mas "Keynote", id: 361285480
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
+
 ## Home
 
-# Casks
-# App to manage bank accounts in one place
-# cask "copilot"
-# Video game digital distribution service
-# cask "steam"
+### Casks
+
 # E-books management software
 # cask "calibre"
+# App to manage bank accounts in one place
+# cask "copilot-money"
+# Video game digital distribution service
+# cask "steam"
 
-# MAS
-# mas "GarageBand", id: 682658836
-# mas "iMovie", id: 408981434
-# mas "HP Easy Scan", id: 967004861
+### Mac App Store
+
+# mas "Book Tracker", id: 1496543317
 # mas "Darkroom", id: 953286746
-# mas "Book Track", id: 1496543317
+# mas "GarageBand", id: 682658836
+# mas "HP Easy Scan", id: 967004861
+# mas "iMovie", id: 408981434
 
 ## Work
 
-# Brews
-# Quickly rewrite git repository history
-# brew "git-filter-repo"
+### Electronics
 
-# Casks
+# Atmel AVR MCU programmer
+# brew "avrdude"
+# Spice circuit simulator
+# brew "ngspice"
+# Electronics design automation suite
+# cask "kicad"
+# SPICE simulation software, schematic capture and waveform viewer
+# cask "ltspice"
+# mas "iCircuit3D", id: 1539977373
+
+### CAD and 3D printing
+
+# 3D parametric modeller
+# cask "freecad"
+# Programmable solid 3D CAD modeller
+# cask "openscad@snapshot"
+# 3D printing setup, management, and monitoring
+# cask "preform"
+# 3D CAD software
+# cask "shapr3d"
+# 3D printer and slicing GUI
+# cask "ultimaker-cura"
+
+### Science and TeX
+
+# Open-source image processing package
+# cask "fiji"
+# Full TeX Live distribution with GUI applications
+# cask "mactex"
+# AI research workbench with scientific agents and notebooks
+# cask "open-science"
+# Scientific Python IDE
+# cask "spyder"
+# mas "Calca", id: 635758264
+# mas "Plot2", id: 846509360
+
+### Development
 
 # Terminal-based AI coding assistant
 # cask "claude-code"
 # Replacement for Docker Desktop
 # cask "orbstack"
-# Open-source code editor
-# cask "visual-studio-code"
-# Collection of apps and services for photography, design, video, web, and UX
-# cask "adobe-creative-cloud"
-# Open-source image processing package
-# cask "fiji"
-# 3D printing setup, management, and monitoring
-# cask "preform"
-# Scientific Python IDE
-# cask "spyder"
+# Virtual machines UI using QEMU
+# cask "utm"
+# mas "ShellFish", id: 1336634154
 
-# MAS apps
+### Microsoft 365 and communication
+
+# AI-first productivity assistant for Microsoft 365
+# cask "microsoft-365-copilot"
+# mas "Microsoft Excel", id: 462058435
 # mas "Microsoft Outlook", id: 985367838
-# mas "Microsoft OneNote", id: 784801555
-
+# mas "Microsoft PowerPoint", id: 462062816
+# mas "Microsoft Word", id: 462054704
+# mas "OneDrive", id: 823766827
