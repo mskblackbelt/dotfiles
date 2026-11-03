@@ -1,47 +1,75 @@
 # mskblackbelt’s dotfiles
 
+Shell, git, editor, and app configuration for macOS and Linux, linked into place with [`rcm`](https://thoughtbot.github.io/rcm/rcm.7.html).
+
 ## Installation
 
-### Using Git and the bootstrap script
+### Using Git and the setup script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Developer/dotfiles`) Use [`rcm`](http://thoughtbot.github.io/rcm/rcm.7.html) to link the files to your home directory.
+Clone the repository to `~/Developer/dotfiles` (`rcrc` expects it there), then run the setup script:
 
 ```bash
-env RCRC="~/Developer/dotfiles/rcrc" rcup
+git clone https://github.com/mskblackbelt/dotfiles.git ~/Developer/dotfiles
+~/Developer/dotfiles/init/setup.sh
 ```
 
-To install everything automatically (including [Homebrew](https://brew.sh, `rcm`, `zsh`, and `git`), `cd` into your local `dotfiles` repository and then:
+The script is safe to re-run. It:
+
+1. Installs what it needs. On macOS that's the Command Line Tools, [Homebrew](https://brew.sh), and `rcm`. On Linux it installs `rcm` with the system package manager, or builds it into `~/.local` if you don't have root.
+2. Clones the private companion repo, `dotfiles-private`, next to this one if this machine has access to it.
+3. Clones or updates oh-my-zsh and Spacemacs (`bin/update-externals`).
+4. Links the dotfiles with `rcup`. Files already in the way are moved to `~/.local/state/dotfiles-backup/<date>/`, never deleted.
+5. On macOS, offers to install the Brewfile, make Homebrew’s zsh your login shell, and apply the macOS settings.
+
+Pass `-y` to answer yes to every question. Without a terminal (`setup.sh < /dev/null`), the optional steps are skipped.
+
+To link the files by hand instead:
 
 ```bash
-./init/install.sh
+env RCRC=~/Developer/dotfiles/rcrc rcup
 ```
 
-### Sensible OS X defaults
+### Sensible macOS defaults
 
-When setting up a new Mac, you may want to set some sensible OS X defaults:
+When setting up a new Mac, you may want to set some sensible macOS defaults:
 
 ```bash
-./init/macos_install.sh
+./init/macos-defaults.sh
 ```
 
 ### Install Homebrew formulae
 
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
+To install the [Homebrew](https://brew.sh) formulae, casks, and Mac App Store apps:
 
 ```bash
 brew bundle --file ./init/Brewfile
 ```
 
+Everything above the **Home** and **Work** sections installs on every Mac. Those two sections are commented out; uncomment what a given machine needs.
+
+## Layout
+
+| Path | Contents |
+|---|---|
+| `zshrc`, `zsh/` | Zsh configuration, split by topic; oh-my-zsh lives in `~/.local/share/oh-my-zsh` |
+| `config/` | Files for `~/.config` (git, Ghostty, pixi, latexmk, md-fixup, and more) |
+| `tag-darwin/`, `tag-linux/` | Per-OS files; `rcm` links only the current OS’s set |
+| `bin/` | Scripts, linked to `~/bin` |
+| `local/share/` | Pandoc templates, TeX files, and images for `~/.local/share` |
+| `init/` | Setup script, macOS defaults, and the Brewfile (not linked) |
+
+### Machine-local and private settings
+
+Some settings stay out of this repo:
+
+* **`dotfiles-private`** holds the git identity (`gitconfig.local`) and SSH hosts. `rcm` links it alongside this repo.
+* **`~/.gitconfig`** is a plain local file. Git reads it after `~/.config/git/config`, and apps that run `git config --global` write there.
+* **`zsh/local.zsh`** is ignored by git, for machine-specific exports.
 
 ## Feedback
 
 Suggestions/improvements
 [welcome](https://github.com/mskblackbelt/dotfiles/issues)!
-
-## Author
-
-| [![twitter/mskblackbelt](https://secure.gravatar.com/avatar/c19070eaf142d30988084346ab6e693b)](http://twitter.com/mskblackbelt "Follow @mskblackbelt on Twitter") |
-|---|
 
 ## Thanks to…
 
