@@ -1,5 +1,5 @@
 DOTFILES_DIRS="$HOME/Developer/dotfiles $HOME/Developer/dotfiles-private"
-EXCLUDES="LICENSE* README.md *install*.sh Brewfile init austin_persona.md"
+EXCLUDES="LICENSE* README.md Brewfile init austin_persona.md"
 SYMLINK_DIRS="zsh bin local/share/images local/share/pandoc local/share/texmf config/*"
 UNDOTTED="bin"
 # Link tag-darwin/ or tag-linux/ files for this OS
