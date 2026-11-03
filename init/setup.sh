@@ -61,8 +61,10 @@ install_rcm_locally() {
 		tar -xzf "$tmp/rcm.tar.gz" -C "$tmp" &&
 		(cd "$tmp/rcm-$rcm_version" && ./configure --prefix="$HOME/.local" > /dev/null && make install > /dev/null) ||
 		{ echo "Couldn't build rcm; install it with your package manager and re-run." >&2; exit 1; }
-	export PATH="$HOME/.local/bin:$PATH"
 }
+
+# A previous run may have built rcm there
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ $os == Darwin ]]; then
 	say "Checking macOS prerequisites"
