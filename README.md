@@ -29,6 +29,35 @@ To link the files by hand instead:
 env RCRC=~/Developer/dotfiles/rcrc rcup
 ```
 
+<!-- TODO: Remove this section once every machine has been migrated (added November 2026). -->
+### Migrating a machine with an old clone
+
+This repo’s history was rewritten in October 2026, so don’t pull into an older clone; that would bring the removed history back. Replace the clone instead:
+
+1. Remove the links rcm made from the old clone (skip this if `rcm` isn’t installed or the clone lives elsewhere; `setup.sh` backs up anything left in the way):
+   ```bash
+   env RCRC=~/Developer/dotfiles/rcrc rcdn
+   ```
+2. Move the old clone aside:
+   ```bash
+   mv ~/Developer/dotfiles ~/Developer/dotfiles.old
+   ```
+3. Clone fresh and run the setup script:
+   ```bash
+   git clone https://github.com/mskblackbelt/dotfiles.git ~/Developer/dotfiles
+   ~/Developer/dotfiles/init/setup.sh
+   ```
+4. Check for links still pointing into the old clone (this should print nothing):
+   ```bash
+   find ~ -maxdepth 3 -type l -lname '*dotfiles.old*' 2>/dev/null
+   ```
+5. Once everything works, delete the old clone:
+   ```bash
+   rm -rf ~/Developer/dotfiles.old
+   ```
+
+`setup.sh` also moves aside the old `~/.emacs.d` and `~/.bash_it` submodule links and clones Spacemacs and oh-my-zsh fresh. `dotfiles-private` wasn’t rewritten; a plain `git pull` there is fine.
+
 ### Sensible macOS defaults
 
 When setting up a new Mac, you may want to set some sensible macOS defaults:
