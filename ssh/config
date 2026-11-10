@@ -6,6 +6,7 @@ Include ~/.orbstack/ssh/config
 
 # Private host entries (dotfiles-private repo, linked by rcm)
 Include ~/.ssh/config.d/*
+Include ~/.ssh/1Password/config
 
 Host *
 	IdentityAgent "~/.1password/agent.sock"
