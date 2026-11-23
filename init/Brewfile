@@ -52,8 +52,6 @@ brew "bash"
 brew "bash-completion@2"
 # RC file (dotfile) management
 brew "rcm"
-# Programmatically correct mistyped console commands
-brew "thefuck"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Additional completion definitions for zsh

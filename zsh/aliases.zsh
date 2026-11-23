@@ -4,10 +4,15 @@ alias ohmyzsh="$EDITOR ${ZSH:A}"
 
 # Enable sudo with aliases
 alias sudo='sudo '
-# Correct the previous command with thefuck. Its alias is generated on first
-# use instead of at every shell start (saves ~0.08s per shell).
-if _command_exists thefuck; then
-  fuck() { unfunction fuck; eval "$(thefuck --alias)"; fuck "$@" }
+# Correct the previous command with thebleep (uv tool install thebleep).
+# `fuck` starts as thebleep's loader, which swaps in the full function on
+# first use instead of running thebleep at every shell start.
+if _command_exists thebleep; then
+  fuck() {
+    TB_EXIT=$?
+    eval "$(TB_SHELL=zsh thebleep --alias fuck)"
+    TB_EXIT="$TB_EXIT" fuck "$@"
+  }
 else
   # Fallback: rerun the previous command with root privileges
   alias fuck='sudo $(fc -ln -1)'
