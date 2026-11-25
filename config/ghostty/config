@@ -9,3 +9,5 @@ quick-terminal-autohide = true
 
 window-height = 40
 window-width = 120
+
+shell-integration-features = sudo,ssh-terminfo,ssh-env
